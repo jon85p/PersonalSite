@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hike Route Analyzer - GPX</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        #map { height: 500px; width: 100%; border-radius: 0.75rem; z-index: 1; }
+        .chart-container { height: 300px; width: 100%; }
+        #drop-zone { transition: all 0.3s ease; }
+        #drop-zone.drag-over { border-color: #16a34a; background-color: #f0fdf4; } /* Verde para Hiking */
+        .leaflet-container { background: #f8fafc; }
+        
+        .route-card { transition: transform 0.2s; }
+        .route-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans text-gray-900">
+
+    <div class="max-w-6xl mx-auto p-4 md:p-8">
+        <!-- Header & Social -->
+        <header class="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl font-bold text-green-700 flex items-center justify-center md:justify-start gap-3">
+                    🥾 Hike Route Analyzer
+                </h1>
+                <p class="text-gray-600 mt-2">Explora, analiza y descarga mis rutas de senderismo favoritas</p>
+            </div>
+            
+            <a href="https://t.me/jon85p" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 transition-colors font-semibold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                ¿Me acompañas? Escríbeme
+            </a>
+        </header>
+
+        <!-- Sección: Mis Rutas (Local) -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.553-.894L15 7m0 13V7"></path></svg>
+                Rutas Recomendadas
+            </h2>
+            <div id="routes-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Las rutas se insertarán aquí con JS -->
+            </div>
+        </div>
+
+        <!-- Sección: Carga Manual -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold text-gray-700 mb-3">Analizar otro archivo</h2>
+            <div id="drop-zone" class="border-4 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-green-500 bg-white shadow-sm">
+                <input type="file" id="file-input" class="hidden" accept=".gpx">
+                <div class="flex flex-col items-center">
+                    <svg class="w-10 h-10 text-green-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                    </svg>
+                    <p class="text-lg font-medium text-gray-700">Sube tu propio archivo .gpx</p>
+                    <p class="text-sm text-gray-500">Arrastra o haz clic para seleccionar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard (Oculto inicialmente) -->
+        <div id="dashboard" class="hidden space-y-6">
+            <!-- Título de ruta activa -->
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded shadow-sm">
+                <h3 id="active-route-name" class="font-bold text-green-800 text-lg">Ruta cargada</h3>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Distancia Total</span>
+                    <span id="stat-distance" class="text-3xl font-black text-green-700">0.0 km</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Elevación Máxima</span>
+                    <span id="stat-max-alt" class="text-3xl font-black text-blue-600">0 m</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Ascenso Acumulado</span>
+                    <span id="stat-ascent" class="text-3xl font-black text-orange-600">0 m</span>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="bg-white p-2 rounded-xl shadow-md overflow-hidden relative">
+                <div id="map"></div>
+                <div class="absolute bottom-4 left-4 z-[1000] bg-white/90 p-2 rounded text-xs shadow-md border border-gray-200">
+                    Interactúa con el gráfico inferior para ver posición
+                </div>
+            </div>
+
+            <!-- Elevation Chart Section -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold mb-6 text-center text-gray-700">Perfil de Elevación</h3>
+                <div class="chart-container">
+                    <canvas id="elevationChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Welcome Message -->
+        <div id="welcome-msg" class="text-center text-gray-400 py-10">
+            <p class="text-xl">Selecciona una ruta recomendada o sube la tuya.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // --- CONFIGURACIÓN DE TUS RUTAS ---
+        // AGREGA AQUÍ TUS NUEVAS RUTAS MANUALMENTE
+        const myRoutes = [
+            {
+                name: "Ruta Morrorico-Malaña-Gualilo Alto-Malaña-Morrorico",
+                fileName: "ruta_morrorico.gpx", // Asegúrate que este archivo exista en la misma carpeta
+                description: "Caminata exigente con paisajes increíbles. Nivel: Intermedio/Avanzado."
+            },
+            // Puedes agregar más rutas copiando el bloque anterior:
+            // { name: "Nombre Ruta 2", fileName: "ruta2.gpx", description: "Descripción..." },
+        ];
+
+        let map, chart, routeLayer, positionMarker;
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const dashboard = document.getElementById('dashboard');
+        const welcomeMsg = document.getElementById('welcome-msg');
+        const activeRouteLabel = document.getElementById('active-route-name');
+
+        // Inicialización
+        function init() {
+            initMap();
+            renderRouteList();
+        }
+
+        // Renderizar lista de rutas propias
+        function renderRouteList() {
+            const container = document.getElementById('routes-container');
+            container.innerHTML = '';
+
+            myRoutes.forEach((route, index) => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-xl shadow border border-gray-200 route-card flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">${route.name}</h3>
+                        <p class="text-sm text-gray-600 mb-4">${route.description}</p>
+                    </div>
+                    <div class="flex gap-2 mt-2">
+                        <button onclick="loadRouteFromUrl('${route.fileName}', '${route.name}')" 
+                            class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            Ver en Mapa
+                        </button>
+                        <a href="${route.fileName}" download 
+                            class="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg text-sm font-medium transition-colors flex items-center" title="Descargar GPX">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4-4m0 0l-4 4m4-4v12"></path></svg>
+                        </a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function initMap() {
+            map = L.map('map').setView([0, 0], 2);
+            
+            // Manteniendo CyclOSM como pediste
+            const cyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors, CyclOSM',
+                maxZoom: 18
+            });
+
+            const osmStandard = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            });
+
+            cyclOSM.addTo(map);
+
+            const baseMaps = {
+                "Mapa Topográfico (CyclOSM)": cyclOSM,
+                "Estándar": osmStandard
+            };
+            L.control.layers(baseMaps).addTo(map);
+
+            positionMarker = L.circleMarker([0, 0], {
+                radius: 8,
+                fillColor: "#16a34a", // Verde Hiking
+                color: "#ffffff",
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.9
+            });
+        }
+
+        // --- LÓGICA DE CARGA ---
+
+        // 1. Cargar desde URL (Mis Rutas)
+        window.loadRouteFromUrl = function(url, name) {
+            activeRouteLabel.innerText = "Cargando...";
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error("No se pudo cargar el archivo. ¿Está en la carpeta correcta?");
+                    return response.text();
+                })
+                .then(str => {
+                    activeRouteLabel.innerText = name;
+                    parseAndRender(str);
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Error: No se encontró el archivo '" + url + "'. Asegúrate de ponerlo en la misma carpeta que el index.html");
+                    activeRouteLabel.innerText = "Error de carga";
+                });
+        };
+
+        // 2. Cargar desde Archivo Local (Drag & Drop)
+        dropZone.onclick = () => fileInput.click();
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('drag-over', 'border-green-500'); };
+        dropZone.ondragleave = () => dropZone.classList.remove('drag-over', 'border-green-500');
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over', 'border-green-500');
+            const file = e.dataTransfer.files[0];
+            if (file) readFile(file);
+        };
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) readFile(file);
+        };
+
+        function readFile(file) {
+            activeRouteLabel.innerText = file.name;
+            const reader = new FileReader();
+            reader.onload = (e) => parseAndRender(e.target.result);
+            reader.readAsText(file);
+        }
+
+        // --- PROCESAMIENTO ---
+
+        function parseAndRender(gpxString) {
+            try {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(gpxString, "text/xml");
+                const points = extractGpxData(xmlDoc);
+                
+                if (points.length > 0) {
+                    renderRoute(points);
+                    dashboard.classList.remove('hidden');
+                    welcomeMsg.classList.add('hidden');
+                    
+                    setTimeout(() => { map.invalidateSize(); }, 100);
+                    dashboard.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("No se encontraron coordenadas válidas en el GPX.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Error al procesar el GPX.");
+            }
+        }
+
+        function extractGpxData(xmlDoc) {
+            const points = [];
+            const trkpts = xmlDoc.querySelectorAll('trkpt, [*|trkpt]');
+            
+            trkpts.forEach(pt => {
+                const lat = parseFloat(pt.getAttribute('lat'));
+                const lon = parseFloat(pt.getAttribute('lon'));
+                const eleNode = pt.querySelector('ele, [*|ele]');
+                const ele = eleNode ? parseFloat(eleNode.textContent) : 0;
+                
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    points.push({ lat, lon, ele });
+                }
+            });
+            return points;
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        function renderRoute(points) {
+            if (routeLayer) map.removeLayer(routeLayer);
+            if (chart) chart.destroy();
+            if (map.hasLayer(positionMarker)) map.removeLayer(positionMarker);
+
+            const latLngs = points.map(p => [p.lat, p.lon]);
+            // Color de ruta cambiado a un naranja rojizo para mejor contraste en CyclOSM para hiking
+            routeLayer = L.polyline(latLngs, { color: '#ea580c', weight: 5, opacity: 0.8 }).addTo(map);
+            map.fitBounds(routeLayer.getBounds(), { padding: [40, 40] });
+
+            let distance = 0;
+            let totalAscent = 0;
+            let maxAlt = -Infinity;
+            const chartData = [];
+
+            points.forEach((p, i) => {
+                if (i > 0) {
+                    const prev = points[i - 1];
+                    const d = calculateDistance(prev.lat, prev.lon, p.lat, p.lon);
+                    distance += d;
+                    const diff = p.ele - prev.ele;
+                    if (diff > 0) totalAscent += diff;
+                }
+                if (p.ele > maxAlt) maxAlt = p.ele;
+                chartData.push({ x: distance.toFixed(2), y: p.ele, lat: p.lat, lng: p.lon });
+            });
+
+            if (maxAlt === -Infinity) maxAlt = 0;
+
+            document.getElementById('stat-distance').innerText = `${distance.toFixed(2)} km`;
+            document.getElementById('stat-max-alt').innerText = `${maxAlt.toFixed(0)} m`;
+            document.getElementById('stat-ascent').innerText = `${totalAscent.toFixed(0)} m`;
+
+            const ctx = document.getElementById('elevationChart').getContext('2d');
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Altitud (m)',
+                        data: chartData,
+                        borderColor: '#16a34a', // Verde
+                        backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHitRadius: 20
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    scales: {
+                        x: { 
+                            type: 'linear', 
+                            title: { display: true, text: 'Distancia (km)', color: '#666' },
+                            grid: { display: false }
+                        },
+                        y: { 
+                            title: { display: true, text: 'Altitud (m)', color: '#666' },
+                            grid: { color: '#f0f0f0' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            callbacks: {
+                                title: (items) => `KM: ${items[0].parsed.x}`,
+                                label: (item) => `Altitud: ${item.parsed.y} m`
+                            }
+                        }
+                    },
+                    onHover: (e, activeElements) => {
+                        if (activeElements.length > 0) {
+                            const index = activeElements[0].index;
+                            const point = chartData[index];
+                            positionMarker.setLatLng([point.lat, point.lng]);
+                            if (!map.hasLayer(positionMarker)) positionMarker.addTo(map);
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
