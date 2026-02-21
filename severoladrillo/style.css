@@ -1,0 +1,28 @@
+body {
+    background: #ebebeb;
+}
+
+textarea, #subrayado {
+    margin: 5px 0px;
+    border-radius: 6px;
+    background: #fff;
+    border: none;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    display: block;
+    color: #555;
+}
+
+.longword {
+    color: #fff;
+    background: #b94a48;
+    padding: 0 2px;
+}
+
+.badge-info {
+  background-color: #3a87ad;
+}
+.badge-info:hover {
+  background-color: #2d6987;
+}

@@ -1,0 +1,72 @@
+<html>
+    <head>
+      <meta charset="UTF-8">
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      <link href="./style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Calculadora para el índice de nebulosidad</h2>
+
+            <p>
+              El índice de nebulosidad permite medir la dificultad de lectura de un texto.
+              El índice de nebulosidad ideal es <b>15</b>.
+            </p>
+
+            <p>I<sub>nebulosidad</sub> = 0,4 * ( (N<sub>palabras</sub> / N<sub>frases</sub>) + (N<sub>palabras largas</sub> * 100 / N<sub>palabras</sub>) )</p>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <textarea id="lacarreta" rows="20" placeholder="Escriba su texto aquí"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <div id="subrayado">Resultado</div>
+                </div>
+            </div><!-- /.row -->
+
+            <br/>
+            <div class="text-center">
+                <button class="btn btn-primary" onclick="measure_nebulosity()">
+                    Analizar
+                </button>
+            </div>
+            <br/>
+            <br/>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge" id="oraciones"></span>
+                Oraciones:
+              </li>
+              <li class="list-group-item">
+                <span class="badge" id="pal_por_orac"></span>
+                Palabras por oración:
+              </li>
+              <li class="list-group-item">
+                <span class="badge" id="palabras"></span>
+                Total palabras:
+              </li>
+              <li class="list-group-item">
+                <span class="badge" id="largas"></span>
+                Palabras largas:
+              </li>
+              <li class="list-group-item">
+                <span class="badge badge-info" id="indice"></span>
+                <b>Índice de nebulosidad:</b>
+              </li>
+            </ul>
+
+            <p>
+              Libro de referencia: «Cómo se escribe» por Fernando Ávila.
+            </p>
+
+            <a class="github-button" href="https://github.com/jerojasro/severoladrillo/issues" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue jerojasro/severoladrillo on GitHub">Reportar problema</a>
+
+        </div><!-- /.container -->
+        <script src="./carreta.js"></script>
+    </body>
+</html>
