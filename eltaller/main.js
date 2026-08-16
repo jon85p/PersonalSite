@@ -1,8 +1,8 @@
-var X=function(h,f,k,d){var z=arguments.length,$=z<3?f:d===null?d=Object.getOwnPropertyDescriptor(f,k):d,B;if(typeof Reflect==="object"&&typeof Reflect.decorate==="function")$=Reflect.decorate(h,f,k,d);else for(var g=h.length-1;g>=0;g--)if(B=h[g])$=(z<3?B($):z>3?B(f,k,$):B(f,k))||$;return z>3&&$&&Object.defineProperty(f,k,$),$};var _0=globalThis,V0=_0.ShadowRoot&&(_0.ShadyCSS===void 0||_0.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,O0=Symbol(),j1=new WeakMap;class R0{constructor(h,f,k){if(this._$cssResult$=!0,k!==O0)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=h,this._strings=f}get styleSheet(){let h=this._styleSheet,f=this._strings;if(V0&&h===void 0){let k=f!==void 0&&f.length===1;if(k)h=j1.get(f);if(h===void 0){if((this._styleSheet=h=new CSSStyleSheet).replaceSync(this.cssText),k)j1.set(f,h)}}return h}toString(){return this.cssText}}var _h=(h)=>{if(h._$cssResult$===!0)return h.cssText;else if(typeof h==="number")return h;else throw Error(`Value passed to 'css' function must be a 'css' function result: ${h}. Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.`)},xh=(h)=>new R0(typeof h==="string"?h:String(h),void 0,O0),W=(h,...f)=>{let k=h.length===1?h[0]:f.reduce((d,z,$)=>d+_h(z)+h[$+1],h[0]);return new R0(k,h,O0)},q1=(h,f)=>{if(V0)h.adoptedStyleSheets=f.map((k)=>k instanceof CSSStyleSheet?k:k.styleSheet);else for(let k of f){let d=document.createElement("style"),z=_0.litNonce;if(z!==void 0)d.setAttribute("nonce",z);d.textContent=k.cssText,h.appendChild(d)}},Wh=(h)=>{let f="";for(let k of h.cssRules)f+=k.cssText;return xh(f)},L0=V0?(h)=>h:(h)=>h instanceof CSSStyleSheet?Wh(h):h;var{is:yh,defineProperty:Uh,getOwnPropertyDescriptor:N1,getOwnPropertyNames:jh,getOwnPropertySymbols:qh,getPrototypeOf:D1}=Object,Nh=!1,C=globalThis;if(Nh)C.customElements??=customElements;var I=!0,R,M1=C.trustedTypes,Dh=M1?M1.emptyScript:"",I1=I?C.reactiveElementPolyfillSupportDevMode:C.reactiveElementPolyfillSupport;if(I)C.litIssuedWarnings??=new Set,R=(h,f)=>{if(f+=` See https://lit.dev/msg/${h} for more information.`,!C.litIssuedWarnings.has(f)&&!C.litIssuedWarnings.has(h))console.warn(f),C.litIssuedWarnings.add(f)},queueMicrotask(()=>{if(R("dev-mode","Lit is in dev mode. Not recommended for production!"),C.ShadyDOM?.inUse&&I1===void 0)R("polyfill-support-missing","Shadow DOM is being polyfilled via `ShadyDOM` but the `polyfill-support` module has not been loaded.")});var Mh=I?(h)=>{if(!C.emitLitDebugLogEvents)return;C.dispatchEvent(new CustomEvent("lit-debug",{detail:h}))}:void 0,e=(h,f)=>h,z0={toAttribute(h,f){switch(f){case Boolean:h=h?Dh:null;break;case Object:case Array:h=h==null?h:JSON.stringify(h);break}return h},fromAttribute(h,f){let k=h;switch(f){case Boolean:k=h!==null;break;case Number:k=h===null?null:Number(h);break;case Object:case Array:try{k=JSON.parse(h)}catch(d){k=null}break}return k}},x0=(h,f)=>!yh(h,f),C1={attribute:!0,type:String,converter:z0,reflect:!1,useDefault:!1,hasChanged:x0};Symbol.metadata??=Symbol("metadata");C.litPropertyMetadata??=new WeakMap;class T extends HTMLElement{static addInitializer(h){this.__prepare(),(this._initializers??=[]).push(h)}static get observedAttributes(){return this.finalize(),this.__attributeToPropertyMap&&[...this.__attributeToPropertyMap.keys()]}static createProperty(h,f=C1){if(f.state)f.attribute=!1;if(this.__prepare(),this.prototype.hasOwnProperty(h))f=Object.create(f),f.wrapped=!0;if(this.elementProperties.set(h,f),!f.noAccessor){let k=I?Symbol.for(`${String(h)} (@property() cache)`):Symbol(),d=this.getPropertyDescriptor(h,k,f);if(d!==void 0)Uh(this.prototype,h,d)}}static getPropertyDescriptor(h,f,k){let{get:d,set:z}=N1(this.prototype,h)??{get(){return this[f]},set($){this[f]=$}};if(I&&d==null){if("value"in(N1(this.prototype,h)??{}))throw Error(`Field ${JSON.stringify(String(h))} on ${this.name} was declared as a reactive property but it's actually declared as a value on the prototype. Usually this is due to using @property or @state on a method.`);R("reactive-property-without-getter",`Field ${JSON.stringify(String(h))} on ${this.name} was declared as a reactive property but it does not have a getter. This will be an error in a future version of Lit.`)}return{get:d,set($){let B=d?.call(this);z?.call(this,$),this.requestUpdate(h,B,k)},configurable:!0,enumerable:!0}}static getPropertyOptions(h){return this.elementProperties.get(h)??C1}static __prepare(){if(this.hasOwnProperty(e("elementProperties",this)))return;let h=D1(this);if(h.finalize(),h._initializers!==void 0)this._initializers=[...h._initializers];this.elementProperties=new Map(h.elementProperties)}static finalize(){if(this.hasOwnProperty(e("finalized",this)))return;if(this.finalized=!0,this.__prepare(),this.hasOwnProperty(e("properties",this))){let f=this.properties,k=[...jh(f),...qh(f)];for(let d of k)this.createProperty(d,f[d])}let h=this[Symbol.metadata];if(h!==null){let f=litPropertyMetadata.get(h);if(f!==void 0)for(let[k,d]of f)this.elementProperties.set(k,d)}this.__attributeToPropertyMap=new Map;for(let[f,k]of this.elementProperties){let d=this.__attributeNameForProperty(f,k);if(d!==void 0)this.__attributeToPropertyMap.set(d,f)}if(this.elementStyles=this.finalizeStyles(this.styles),I){if(this.hasOwnProperty("createProperty"))R("no-override-create-property","Overriding ReactiveElement.createProperty() is deprecated. The override will not be called with standard decorators");if(this.hasOwnProperty("getPropertyDescriptor"))R("no-override-get-property-descriptor","Overriding ReactiveElement.getPropertyDescriptor() is deprecated. The override will not be called with standard decorators")}}static finalizeStyles(h){let f=[];if(Array.isArray(h)){let k=new Set(h.flat(1/0).reverse());for(let d of k)f.unshift(L0(d))}else if(h!==void 0)f.push(L0(h));return f}static __attributeNameForProperty(h,f){let k=f.attribute;return k===!1?void 0:typeof k==="string"?k:typeof h==="string"?h.toLowerCase():void 0}constructor(){super();this.__instanceProperties=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this.__reflectingProperty=null,this.__initialize()}__initialize(){this.__updatePromise=new Promise((h)=>this.enableUpdating=h),this._$changedProperties=new Map,this.__saveInstanceProperties(),this.requestUpdate(),this.constructor._initializers?.forEach((h)=>h(this))}addController(h){if((this.__controllers??=new Set).add(h),this.renderRoot!==void 0&&this.isConnected)h.hostConnected?.()}removeController(h){this.__controllers?.delete(h)}__saveInstanceProperties(){let h=new Map,f=this.constructor.elementProperties;for(let k of f.keys())if(this.hasOwnProperty(k))h.set(k,this[k]),delete this[k];if(h.size>0)this.__instanceProperties=h}createRenderRoot(){let h=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return q1(h,this.constructor.elementStyles),h}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this.__controllers?.forEach((h)=>h.hostConnected?.())}enableUpdating(h){}disconnectedCallback(){this.__controllers?.forEach((h)=>h.hostDisconnected?.())}attributeChangedCallback(h,f,k){this._$attributeToProperty(h,k)}__propertyToAttribute(h,f){let d=this.constructor.elementProperties.get(h),z=this.constructor.__attributeNameForProperty(h,d);if(z!==void 0&&d.reflect===!0){let B=(d.converter?.toAttribute!==void 0?d.converter:z0).toAttribute(f,d.type);if(I&&this.constructor.enabledWarnings.includes("migration")&&B===void 0)R("undefined-attribute-value",`The attribute value for the ${h} property is undefined on element ${this.localName}. The attribute will be removed, but in the previous version of \`ReactiveElement\`, the attribute would not have changed.`);if(this.__reflectingProperty=h,B==null)this.removeAttribute(z);else this.setAttribute(z,B);this.__reflectingProperty=null}}_$attributeToProperty(h,f){let k=this.constructor,d=k.__attributeToPropertyMap.get(h);if(d!==void 0&&this.__reflectingProperty!==d){let z=k.getPropertyOptions(d),$=typeof z.converter==="function"?{fromAttribute:z.converter}:z.converter?.fromAttribute!==void 0?z.converter:z0;this.__reflectingProperty=d;let B=$.fromAttribute(f,z.type);this[d]=B??this.__defaultValues?.get(d)??B,this.__reflectingProperty=null}}requestUpdate(h,f,k,d=!1,z){if(h!==void 0){if(I&&h instanceof Event)R("","The requestUpdate() method was called with an Event as the property name. This is probably a mistake caused by binding this.requestUpdate as an event listener. Instead bind a function that will call it with no arguments: () => this.requestUpdate()");let $=this.constructor;if(d===!1)z=this[h];if(k??=$.getPropertyOptions(h),(k.hasChanged??x0)(z,f)||k.useDefault&&k.reflect&&z===this.__defaultValues?.get(h)&&!this.hasAttribute($.__attributeNameForProperty(h,k)))this._$changeProperty(h,f,k);else return}if(this.isUpdatePending===!1)this.__updatePromise=this.__enqueueUpdate()}_$changeProperty(h,f,{useDefault:k,reflect:d,wrapped:z},$){if(k&&!(this.__defaultValues??=new Map).has(h)){if(this.__defaultValues.set(h,$??f??this[h]),z!==!0||$!==void 0)return}if(!this._$changedProperties.has(h)){if(!this.hasUpdated&&!k)f=void 0;this._$changedProperties.set(h,f)}if(d===!0&&this.__reflectingProperty!==h)(this.__reflectingProperties??=new Set).add(h)}async __enqueueUpdate(){this.isUpdatePending=!0;try{await this.__updatePromise}catch(f){Promise.reject(f)}let h=this.scheduleUpdate();if(h!=null)await h;return!this.isUpdatePending}scheduleUpdate(){let h=this.performUpdate();if(I&&this.constructor.enabledWarnings.includes("async-perform-update")&&typeof h?.then==="function")R("async-perform-update",`Element ${this.localName} returned a Promise from performUpdate(). This behavior is deprecated and will be removed in a future version of ReactiveElement.`);return h}performUpdate(){if(!this.isUpdatePending)return;if(Mh?.({kind:"update"}),!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),I){let z=[...this.constructor.elementProperties.keys()].filter(($)=>this.hasOwnProperty($)&&($ in D1(this)));if(z.length)throw Error(`The following properties on element ${this.localName} will not trigger updates as expected because they are set using class fields: ${z.join(", ")}. Native class fields and some compiled output will overwrite accessors used for detecting changes. See https://lit.dev/msg/class-field-shadowing for more information.`)}if(this.__instanceProperties){for(let[d,z]of this.__instanceProperties)this[d]=z;this.__instanceProperties=void 0}let k=this.constructor.elementProperties;if(k.size>0)for(let[d,z]of k){let{wrapped:$}=z,B=this[d];if($===!0&&!this._$changedProperties.has(d)&&B!==void 0)this._$changeProperty(d,void 0,z,B)}}let h=!1,f=this._$changedProperties;try{if(h=this.shouldUpdate(f),h)this.willUpdate(f),this.__controllers?.forEach((k)=>k.hostUpdate?.()),this.update(f);else this.__markUpdated()}catch(k){throw h=!1,this.__markUpdated(),k}if(h)this._$didUpdate(f)}willUpdate(h){}_$didUpdate(h){if(this.__controllers?.forEach((f)=>f.hostUpdated?.()),!this.hasUpdated)this.hasUpdated=!0,this.firstUpdated(h);if(this.updated(h),I&&this.isUpdatePending&&this.constructor.enabledWarnings.includes("change-in-update"))R("change-in-update",`Element ${this.localName} scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update.`)}__markUpdated(){this._$changedProperties=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this.__updatePromise}shouldUpdate(h){return!0}update(h){this.__reflectingProperties&&=this.__reflectingProperties.forEach((f)=>this.__propertyToAttribute(f,this[f])),this.__markUpdated()}updated(h){}firstUpdated(h){}}T.elementStyles=[];T.shadowRootOptions={mode:"open"};T[e("elementProperties",T)]=new Map;T[e("finalized",T)]=new Map;I1?.({ReactiveElement:T});if(I){T.enabledWarnings=["change-in-update","async-perform-update"];let h=function(f){if(!f.hasOwnProperty(e("enabledWarnings",f)))f.enabledWarnings=f.enabledWarnings.slice()};T.enableWarning=function(f){if(h(this),!this.enabledWarnings.includes(f))this.enabledWarnings.push(f)},T.disableWarning=function(f){h(this);let k=this.enabledWarnings.indexOf(f);if(k>=0)this.enabledWarnings.splice(k,1)}}(C.reactiveElementVersions??=[]).push("2.1.2");if(I&&C.reactiveElementVersions.length>1)queueMicrotask(()=>{R("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var A=globalThis,G=(h)=>{if(!A.emitLitDebugLogEvents)return;A.dispatchEvent(new CustomEvent("lit-debug",{detail:h}))},Ch=0,g0;A.litIssuedWarnings??=new Set,g0=(h,f)=>{if(f+=h?` See https://lit.dev/msg/${h} for more information.`:"",!A.litIssuedWarnings.has(f)&&!A.litIssuedWarnings.has(h))console.warn(f),A.litIssuedWarnings.add(f)},queueMicrotask(()=>{g0("dev-mode","Lit is in dev mode. Not recommended for production!")});var L=A.ShadyDOM?.inUse&&A.ShadyDOM?.noPatch===!0?A.ShadyDOM.wrap:(h)=>h,W0=A.trustedTypes,T1=W0?W0.createPolicy("lit-html",{createHTML:(h)=>h}):void 0,Ih=(h)=>h,q0=(h,f,k)=>Ih,Th=(h)=>{if(o!==q0)throw Error("Attempted to overwrite existing lit-html security policy. setSanitizeDOMValueFactory should be called at most once.");o=h},Ah=()=>{o=q0},E0=(h,f,k)=>{return o(h,f,k)},P1="$lit$",m=`lit$${Math.random().toFixed(9).slice(2)}$`,m1="?"+m,Vh=`<${m1}>`,p=document,Z0=()=>p.createComment(""),X0=(h)=>h===null||typeof h!="object"&&typeof h!="function",v0=Array.isArray,Oh=(h)=>v0(h)||typeof h?.[Symbol.iterator]==="function",b0=`[ 	
-\f\r]`,Rh=`[^ 	
-\f\r"'\`<>=]`,Lh=`[^\\s"'>=/]`,$0=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,A1=1,P0=2,bh=3,V1=/-->/g,O1=/>/g,E=new RegExp(`>|${b0}(?:(${Lh}+)(${b0}*=${b0}*(?:${Rh}|("|')|))|$)`,"g"),Ph=0,R1=1,mh=2,L1=3,m0=/'/g,S0=/"/g,S1=/^(?:script|style|textarea|title)$/i,Sh=1,y0=2,U0=3,i0=1,j0=2,Eh=3,vh=4,ih=5,r0=6,rh=7,p0=(h)=>(f,...k)=>{if(f.some((d)=>d===void 0))console.warn(`Some template strings are undefined.
-This is probably caused by illegal octal escape sequences.`);if(k.some((d)=>d?._$litStatic$))g0("",`Static values 'literal' or 'unsafeStatic' cannot be used as values to non-static templates.
-Please use the static 'html' tag function. See https://lit.dev/docs/templates/expressions/#static-expressions`);return{["_$litType$"]:h,strings:f,values:k}},c=p0(Sh),J5=p0(y0),K5=p0(U0),u=Symbol.for("lit-noChange"),D=Symbol.for("lit-nothing"),b1=new WeakMap,r=p.createTreeWalker(p,129),o=q0;function E1(h,f){if(!v0(h)||!h.hasOwnProperty("raw")){let k="invalid template strings array";throw k=`
+var x=function(r,o,d,c){var i=arguments.length,g=i<3?o:c===null?c=Object.getOwnPropertyDescriptor(o,d):c,h;if(typeof Reflect==="object"&&typeof Reflect.decorate==="function")g=Reflect.decorate(r,o,d,c);else for(var f=r.length-1;f>=0;f--)if(h=r[f])g=(i<3?h(g):i>3?h(o,d,g):h(o,d))||g;return i>3&&g&&Object.defineProperty(o,d,g),g};var _r=globalThis,Ur=_r.ShadowRoot&&(_r.ShadyCSS===void 0||_r.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,lr=Symbol(),Z0=new WeakMap;class jr{constructor(r,o,d){if(this._$cssResult$=!0,d!==lr)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=r,this._strings=o}get styleSheet(){let r=this._styleSheet,o=this._strings;if(Ur&&r===void 0){let d=o!==void 0&&o.length===1;if(d)r=Z0.get(o);if(r===void 0){if((this._styleSheet=r=new CSSStyleSheet).replaceSync(this.cssText),d)Z0.set(o,r)}}return r}toString(){return this.cssText}}var Bo=(r)=>{if(r._$cssResult$===!0)return r.cssText;else if(typeof r==="number")return r;else throw Error(`Value passed to 'css' function must be a 'css' function result: ${r}. Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.`)},Yo=(r)=>new jr(typeof r==="string"?r:String(r),void 0,lr),B=(r,...o)=>{let d=r.length===1?r[0]:o.reduce((c,i,g)=>c+Bo(i)+r[g+1],r[0]);return new jr(d,r,lr)},Q0=(r,o)=>{if(Ur)r.adoptedStyleSheets=o.map((d)=>d instanceof CSSStyleSheet?d:d.styleSheet);else for(let d of o){let c=document.createElement("style"),i=_r.litNonce;if(i!==void 0)c.setAttribute("nonce",i);c.textContent=d.cssText,r.appendChild(c)}},Fo=(r)=>{let o="";for(let d of r.cssRules)o+=d.cssText;return Yo(o)},qr=Ur?(r)=>r:(r)=>r instanceof CSSStyleSheet?Fo(r):r;var{is:Xo,defineProperty:Zo,getOwnPropertyDescriptor:J0,getOwnPropertyNames:Qo,getOwnPropertySymbols:Jo,getPrototypeOf:H0}=Object,Ho=!1,p=globalThis;if(Ho)p.customElements??=customElements;var G=!0,q,K0=p.trustedTypes,Ko=K0?K0.emptyScript:"",G0=G?p.reactiveElementPolyfillSupportDevMode:p.reactiveElementPolyfillSupport;if(G)p.litIssuedWarnings??=new Set,q=(r,o)=>{if(o+=` See https://lit.dev/msg/${r} for more information.`,!p.litIssuedWarnings.has(o)&&!p.litIssuedWarnings.has(r))console.warn(o),p.litIssuedWarnings.add(o)},queueMicrotask(()=>{if(q("dev-mode","Lit is in dev mode. Not recommended for production!"),p.ShadyDOM?.inUse&&G0===void 0)q("polyfill-support-missing","Shadow DOM is being polyfilled via `ShadyDOM` but the `polyfill-support` module has not been loaded.")});var po=G?(r)=>{if(!p.emitLitDebugLogEvents)return;p.dispatchEvent(new CustomEvent("lit-debug",{detail:r}))}:void 0,rr=(r,o)=>r,ir={toAttribute(r,o){switch(o){case Boolean:r=r?Ko:null;break;case Object:case Array:r=r==null?r:JSON.stringify(r);break}return r},fromAttribute(r,o){let d=r;switch(o){case Boolean:d=r!==null;break;case Number:d=r===null?null:Number(r);break;case Object:case Array:try{d=JSON.parse(r)}catch(c){d=null}break}return d}},$r=(r,o)=>!Xo(r,o),p0={attribute:!0,type:String,converter:ir,reflect:!1,useDefault:!1,hasChanged:$r};Symbol.metadata??=Symbol("metadata");p.litPropertyMetadata??=new WeakMap;class W extends HTMLElement{static addInitializer(r){this.__prepare(),(this._initializers??=[]).push(r)}static get observedAttributes(){return this.finalize(),this.__attributeToPropertyMap&&[...this.__attributeToPropertyMap.keys()]}static createProperty(r,o=p0){if(o.state)o.attribute=!1;if(this.__prepare(),this.prototype.hasOwnProperty(r))o=Object.create(o),o.wrapped=!0;if(this.elementProperties.set(r,o),!o.noAccessor){let d=G?Symbol.for(`${String(r)} (@property() cache)`):Symbol(),c=this.getPropertyDescriptor(r,d,o);if(c!==void 0)Zo(this.prototype,r,c)}}static getPropertyDescriptor(r,o,d){let{get:c,set:i}=J0(this.prototype,r)??{get(){return this[o]},set(g){this[o]=g}};if(G&&c==null){if("value"in(J0(this.prototype,r)??{}))throw Error(`Field ${JSON.stringify(String(r))} on ${this.name} was declared as a reactive property but it's actually declared as a value on the prototype. Usually this is due to using @property or @state on a method.`);q("reactive-property-without-getter",`Field ${JSON.stringify(String(r))} on ${this.name} was declared as a reactive property but it does not have a getter. This will be an error in a future version of Lit.`)}return{get:c,set(g){let h=c?.call(this);i?.call(this,g),this.requestUpdate(r,h,d)},configurable:!0,enumerable:!0}}static getPropertyOptions(r){return this.elementProperties.get(r)??p0}static __prepare(){if(this.hasOwnProperty(rr("elementProperties",this)))return;let r=H0(this);if(r.finalize(),r._initializers!==void 0)this._initializers=[...r._initializers];this.elementProperties=new Map(r.elementProperties)}static finalize(){if(this.hasOwnProperty(rr("finalized",this)))return;if(this.finalized=!0,this.__prepare(),this.hasOwnProperty(rr("properties",this))){let o=this.properties,d=[...Qo(o),...Jo(o)];for(let c of d)this.createProperty(c,o[c])}let r=this[Symbol.metadata];if(r!==null){let o=litPropertyMetadata.get(r);if(o!==void 0)for(let[d,c]of o)this.elementProperties.set(d,c)}this.__attributeToPropertyMap=new Map;for(let[o,d]of this.elementProperties){let c=this.__attributeNameForProperty(o,d);if(c!==void 0)this.__attributeToPropertyMap.set(c,o)}if(this.elementStyles=this.finalizeStyles(this.styles),G){if(this.hasOwnProperty("createProperty"))q("no-override-create-property","Overriding ReactiveElement.createProperty() is deprecated. The override will not be called with standard decorators");if(this.hasOwnProperty("getPropertyDescriptor"))q("no-override-get-property-descriptor","Overriding ReactiveElement.getPropertyDescriptor() is deprecated. The override will not be called with standard decorators")}}static finalizeStyles(r){let o=[];if(Array.isArray(r)){let d=new Set(r.flat(1/0).reverse());for(let c of d)o.unshift(qr(c))}else if(r!==void 0)o.push(qr(r));return o}static __attributeNameForProperty(r,o){let d=o.attribute;return d===!1?void 0:typeof d==="string"?d:typeof r==="string"?r.toLowerCase():void 0}constructor(){super();this.__instanceProperties=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this.__reflectingProperty=null,this.__initialize()}__initialize(){this.__updatePromise=new Promise((r)=>this.enableUpdating=r),this._$changedProperties=new Map,this.__saveInstanceProperties(),this.requestUpdate(),this.constructor._initializers?.forEach((r)=>r(this))}addController(r){if((this.__controllers??=new Set).add(r),this.renderRoot!==void 0&&this.isConnected)r.hostConnected?.()}removeController(r){this.__controllers?.delete(r)}__saveInstanceProperties(){let r=new Map,o=this.constructor.elementProperties;for(let d of o.keys())if(this.hasOwnProperty(d))r.set(d,this[d]),delete this[d];if(r.size>0)this.__instanceProperties=r}createRenderRoot(){let r=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return Q0(r,this.constructor.elementStyles),r}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this.__controllers?.forEach((r)=>r.hostConnected?.())}enableUpdating(r){}disconnectedCallback(){this.__controllers?.forEach((r)=>r.hostDisconnected?.())}attributeChangedCallback(r,o,d){this._$attributeToProperty(r,d)}__propertyToAttribute(r,o){let c=this.constructor.elementProperties.get(r),i=this.constructor.__attributeNameForProperty(r,c);if(i!==void 0&&c.reflect===!0){let h=(c.converter?.toAttribute!==void 0?c.converter:ir).toAttribute(o,c.type);if(G&&this.constructor.enabledWarnings.includes("migration")&&h===void 0)q("undefined-attribute-value",`The attribute value for the ${r} property is undefined on element ${this.localName}. The attribute will be removed, but in the previous version of \`ReactiveElement\`, the attribute would not have changed.`);if(this.__reflectingProperty=r,h==null)this.removeAttribute(i);else this.setAttribute(i,h);this.__reflectingProperty=null}}_$attributeToProperty(r,o){let d=this.constructor,c=d.__attributeToPropertyMap.get(r);if(c!==void 0&&this.__reflectingProperty!==c){let i=d.getPropertyOptions(c),g=typeof i.converter==="function"?{fromAttribute:i.converter}:i.converter?.fromAttribute!==void 0?i.converter:ir;this.__reflectingProperty=c;let h=g.fromAttribute(o,i.type);this[c]=h??this.__defaultValues?.get(c)??h,this.__reflectingProperty=null}}requestUpdate(r,o,d,c=!1,i){if(r!==void 0){if(G&&r instanceof Event)q("","The requestUpdate() method was called with an Event as the property name. This is probably a mistake caused by binding this.requestUpdate as an event listener. Instead bind a function that will call it with no arguments: () => this.requestUpdate()");let g=this.constructor;if(c===!1)i=this[r];if(d??=g.getPropertyOptions(r),(d.hasChanged??$r)(i,o)||d.useDefault&&d.reflect&&i===this.__defaultValues?.get(r)&&!this.hasAttribute(g.__attributeNameForProperty(r,d)))this._$changeProperty(r,o,d);else return}if(this.isUpdatePending===!1)this.__updatePromise=this.__enqueueUpdate()}_$changeProperty(r,o,{useDefault:d,reflect:c,wrapped:i},g){if(d&&!(this.__defaultValues??=new Map).has(r)){if(this.__defaultValues.set(r,g??o??this[r]),i!==!0||g!==void 0)return}if(!this._$changedProperties.has(r)){if(!this.hasUpdated&&!d)o=void 0;this._$changedProperties.set(r,o)}if(c===!0&&this.__reflectingProperty!==r)(this.__reflectingProperties??=new Set).add(r)}async __enqueueUpdate(){this.isUpdatePending=!0;try{await this.__updatePromise}catch(o){Promise.reject(o)}let r=this.scheduleUpdate();if(r!=null)await r;return!this.isUpdatePending}scheduleUpdate(){let r=this.performUpdate();if(G&&this.constructor.enabledWarnings.includes("async-perform-update")&&typeof r?.then==="function")q("async-perform-update",`Element ${this.localName} returned a Promise from performUpdate(). This behavior is deprecated and will be removed in a future version of ReactiveElement.`);return r}performUpdate(){if(!this.isUpdatePending)return;if(po?.({kind:"update"}),!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),G){let i=[...this.constructor.elementProperties.keys()].filter((g)=>this.hasOwnProperty(g)&&(g in H0(this)));if(i.length)throw Error(`The following properties on element ${this.localName} will not trigger updates as expected because they are set using class fields: ${i.join(", ")}. Native class fields and some compiled output will overwrite accessors used for detecting changes. See https://lit.dev/msg/class-field-shadowing for more information.`)}if(this.__instanceProperties){for(let[c,i]of this.__instanceProperties)this[c]=i;this.__instanceProperties=void 0}let d=this.constructor.elementProperties;if(d.size>0)for(let[c,i]of d){let{wrapped:g}=i,h=this[c];if(g===!0&&!this._$changedProperties.has(c)&&h!==void 0)this._$changeProperty(c,void 0,i,h)}}let r=!1,o=this._$changedProperties;try{if(r=this.shouldUpdate(o),r)this.willUpdate(o),this.__controllers?.forEach((d)=>d.hostUpdate?.()),this.update(o);else this.__markUpdated()}catch(d){throw r=!1,this.__markUpdated(),d}if(r)this._$didUpdate(o)}willUpdate(r){}_$didUpdate(r){if(this.__controllers?.forEach((o)=>o.hostUpdated?.()),!this.hasUpdated)this.hasUpdated=!0,this.firstUpdated(r);if(this.updated(r),G&&this.isUpdatePending&&this.constructor.enabledWarnings.includes("change-in-update"))q("change-in-update",`Element ${this.localName} scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update.`)}__markUpdated(){this._$changedProperties=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this.__updatePromise}shouldUpdate(r){return!0}update(r){this.__reflectingProperties&&=this.__reflectingProperties.forEach((o)=>this.__propertyToAttribute(o,this[o])),this.__markUpdated()}updated(r){}firstUpdated(r){}}W.elementStyles=[];W.shadowRootOptions={mode:"open"};W[rr("elementProperties",W)]=new Map;W[rr("finalized",W)]=new Map;G0?.({ReactiveElement:W});if(G){W.enabledWarnings=["change-in-update","async-perform-update"];let r=function(o){if(!o.hasOwnProperty(rr("enabledWarnings",o)))o.enabledWarnings=o.enabledWarnings.slice()};W.enableWarning=function(o){if(r(this),!this.enabledWarnings.includes(o))this.enabledWarnings.push(o)},W.disableWarning=function(o){r(this);let d=this.enabledWarnings.indexOf(o);if(d>=0)this.enabledWarnings.splice(d,1)}}(p.reactiveElementVersions??=[]).push("2.1.2");if(G&&p.reactiveElementVersions.length>1)queueMicrotask(()=>{q("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var U=globalThis,v=(r)=>{if(!U.emitLitDebugLogEvents)return;U.dispatchEvent(new CustomEvent("lit-debug",{detail:r}))},Go=0,fr;U.litIssuedWarnings??=new Set,fr=(r,o)=>{if(o+=r?` See https://lit.dev/msg/${r} for more information.`:"",!U.litIssuedWarnings.has(o)&&!U.litIssuedWarnings.has(r))console.warn(o),U.litIssuedWarnings.add(o)},queueMicrotask(()=>{fr("dev-mode","Lit is in dev mode. Not recommended for production!")});var N=U.ShadyDOM?.inUse&&U.ShadyDOM?.noPatch===!0?U.ShadyDOM.wrap:(r)=>r,Br=U.trustedTypes,W0=Br?Br.createPolicy("lit-html",{createHTML:(r)=>r}):void 0,Wo=(r)=>r,Zr=(r,o,d)=>Wo,Uo=(r)=>{if(u!==Zr)throw Error("Attempted to overwrite existing lit-html security policy. setSanitizeDOMValueFactory should be called at most once.");u=r},lo=()=>{u=Zr},Ir=(r,o,d)=>{return u(r,o,d)},D0="$lit$",M=`lit$${Math.random().toFixed(9).slice(2)}$`,M0="?"+M,jo=`<${M0}>`,R=document,nr=()=>R.createComment(""),xr=(r)=>r===null||typeof r!="object"&&typeof r!="function",Ar=Array.isArray,qo=(r)=>Ar(r)||typeof r?.[Symbol.iterator]==="function",Nr=`[ 	
+\f\r]`,No=`[^ 	
+\f\r"'\`<>=]`,Co=`[^\\s"'>=/]`,gr=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,U0=1,Cr=2,Do=3,l0=/-->/g,j0=/>/g,A=new RegExp(`>|${Nr}(?:(${Co}+)(${Nr}*=${Nr}*(?:${No}|("|')|))|$)`,"g"),Mo=0,q0=1,Io=2,N0=3,Dr=/'/g,Mr=/"/g,I0=/^(?:script|style|textarea|title)$/i,Ao=1,Yr=2,Fr=3,Tr=1,Xr=2,To=3,Oo=4,Vo=5,Or=6,Ro=7,Vr=(r)=>(o,...d)=>{if(o.some((c)=>c===void 0))console.warn(`Some template strings are undefined.
+This is probably caused by illegal octal escape sequences.`);if(d.some((c)=>c?._$litStatic$))fr("",`Static values 'literal' or 'unsafeStatic' cannot be used as values to non-static templates.
+Please use the static 'html' tag function. See https://lit.dev/docs/templates/expressions/#static-expressions`);return{["_$litType$"]:r,strings:o,values:d}},a=Vr(Ao),wd=Vr(Yr),yd=Vr(Fr),L=Symbol.for("lit-noChange"),Q=Symbol.for("lit-nothing"),C0=new WeakMap,V=R.createTreeWalker(R,129),u=Zr;function A0(r,o){if(!Ar(r)||!r.hasOwnProperty("raw")){let d="invalid template strings array";throw d=`
           Internal Error: expected template strings to be an array
           with a 'raw' field. Faking a template strings array by
           calling html or svg like an ordinary function is effectively
@@ -13,39 +13,42 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
           https://github.com/lit/lit/issues/new?template=bug_report.md
           and include information about your build tooling, if any.
         `.trim().replace(/\n */g,`
-`),Error(k)}return T1!==void 0?T1.createHTML(f):f}var ph=(h,f)=>{let k=h.length-1,d=[],z=f===y0?"<svg>":f===U0?"<math>":"",$,B=$0;for(let Z=0;Z<k;Z++){let Y=h[Z],Q=-1,K,F=0,w;while(F<Y.length){if(B.lastIndex=F,w=B.exec(Y),w===null)break;if(F=B.lastIndex,B===$0){if(w[A1]==="!--")B=V1;else if(w[A1]!==void 0)B=O1;else if(w[P0]!==void 0){if(S1.test(w[P0]))$=new RegExp(`</${w[P0]}`,"g");B=E}else if(w[bh]!==void 0)throw Error("Bindings in tag names are not supported. Please use static templates instead. See https://lit.dev/docs/templates/expressions/#static-expressions")}else if(B===E)if(w[Ph]===">")B=$??$0,Q=-1;else if(w[R1]===void 0)Q=-2;else Q=B.lastIndex-w[mh].length,K=w[R1],B=w[L1]===void 0?E:w[L1]==='"'?S0:m0;else if(B===S0||B===m0)B=E;else if(B===V1||B===O1)B=$0;else B=E,$=void 0}console.assert(Q===-1||B===E||B===m0||B===S0,"unexpected parse state B");let U=B===E&&h[Z+1].startsWith("/>")?" ":"";z+=B===$0?Y+Vh:Q>=0?(d.push(K),Y.slice(0,Q)+P1+Y.slice(Q))+m+U:Y+m+(Q===-2?Z:U)}let g=z+(h[k]||"<?>")+(f===y0?"</svg>":f===U0?"</math>":"");return[E1(h,g),d]};class Y0{constructor({strings:h,["_$litType$"]:f},k){this.parts=[];let d,z=0,$=0,B=h.length-1,g=this.parts,[Z,Y]=ph(h,f);if(this.el=Y0.createElement(Z,k),r.currentNode=this.el.content,f===y0||f===U0){let Q=this.el.content.firstChild;Q.replaceWith(...Q.childNodes)}while((d=r.nextNode())!==null&&g.length<B){if(d.nodeType===1){{let Q=d.localName;if(/^(?:textarea|template)$/i.test(Q)&&d.innerHTML.includes(m)){let K=`Expressions are not supported inside \`${Q}\` elements. See https://lit.dev/msg/expression-in-${Q} for more information.`;if(Q==="template")throw Error(K);else g0("",K)}}if(d.hasAttributes()){for(let Q of d.getAttributeNames())if(Q.endsWith(P1)){let K=Y[$++],w=d.getAttribute(Q).split(m),U=/([.?@])?(.*)/.exec(K);g.push({type:i0,index:z,name:U[2],strings:w,ctor:U[1]==="."?i1:U[1]==="?"?r1:U[1]==="@"?p1:Q0}),d.removeAttribute(Q)}else if(Q.startsWith(m))g.push({type:r0,index:z}),d.removeAttribute(Q)}if(S1.test(d.tagName)){let Q=d.textContent.split(m),K=Q.length-1;if(K>0){d.textContent=W0?W0.emptyScript:"";for(let F=0;F<K;F++)d.append(Q[F],Z0()),r.nextNode(),g.push({type:j0,index:++z});d.append(Q[K],Z0())}}}else if(d.nodeType===8)if(d.data===m1)g.push({type:j0,index:z});else{let K=-1;while((K=d.data.indexOf(m,K+1))!==-1)g.push({type:rh,index:z}),K+=m.length-1}z++}if(Y.length!==$)throw Error('Detected duplicate attribute bindings. This occurs if your template has duplicate attributes on an element tag. For example "<input ?disabled=${true} ?disabled=${false}>" contains a duplicate "disabled" attribute. The error was detected in the following template: \n`'+h.join("${...}")+"`");G&&G({kind:"template prep",template:this,clonableTemplate:this.el,parts:this.parts,strings:h})}static createElement(h,f){let k=p.createElement("template");return k.innerHTML=h,k}}function h0(h,f,k=h,d){if(f===u)return f;let z=d!==void 0?k.__directives?.[d]:k.__directive,$=X0(f)?void 0:f._$litDirective$;if(z?.constructor!==$){if(z?._$notifyDirectiveConnectionChanged?.(!1),$===void 0)z=void 0;else z=new $(h),z._$initialize(h,k,d);if(d!==void 0)(k.__directives??=[])[d]=z;else k.__directive=z}if(z!==void 0)f=h0(h,z._$resolve(h,f.values),z,d);return f}class v1{constructor(h,f){this._$parts=[],this._$disconnectableChildren=void 0,this._$template=h,this._$parent=f}get parentNode(){return this._$parent.parentNode}get _$isConnected(){return this._$parent._$isConnected}_clone(h){let{el:{content:f},parts:k}=this._$template,d=(h?.creationScope??p).importNode(f,!0);r.currentNode=d;let z=r.nextNode(),$=0,B=0,g=k[0];while(g!==void 0){if($===g.index){let Z;if(g.type===j0)Z=new c0(z,z.nextSibling,this,h);else if(g.type===i0)Z=new g.ctor(z,g.name,g.strings,this,h);else if(g.type===r0)Z=new u1(z,this,h);this._$parts.push(Z),g=k[++B]}if($!==g?.index)z=r.nextNode(),$++}return r.currentNode=p,d}_update(h){let f=0;for(let k of this._$parts){if(k!==void 0)if(G&&G({kind:"set part",part:k,value:h[f],valueIndex:f,values:h,templateInstance:this}),k.strings!==void 0)k._$setValue(h,k,f),f+=k.strings.length-2;else k._$setValue(h[f]);f++}}}class c0{get _$isConnected(){return this._$parent?._$isConnected??this.__isConnected}constructor(h,f,k,d){this.type=j0,this._$committedValue=D,this._$disconnectableChildren=void 0,this._$startNode=h,this._$endNode=f,this._$parent=k,this.options=d,this.__isConnected=d?.isConnected??!0,this._textSanitizer=void 0}get parentNode(){let h=L(this._$startNode).parentNode,f=this._$parent;if(f!==void 0&&h?.nodeType===11)h=f.parentNode;return h}get startNode(){return this._$startNode}get endNode(){return this._$endNode}_$setValue(h,f=this){if(this.parentNode===null)throw Error("This `ChildPart` has no `parentNode` and therefore cannot accept a value. This likely means the element containing the part was manipulated in an unsupported way outside of Lit's control such that the part's marker nodes were ejected from DOM. For example, setting the element's `innerHTML` or `textContent` can do this.");if(h=h0(this,h,f),X0(h)){if(h===D||h==null||h===""){if(this._$committedValue!==D)G&&G({kind:"commit nothing to child",start:this._$startNode,end:this._$endNode,parent:this._$parent,options:this.options}),this._$clear();this._$committedValue=D}else if(h!==this._$committedValue&&h!==u)this._commitText(h)}else if(h._$litType$!==void 0)this._commitTemplateResult(h);else if(h.nodeType!==void 0){if(this.options?.host===h){this._commitText("[probable mistake: rendered a template's host in itself (commonly caused by writing ${this} in a template]"),console.warn("Attempted to render the template host",h,"inside itself. This is almost always a mistake, and in dev mode ","we render some warning text. In production however, we'll ","render it, which will usually result in an error, and sometimes ","in the element disappearing from the DOM.");return}this._commitNode(h)}else if(Oh(h))this._commitIterable(h);else this._commitText(h)}_insert(h){return L(L(this._$startNode).parentNode).insertBefore(h,this._$endNode)}_commitNode(h){if(this._$committedValue!==h){if(this._$clear(),o!==q0){let f=this._$startNode.parentNode?.nodeName;if(f==="STYLE"||f==="SCRIPT"){let k="Forbidden";if(f==="STYLE")k="Lit does not support binding inside style nodes. This is a security risk, as style injection attacks can exfiltrate data and spoof UIs. Consider instead using css`...` literals to compose styles, and do dynamic styling with css custom properties, ::parts, <slot>s, and by mutating the DOM rather than stylesheets.";else k="Lit does not support binding inside script nodes. This is a security risk, as it could allow arbitrary code execution.";throw Error(k)}}G&&G({kind:"commit node",start:this._$startNode,parent:this._$parent,value:h,options:this.options}),this._$committedValue=this._insert(h)}}_commitText(h){if(this._$committedValue!==D&&X0(this._$committedValue)){let f=L(this._$startNode).nextSibling;if(this._textSanitizer===void 0)this._textSanitizer=E0(f,"data","property");h=this._textSanitizer(h),G&&G({kind:"commit text",node:f,value:h,options:this.options}),f.data=h}else{let f=p.createTextNode("");if(this._commitNode(f),this._textSanitizer===void 0)this._textSanitizer=E0(f,"data","property");h=this._textSanitizer(h),G&&G({kind:"commit text",node:f,value:h,options:this.options}),f.data=h}this._$committedValue=h}_commitTemplateResult(h){let{values:f,["_$litType$"]:k}=h,d=typeof k==="number"?this._$getTemplate(h):(k.el===void 0&&(k.el=Y0.createElement(E1(k.h,k.h[0]),this.options)),k);if(this._$committedValue?._$template===d)G&&G({kind:"template updating",template:d,instance:this._$committedValue,parts:this._$committedValue._$parts,options:this.options,values:f}),this._$committedValue._update(f);else{let z=new v1(d,this),$=z._clone(this.options);G&&G({kind:"template instantiated",template:d,instance:z,parts:z._$parts,options:this.options,fragment:$,values:f}),z._update(f),G&&G({kind:"template instantiated and updated",template:d,instance:z,parts:z._$parts,options:this.options,fragment:$,values:f}),this._commitNode($),this._$committedValue=z}}_$getTemplate(h){let f=b1.get(h.strings);if(f===void 0)b1.set(h.strings,f=new Y0(h));return f}_commitIterable(h){if(!v0(this._$committedValue))this._$committedValue=[],this._$clear();let f=this._$committedValue,k=0,d;for(let z of h){if(k===f.length)f.push(d=new c0(this._insert(Z0()),this._insert(Z0()),this,this.options));else d=f[k];d._$setValue(z),k++}if(k<f.length)this._$clear(d&&L(d._$endNode).nextSibling,k),f.length=k}_$clear(h=L(this._$startNode).nextSibling,f){this._$notifyConnectionChanged?.(!1,!0,f);while(h!==this._$endNode){let k=L(h).nextSibling;L(h).remove(),h=k}}setConnected(h){if(this._$parent===void 0)this.__isConnected=h,this._$notifyConnectionChanged?.(h);else throw Error("part.setConnected() may only be called on a RootPart returned from render().")}}class Q0{get tagName(){return this.element.tagName}get _$isConnected(){return this._$parent._$isConnected}constructor(h,f,k,d,z){if(this.type=i0,this._$committedValue=D,this._$disconnectableChildren=void 0,this.element=h,this.name=f,this._$parent=d,this.options=z,k.length>2||k[0]!==""||k[1]!=="")this._$committedValue=Array(k.length-1).fill(new String),this.strings=k;else this._$committedValue=D;this._sanitizer=void 0}_$setValue(h,f=this,k,d){let z=this.strings,$=!1;if(z===void 0){if(h=h0(this,h,f,0),$=!X0(h)||h!==this._$committedValue&&h!==u,$)this._$committedValue=h}else{let B=h;h=z[0];let g,Z;for(g=0;g<z.length-1;g++){if(Z=h0(this,B[k+g],f,g),Z===u)Z=this._$committedValue[g];if($||=!X0(Z)||Z!==this._$committedValue[g],Z===D)h=D;else if(h!==D)h+=(Z??"")+z[g+1];this._$committedValue[g]=Z}}if($&&!d)this._commitValue(h)}_commitValue(h){if(h===D)L(this.element).removeAttribute(this.name);else{if(this._sanitizer===void 0)this._sanitizer=o(this.element,this.name,"attribute");h=this._sanitizer(h??""),G&&G({kind:"commit attribute",element:this.element,name:this.name,value:h,options:this.options}),L(this.element).setAttribute(this.name,h??"")}}}class i1 extends Q0{constructor(){super(...arguments);this.type=Eh}_commitValue(h){if(this._sanitizer===void 0)this._sanitizer=o(this.element,this.name,"property");h=this._sanitizer(h),G&&G({kind:"commit property",element:this.element,name:this.name,value:h,options:this.options}),this.element[this.name]=h===D?void 0:h}}class r1 extends Q0{constructor(){super(...arguments);this.type=vh}_commitValue(h){G&&G({kind:"commit boolean attribute",element:this.element,name:this.name,value:!!(h&&h!==D),options:this.options}),L(this.element).toggleAttribute(this.name,!!h&&h!==D)}}class p1 extends Q0{constructor(h,f,k,d,z){super(h,f,k,d,z);if(this.type=ih,this.strings!==void 0)throw Error(`A \`<${h.localName}>\` has a \`@${f}=...\` listener with invalid content. Event listeners in templates must have exactly one expression and no surrounding text.`)}_$setValue(h,f=this){if(h=h0(this,h,f,0)??D,h===u)return;let k=this._$committedValue,d=h===D&&k!==D||h.capture!==k.capture||h.once!==k.once||h.passive!==k.passive,z=h!==D&&(k===D||d);if(G&&G({kind:"commit event listener",element:this.element,name:this.name,value:h,options:this.options,removeListener:d,addListener:z,oldListener:k}),d)this.element.removeEventListener(this.name,this,k);if(z)this.element.addEventListener(this.name,this,h);this._$committedValue=h}handleEvent(h){if(typeof this._$committedValue==="function")this._$committedValue.call(this.options?.host??this.element,h);else this._$committedValue.handleEvent(h)}}class u1{constructor(h,f,k){this.element=h,this.type=r0,this._$disconnectableChildren=void 0,this._$parent=f,this.options=k}get _$isConnected(){return this._$parent._$isConnected}_$setValue(h){G&&G({kind:"commit to element binding",element:this.element,value:h,options:this.options}),h0(this,h)}}var uh=A.litHtmlPolyfillSupportDevMode;uh?.(Y0,c0);(A.litHtmlVersions??=[]).push("3.3.3");if(A.litHtmlVersions.length>1)queueMicrotask(()=>{g0("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var B0=(h,f,k)=>{if(f==null)throw TypeError(`The container to render into may not be ${f}`);let d=Ch++,z=k?.renderBefore??f,$=z._$litPart$;if(G&&G({kind:"begin render",id:d,value:h,container:f,options:k,part:$}),$===void 0){let B=k?.renderBefore??null;z._$litPart$=$=new c0(f.insertBefore(Z0(),B),B,void 0,k??{})}return $._$setValue(h),G&&G({kind:"end render",id:d,value:h,container:f,options:k,part:$}),$};B0.setSanitizer=Th,B0.createSanitizer=E0,B0._testOnlyClearSanitizerFactoryDoNotCallOrElse=Ah;var oh=(h,f)=>h,u0=!0,S=globalThis,o1;if(u0)S.litIssuedWarnings??=new Set,o1=(h,f)=>{if(f+=` See https://lit.dev/msg/${h} for more information.`,!S.litIssuedWarnings.has(f)&&!S.litIssuedWarnings.has(h))console.warn(f),S.litIssuedWarnings.add(f)};class H extends T{constructor(){super(...arguments);this.renderOptions={host:this},this.__childPart=void 0}createRenderRoot(){let h=super.createRenderRoot();return this.renderOptions.renderBefore??=h.firstChild,h}update(h){let f=this.render();if(!this.hasUpdated)this.renderOptions.isConnected=this.isConnected;super.update(h),this.__childPart=B0(f,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this.__childPart?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this.__childPart?.setConnected(!1)}render(){return u}}H._$litElement$=!0;H[oh("finalized",H)]=!0;S.litElementHydrateSupport?.({LitElement:H});var nh=u0?S.litElementPolyfillSupportDevMode:S.litElementPolyfillSupport;nh?.({LitElement:H});(S.litElementVersions??=[]).push("4.2.2");if(u0&&S.litElementVersions.length>1)queueMicrotask(()=>{o1("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var y=(h)=>(f,k)=>{if(k!==void 0)k.addInitializer(()=>{customElements.define(h,f)});else customElements.define(h,f)};var n1=!0,l1;if(n1)globalThis.litIssuedWarnings??=new Set,l1=(h,f)=>{if(f+=` See https://lit.dev/msg/${h} for more information.`,!globalThis.litIssuedWarnings.has(f)&&!globalThis.litIssuedWarnings.has(h))console.warn(f),globalThis.litIssuedWarnings.add(f)};var lh=(h,f,k)=>{let d=f.hasOwnProperty(k);return f.constructor.createProperty(k,h),d?Object.getOwnPropertyDescriptor(f,k):void 0},th={attribute:!0,type:String,converter:z0,reflect:!1,hasChanged:x0},sh=(h=th,f,k)=>{let{kind:d,metadata:z}=k;if(n1&&z==null)l1("missing-class-metadata",`The class ${f} is missing decorator metadata. This could mean that you're using a compiler that supports decorators but doesn't support decorator metadata, such as TypeScript 5.1. Please update your compiler.`);let $=globalThis.litPropertyMetadata.get(z);if($===void 0)globalThis.litPropertyMetadata.set(z,$=new Map);if(d==="setter")h=Object.create(h),h.wrapped=!0;if($.set(k.name,h),d==="accessor"){let{name:B}=k;return{set(g){let Z=f.get.call(this);f.set.call(this,g),this.requestUpdate(B,Z,h,!0,g)},init(g){if(g!==void 0)this._$changeProperty(B,void 0,h,g);return g}}}else if(d==="setter"){let{name:B}=k;return function(g){let Z=this[B];f.call(this,g),this.requestUpdate(B,Z,h,!0,g)}}throw Error(`Unsupported decorator location: ${d}`)};function J(h){return(f,k)=>{return typeof k==="object"?sh(h,f,k):lh(h,f,k)}}function N(h){return J({...h,state:!0,attribute:!1})}var v=(h,f,k)=>{if(k.configurable=!0,k.enumerable=!0,Reflect.decorate&&typeof f!=="object")Object.defineProperty(h,f,k);return k};var o0=!0,t1;if(o0)globalThis.litIssuedWarnings??=new Set,t1=(h,f)=>{if(f+=h?` See https://lit.dev/msg/${h} for more information.`:"",!globalThis.litIssuedWarnings.has(f)&&!globalThis.litIssuedWarnings.has(h))console.warn(f),globalThis.litIssuedWarnings.add(f)};function s1(h,f){return(k,d,z)=>{let $=(B)=>{let g=B.renderRoot?.querySelector(h)??null;if(o0&&g===null&&f&&!B.hasUpdated){let Z=typeof d==="object"?d.name:d;t1("",`@query'd field ${JSON.stringify(String(Z))} with the 'cache' flag set for selector '${h}' has been accessed before the first update and returned null. This is expected if the renderRoot tree has not been provided beforehand (e.g. via Declarative Shadow DOM). Therefore the value hasn't been cached.`)}return g};if(f){let{get:B,set:g}=typeof d==="object"?k:z??(()=>{let Z=o0?Symbol(`${String(d)} (@query() cache)`):Symbol();return{get(){return this[Z]},set(Y){this[Z]=Y}}})();return v(k,d,{get(){let Z=B.call(this);if(Z===void 0){if(Z=$(this),Z!==null||this.hasUpdated)g.call(this,Z)}return Z}})}else return v(k,d,{get(){return $(this)}})}}var ah;function a1(h){return(f,k)=>{return v(f,k,{get(){return(this.renderRoot??(ah??=document.createDocumentFragment())).querySelectorAll(h)}})}}function N0(h,f,k){let d=[];for(let z=h;z<=Math.min(f,k);z++)d.push(z);return d}var J0=[{id:"soneto",nombre:"Soneto",descripcion:"Dos cuartetos y dos tercetos. Endecasílabos (11) con rima consonante y, por lo general, acento en la 10ª sílaba.",ejemplo:"Un soneto me manda hacer Violante…",modo:"fija",medidaPorVerso:11,silabasObjetivo:11,acentosObligatorios:[10],acentoSugerido:[6],tipoRima:"consonante",esquemaReferencia:"ABBA ABBA CDC DCD",estrofas:[{id:"cuarteto1",nombre:"Primer cuarteto",nVersos:4,tipo:"normal"},{id:"cuarteto2",nombre:"Segundo cuarteto",nVersos:4,tipo:"normal"},{id:"terceto1",nombre:"Primer terceto",nVersos:3,tipo:"normal"},{id:"terceto2",nombre:"Segundo terceto",nVersos:3,tipo:"normal"}],versosIniciales:14,versosMin:14,versosMax:14,medidaDescripcion:"Endecasílabos · 11 sílabas métricas"},{id:"romance",nombre:"Romance",descripcion:"Tirada de octosílabos (8) con rima asonante en los versos pares; los impares quedan libres. Sin estrofas: serie continua.",ejemplo:"—Conde Olinos, Conde Olinos…",modo:"serie",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"asonante",esquemaReferencia:"-a-a (pares asonantes)",estrofas:[{id:"tirada",nombre:"Tirada",nVersos:0,tipo:"normal"}],versosIniciales:8,versosMin:4,versosMax:400,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"letrilla",nombre:"Letrilla",descripcion:"Estribillo de dos versos que se repite tras cada copla. Cada copla combina mudanza (3-4 versos) y vuelta (1-2) que enlaza con el estribillo. Medida de 8; el estribillo admite 6.",ejemplo:"A mis soledades voy, / de mis soledades vengo…",modo:"estrofa",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"asonante",esquemaReferencia:"AB aba AB",estrofas:[{id:"estribillo",nombre:"Estribillo",nVersos:2,tipo:"estribillo",medidaObjetivo:6,acentos:[5]},{id:"copla",nombre:"Copla",nVersos:4,tipo:"normal"}],estrofaRepetible:!0,versosIniciales:6,versosMin:6,versosMax:34,medidaDescripcion:"Octosílabos · 8 (estribillo 8/6)"},{id:"decima",nombre:"Décima (Espinela)",descripcion:"Décima espinela: diez octosílabos (8) con rima consonante abbaaccddc. Pausa sugerida tras el verso 4 y el 8.",ejemplo:"Yo, pues mirad si me aflijo…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abbaaccddc",estrofas:[{id:"espinela",nombre:"Décima",nVersos:10,tipo:"normal"}],versosIniciales:10,versosMin:10,versosMax:10,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"redondilla",nombre:"Redondilla",descripcion:"Cuatro octosílabos (8) con rima consonante abba.",ejemplo:"Quien bien ama tarde olvida…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abba",estrofas:[{id:"redondilla",nombre:"Redondilla",nVersos:4,tipo:"normal"}],versosIniciales:4,versosMin:4,versosMax:4,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"cuarteta",nombre:"Cuarteta",descripcion:"Cuatro octosílabos (8) con rima consonante abab.",ejemplo:"No me mueve, mi Dios, para quererte…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abab",estrofas:[{id:"cuarteta",nombre:"Cuarteta",nVersos:4,tipo:"normal"}],versosIniciales:4,versosMin:4,versosMax:4,medidaDescripcion:"Octosílabos · 8 sílabas métricas"}];function b(h){return J0.find((f)=>f.id===h)||J0[0]}function e1(h,f,k){let d=k??h.versosIniciales;return Array.from({length:d},(z,$)=>({id:`${f}-v${$+1}`,numero:$+1,texto:""}))}function f0(h,f){let k=[...f].sort(($,B)=>$.numero-B.numero);if(h.modo==="serie"){let $=h.estrofas[0];return[{id:$?.id||"tirada",nombre:$?.nombre||"Tirada",tipo:$?.tipo||"normal",versos:k}]}if(h.modo==="estrofa"){let $=h.estrofas[0],B=h.estrofas[1],g=[],Z=0;if($){let Q=Math.min($.nVersos,k.length);g.push({id:$.id,nombre:$.nombre,tipo:$.tipo,versos:k.slice(0,Q)}),Z=Q}let Y=1;while(Z<k.length&&B){let Q=Math.min(B.nVersos,k.length-Z);g.push({id:`${B.id}-${Y}`,nombre:`${B.nombre} ${Y}`,tipo:B.tipo,versos:k.slice(Z,Z+Q)}),Z+=Q,Y++}return g}let d=[],z=0;for(let $ of h.estrofas){let B=Math.min($.nVersos,k.length-z);if(B<=0)break;d.push({id:$.id,nombre:$.nombre,tipo:$.tipo,versos:k.slice(z,z+B)}),z+=B}return d}function D0(h,f){let k=Math.max(0,f);if(h.modo==="serie"){let $=[];for(let B=1;B<=k;B+=4)$.push(N0(B,B+3,k));return $.filter((B)=>B.length>0)}if(h.modo==="estrofa"){let $=[],B=h.estrofas[0],g=h.estrofas[1],Z=1;if(B)$.push(N0(Z,Z+B.nVersos-1,k)),Z+=B.nVersos;while(Z<=k&&g)$.push(N0(Z,Z+g.nVersos-1,k)),Z+=g.nVersos;return $.filter((Y)=>Y.length>0)}let d=[],z=1;for(let $ of h.estrofas)d.push(N0(z,z+$.nVersos-1,k)),z+=$.nVersos;return d.filter(($)=>$.length>0)}function n0(h){return{min:h.versosMin,max:h.versosMax}}function hh(h,f,k){let{silabasObjetivo:d,acentosObligatorios:z}=h;if(h.modo==="estrofa"){let $=h.estrofas[0];if($?.medidaObjetivo&&f<=$.nVersos)d=$.medidaObjetivo,z=$.acentos??[d-1]}return{silabasObjetivo:d,acentosObligatorios:z,acentosSugeridos:h.acentoSugerido}}class l0{listeners=new Map;on(h,f){if(!this.listeners.has(h))this.listeners.set(h,new Set);this.listeners.get(h).add(f)}off(h,f){let k=this.listeners.get(h);if(k){if(k.delete(f),k.size===0)this.listeners.delete(h)}}emit(h,f){let k=this.listeners.get(h);if(k)for(let d of k)try{d(f)}catch(z){console.error(`[EventBus] Error in handler for '${String(h)}':`,z)}}clear(){this.listeners.clear()}}var n={CURRENT_SONETO:"el-taller:soneto-actual",HISTORY:"el-taller:historial",PREFERENCES:"el-taller:preferencias"};class t0{autoSave(h){try{let f=JSON.stringify({soneto:h,savedAt:Date.now()});localStorage.setItem(n.CURRENT_SONETO,f)}catch(f){console.warn("[Storage] Error al auto-guardar:",f)}}loadLastSoneto(){try{let h=localStorage.getItem(n.CURRENT_SONETO);if(!h)return null;let{soneto:f}=JSON.parse(h);return f}catch{return null}}saveToHistory(h){try{let f=this.loadHistory();if(f.unshift(h),f.length>20)f.pop();localStorage.setItem(n.HISTORY,JSON.stringify(f))}catch(f){console.warn("[Storage] Error al guardar historial:",f)}}loadHistory(){try{let h=localStorage.getItem(n.HISTORY);return h?JSON.parse(h):[]}catch{return[]}}savePreferences(h){try{localStorage.setItem(n.PREFERENCES,JSON.stringify(h))}catch{}}loadPreferences(){try{let h=localStorage.getItem(n.PREFERENCES);return h?JSON.parse(h):{}}catch{return{}}}getKeys(){return{...n}}}function fh(h,f,k=!1){let d=null,z=!1;return(...$)=>{if(k&&!z)h(...$),z=!0;if(d!==null)clearTimeout(d);d=setTimeout(()=>{if(!k||z)h(...$);z=!1,d=null},f)}}var K0=new Set(["a","e","o","á","é","ó"]),s0=new Set(["i","u","í","ú"]),l=new Set([...K0,...s0]),kh=new Set(["ia","ie","io","ua","ue","uo","ai","ei","oi","au","eu","ou","iu","ui"]),dh=new Set(["iai","iei","uai","uei","iau","ueu"]),zh=new Set(["pr","pl","br","bl","fr","fl","gr","gl","kr","kl","cr","cl","dr","tr","tl","ch","ll","rr"]);var h5=[{tipo:"heroico",acentos:[6,10],descripcion:"Acento en 6ª y 10ª sílabas"},{tipo:"enfatico",acentos:[1,6,10],descripcion:"Acento en 1ª, 6ª y 10ª sílabas"},{tipo:"melodico",acentos:[3,6,10],descripcion:"Acento en 3ª, 6ª y 10ª sílabas"},{tipo:"safico",acentos:[4,8,10],descripcion:"Acento en 4ª, 8ª y 10ª sílabas"},{tipo:"dactilico",acentos:[4,7,10],descripcion:"Acento en 4ª, 7ª y 10ª sílabas"},{tipo:"anfibraquico",acentos:[2,5,8,10],descripcion:"Acento en 2ª, 5ª, 8ª y 10ª sílabas"}];function $h(h){if(!h.has(10))return;let f=[...h5].sort((k,d)=>d.acentos.length-k.acentos.length);for(let k of f){let d=new Set(k.acentos),z=!0;for(let $ of d)if(!h.has($)){z=!1;break}if(z)return k}return{tipo:"otro",acentos:[...h].sort(),descripcion:"Otra variante"}}class w0{silabearPalabra(h){if(!h)return[];let f=h.toLowerCase();if(f.length<=1)return[f];let k=[],d=0,z="";while(d<f.length){let $=f[d];if(H0($)){let B=this.leerGrupoVocalico(f,d);if(z.length>0){if(z.length===1)k.push(z+B);else if(z.length===2)if(Bh(z))k.push(z+B);else{if(k.length>0)k[k.length-1]+=z[0];else k.push(z[0]);k.push(z[1]+B)}else{let g=z.length>=2&&Bh(z.slice(-2))?z.slice(-2):z.slice(-1),Z=z.slice(0,z.length-g.length);if(k.length>0)k[k.length-1]+=Z;else if(Z.length>0)k.push(Z);k.push(g+B)}z=""}else if(k.length===0)k.push(B);else k.push(B);d+=B.length}else if(/[bcdfghjklmnñpqrstvwxyzü]/i.test($))z+=$,d++;else d++}if(z.length>0)if(k.length>0)k[k.length-1]+=z;else k.push(z);return k.filter(($)=>$.length>0)}normalizarVocal(h){return{"á":"a","é":"e","í":"i","ó":"o","ú":"u","ü":"u"}[h]||h}leerGrupoVocalico(h,f){if(f>=h.length)return"";let k=f+2<h.length?h.slice(f,f+3):"",d=f+1<h.length?h.slice(f,f+2):"",z=[...k].map((B)=>this.normalizarVocal(B)).join(""),$=[...d].map((B)=>this.normalizarVocal(B)).join("");if(z.length===3&&d5(z))return k;if($.length===2&&k5($)){if(f>0){let B=h[f-1];if(a0(B)&&(h[f]==="í"||h[f]==="ú"))return h[f]}if(h[f]==="í"||h[f]==="ú"){if(f+2<h.length){if(a0(h[f+1])&&!H0(h[f+2]))return h[f]}if(f+1<h.length&&a0(h[f+1])&&f+2>=h.length)return h[f]}return d}if(f>0){let B=h[f-1],g=h[f];if((g==="á"||g==="é"||g==="ó")&&f5(B))return g}return h[f]}leerGrupoConsonantico(h,f){let k="";while(f<h.length&&!H0(h[f]))k+=h[f],f++;return k}detectarSinalefas(h,f=[]){let k=[],d=[],z=0;for(let B=0;B<h.length;B++){let g=h[B];for(let Z=0;Z<g.length;Z++)k.push(g[Z]),z++}let $=0;for(let B=0;B<h.length-1;B++){let g=h[B],Z=h[B+1],Y=g[g.length-1],Q=Z[0],K=Y.charAt(Y.length-1),F=Q.charAt(0),w=K==="y",U=F==="y"&&f[B+1]==="y";if((H0(K)||w)&&(H0(F)||F==="h"||U)){let k0=$+g.length-1;d.push({silabaAnterior:k0,silabaSiguiente:k0+1,descartada:!1})}$+=g.length}return{silabas:k,sinalefas:d}}aplicarAcentoFinal(h,f){let k=this.determinarAcentoPalabra(f),d=h.length;switch(k){case"aguda":return d+1;case"esdrujula":return d-1;case"llana":default:return d}}determinarAcentoPalabra(h){let f=h.toLowerCase();if(/[áéíóú]/.test(f)){let d=this.silabearPalabra(f);if(d.length===0)return"llana";for(let z=0;z<d.length;z++)if(/[áéíóú]/.test(d[z])){if(z===d.length-1)return"aguda";if(z===d.length-2)return"llana";return"esdrujula"}}let k=f.charAt(f.length-1);if(k==="n"||k==="s"||/[aeiou]/.test(k))return"llana";return"aguda"}identificarTipoVerso(h,f){if(f!==11)return"no_endecasilabo";let k=new Set(h.map((z)=>z+1));return $h(k)?.tipo}encontrarSilabasTonicas(h){let f=[];for(let k of h)if(k.esAcentoEstrófico)f.push(k.index);return f}toggleSinalefa(h,f){let k=[...h.hiatoForzado];if(k.includes(f)){let d=k.indexOf(f);k.splice(d,1)}else k.push(f);return this.analizarVerso(h.texto,k)}analizarVerso(h,f=[],k){let d=k?.silabasObjetivo??11,z=k?.acentosObligatorios??[10],$=k?.acentosSugeridos??(d===11?[6]:[]),B=[],g=h.toLowerCase().trim();if(!g)return{texto:h,silabas:[],sinalefas:[],numSilabasMetricas:0,numSilabasFonologicas:0,acentoFinal:"llana",silabasTonicas:[],tipoVerso:void 0,errores:[{tipo:"num_silabas",mensaje:"Verso vacío"}],hiatoForzado:[]};let Z=g.replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim(),Y=Z.split(/\s+/).filter((_)=>_.length>0);if(Y.length===0)return{texto:h,silabas:[],sinalefas:[],numSilabasMetricas:0,numSilabasFonologicas:0,acentoFinal:"llana",silabasTonicas:[],tipoVerso:void 0,errores:[{tipo:"num_silabas",mensaje:"Verso vacío"}],hiatoForzado:[]};let Q=Y.map((_)=>this.silabearPalabra(_)),{silabas:K,sinalefas:F}=this.detectarSinalefas(Q,Y),w=0,U=[],k0=Z.replace(/h/g,""),I0=0;for(let _ of Y)for(let O of _)I0++;let x=h.toLowerCase(),q=0;for(let _=0;_<Y.length;_++){let O=Y[_],j=Q[_],F0=x.indexOf(O,q);if(F0!==-1)q=F0;let W1=0,wh=j.some((M)=>/[áéíóú]/.test(M)),d0=-1;if(wh){for(let M=0;M<j.length;M++)if(/[áéíóú]/.test(j[M])){d0=M;break}}else if(j.length>=2){let M=O.charAt(O.length-1);if(M==="n"||M==="s"||/[aeiou]/.test(M))d0=j.length-2;else d0=j.length-1}else d0=0;for(let M=0;M<j.length;M++){let y1=j[M],A0=y1.toLowerCase(),U1=q+W1,Gh=U1+A0.length;W1+=A0.length;let Fh=/[áéíóú]/.test(A0)||M===d0;U.push({texto:y1,index:U.length,esAcentoEstrófico:Fh,esSinalefa:!1,hiatoForzado:!1,charStart:U1,charEnd:Gh})}if(F0!==-1)q=F0+O.length;else q+=O.length}let P=[],a=[];for(let _ of F){let O=f.includes(_.silabaAnterior),j=f.includes(_.silabaSiguiente);if(O||j){if(U[_.silabaAnterior])U[_.silabaAnterior].hiatoForzado=!0;P.push({..._,descartada:!0})}else{if(a.push({..._,descartada:!1}),P.push({..._,descartada:!1}),U[_.silabaAnterior])U[_.silabaAnterior].esSinalefa=!0;if(U[_.silabaSiguiente])U[_.silabaSiguiente].esSinalefa=!0}}let i=U.length,G0=a.length,V=i-G0,Kh=Y[Y.length-1],T0=this.determinarAcentoPalabra(Kh);if(T0==="aguda")V+=1;else if(T0==="esdrujula")V-=1;let _1=this.encontrarSilabasTonicas(U),x1=_1.map((_)=>{let O=a.filter((j)=>j.silabaSiguiente<=_).length;return _-O}),Hh=this.identificarTipoVerso(x1,V);if(V!==d)B.push({tipo:"num_silabas",mensaje:`El verso tiene ${V} sílabas métricas (debería tener ${d})`});else{let _=new Set(x1.map((j)=>j+1));if(d===11&&z.length===1&&z[0]===10&&$.length===1&&$[0]===6){if(!_.has(10))B.push({tipo:"sin_acento_10a",mensaje:"Falta acento en la 10ª sílaba (obligatorio)"});if(!_.has(6))B.push({tipo:"sin_acento_6a",mensaje:"Falta acento en la 6ª sílaba (recomendado)"})}else{for(let j of z)if(!_.has(j))B.push({tipo:"sin_acento_obligatorio",posicion:j,mensaje:`Falta acento en la ${j}ª sílaba (obligatorio)`});for(let j of $){if(z.includes(j))continue;if(_.has(j))continue;B.push({tipo:"sin_acento_sugerido",posicion:j,mensaje:`Falta acento en la ${j}ª sílaba (recomendado)`})}}}return{texto:h,silabas:U,sinalefas:P,numSilabasMetricas:Math.max(0,V),numSilabasFonologicas:i,acentoFinal:T0,silabasTonicas:_1,tipoVerso:Hh,errores:B,hiatoForzado:f}}}function H0(h){return l.has(h.toLowerCase())}function a0(h){return K0.has(h.toLowerCase())}function f5(h){return s0.has(h.toLowerCase())}function k5(h){return kh.has(h.toLowerCase())}function d5(h){return dh.has(h.toLowerCase())}function Bh(h){return zh.has(h.toLowerCase())}class gh{engine=new w0;analyze(h){let f=new Map;for(let k of h.payload.versos){let d=this.engine.analizarVerso(k.texto,k.hiatoForzado,k.opts);f.set(k.numero,d)}return Promise.resolve({type:"ANALYZE_RESULT",payload:f})}terminate(){}}function Zh(){return new gh}var Xh={"á":"a","é":"e","í":"i","ó":"o","ú":"u"};class t{metric=new w0;detectarRima(h){if(!h||!h.silabas||h.silabas.length===0)return;let f=h.silabas.filter(($)=>$.esAcentoEstrófico),k;if(f.length>0)k=f[f.length-1];else{let $=h.silabas.filter((B)=>!B.esSinalefa);k=$.length>=2?$[$.length-2]:$[$.length-1]}if(!k)return;let d=this.extraerTerminacion(h.texto,k),z=h.texto.trim().split(/\s+/).pop()||"";return{terminacionFonetica:d,claveCompleta:d,claveVocales:this.extraerClaveAsonante(z),letra:"",esConsonante:!0,versosRelacionados:[]}}obtenerClaves(h){return{completa:this.extraerTerminacionPalabra(h),vocales:this.extraerClaveAsonante(h)}}extraerTerminacion(h,f){let k=h.toLowerCase().replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim(),d=k.split(/\s+/),z=d[d.length-1]||"";if(!z)return k;return this.extraerTerminacionPalabra(z)}extraerTerminacionPalabra(h){let f=h.toLowerCase(),k=f.match(/[áéíóú]/);if(k){let Y=f.lastIndexOf(k[0]);return f.slice(Y)}let d=[...f].filter((Y)=>l.has(Y));if(d.length===0)return f;let z=d[d.length-1],$=f.lastIndexOf(z),B=f.charAt(f.length-1);if(B!=="n"&&B!=="s"&&!l.has(B))return f.slice($);let g=d.length>=2?d[d.length-2]:z,Z=f.lastIndexOf(g);if(d.length>=2){let Q=f.substring(0,f.lastIndexOf(z)).lastIndexOf(g);if(Q>=0)return f.slice(Q)}return f.slice($)}extraerClaveAsonante(h){if(!h)return"";let f=h.toLowerCase().replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim();if(!f)return"";let k=this.metric.silabearPalabra(f);if(k.length===0)return"";let d=this.indiceSilabaTonica(f,k);if(d<0)return"";let z=[];for(let $=d;$<k.length;$++){let B=[...k[$]].filter((Z)=>l.has(Z)).join(""),g=this.procesarGrupoVocalico(B);for(let Z of g)z.push(Xh[Z]||Z)}return z.join("")}esRimaConsonante(h,f){return h.toLowerCase()===f.toLowerCase()}esRimaAsonante(h,f){let k=this.extraerClaveAsonante(h),d=this.extraerClaveAsonante(f);return k!==""&&k===d}esRima(h,f,k){return k?this.esRimaConsonante(h,f):this.esRimaAsonante(h,f)}indiceSilabaTonica(h,f){for(let d=0;d<f.length;d++)if(/[áéíóú]/.test(f[d]))return d;if(f.length===1)return 0;let k=h.charAt(h.length-1);if(k==="n"||k==="s"||l.has(k))return f.length-2;return f.length-1}procesarGrupoVocalico(h){if(!h)return[];if(h.length===1)return[h];if([...h].filter((k)=>K0.has(k)).length>=2)return[...h];if(/[íú]/.test(h))return[...h];return[this.vocalMasAbierta(h)]}vocalMasAbierta(h){let f="",k=-1;for(let d of h){let z=Xh[d]||d,$=z==="a"?3:z==="e"||z==="o"?2:1;if($>k)k=$,f=d}return f}}class e0{rhymeEngine;constructor(){this.rhymeEngine=new t}detectarEsquema(h,f={}){let k=f.tipoRima??"consonante",z=f.forma==="romance",$=new Map;for(let x of h){let q=x.texto.trim();if(!q)continue;let P=q.split(/\s+/).pop()||"";if(!P)continue;$.set(x.numero,this.rhymeEngine.obtenerClaves(P))}let B=h.map((x)=>x.numero).sort((x,q)=>x-q),g=new Map,Z=[],Y=new Map,Q=["A","B","C","D","E","F","G","H","I","J","K","L","M","N"],K=0;for(let x of B){let q=$.get(x);if(z){if(!q||x%2!==0||!q.vocales){if(g.set(x,"·"),!Z.includes(x))Z.push(x);continue}let G0=`v:${q.vocales}`,V=Y.get(G0);if(!V)V=Q[K++%Q.length],Y.set(G0,V);g.set(x,V);continue}if(!q){if(g.set(x,"·"),!Z.includes(x))Z.push(x);continue}let P=k==="asonante"?q.vocales:q.completa,a=k==="asonante"?`v:${P}`:`c:${P}`,i=Y.get(a);if(!i)i=Q[K++%Q.length],Y.set(a,i);g.set(x,i)}let F=new Map;for(let x of g.values())if(x!=="·")F.set(x,(F.get(x)||0)+1);for(let x of B){let q=g.get(x);if(q&&q!=="·"&&(F.get(q)||0)<2){if(g.set(x,"·"),!Z.includes(x))Z.push(x)}}let w=this.formatEsquema(g,f.grupos),{forma:U,nombre:k0,esClasica:I0}=this.identificarForma(w,f.grupos,k);return{asignacion:g,patron:w,versosSueltos:Z,esClasico:I0,nombreClasico:k0,forma:U}}formatEsquema(h,f){return(f??[[1,2,3,4],[5,6,7,8],[9,10,11],[12,13,14]]).map((z)=>{return z.map(($)=>h.get($)||"·").join("")}).join(" ")}identificarForma(h,f,k="consonante"){let d=h.replace(/\s+/g," ").trim(),z=d.split(" ").join(""),$=(B,g,Z)=>({forma:g,nombre:Z,esClasica:B,esClasico:B});if(k!=="asonante"){let B=[{patron:"ABBA ABBA CDC DCD",nombre:"Soneto (Petrarquista)"},{patron:"ABBA ABBA CDE CDE",nombre:"Soneto"},{patron:"ABBA ABBA CDE DCE",nombre:"Soneto (variante)"},{patron:"ABBA ABBA CCD EED",nombre:"Soneto (variante)"},{patron:"ABAB ABAB CDC DCD",nombre:"Soneto isabelino (Shakespeare)"}];for(let Z of B)if(d===Z.patron)return $(!0,"soneto",Z.nombre);let g=d.split(" ");if(g.length===4){let[Z,Y,Q,K]=g,F=(w)=>w.length===4&&w[0]===w[3]&&w[1]===w[2]&&w[0]!==w[1];if(F(Z)&&F(Y)&&Z===Y&&Q.length===3&&K.length===3)return $(!0,"soneto","Soneto (variante libre)")}}if(z==="ABBA")return $(!0,"redondilla","Redondilla");if(z==="ABAB")return $(!0,"cuarteta","Cuarteta");if(z==="ABBAACCDDC")return $(!0,"decima","Décima (Espinela)");if(this.pareceRomance(z))return $(!0,"romance","Romance");if(this.pareceLetrilla(d))return $(!0,"letrilla","Letrilla");return $(!1)}pareceRomance(h){let f=h.split("");if(f.length<4)return!1;let k="",d=!1;for(let z=0;z<f.length;z++){let $=f[z];if((z+1)%2===0){if($==="·")return!1;if(d=!0,!k)k=$;else if($!==k)return!1}else if($!=="·"&&$!=="-")return!1}return d&&k!==""}pareceLetrilla(h){let f=h.split(" ").filter(Boolean);if(f.length<3)return!1;let k=f[0];if(!k||k.includes("·")&&k.length<=1)return!1;if(k.includes("·"))return!1;if(k.length<2||k.length>4)return!1;let d=f[1].length;if(d!==4)return!1;for(let z of f.slice(2))if(z.length!==d)return!1;return!0}}class h1{analyzer;rhymeEngine;schemeEngine;eventBus;pendingAnalysis=!1;forma={id:"soneto"};lastAnalysis=new Map;lastEsquema;dirtyVersos=new Set;textosVersos=new Map;hiatosForzados=new Map;constructor(h){this.analyzer=Zh(),this.rhymeEngine=new t,this.schemeEngine=new e0,this.eventBus=h,this.eventBus.on("verso:input",({numero:f,texto:k})=>{this.textosVersos.set(f,k),this.dirtyVersos.add(f),this.scheduleAnalysis()}),this.eventBus.on("hiato:toggle",({numero:f,silabaIndex:k})=>{let d=this.hiatosForzados.get(f)||[],z=d.indexOf(k);if(z>=0)d.splice(z,1);else d.push(k);this.hiatosForzados.set(f,d),this.dirtyVersos.add(f),this.scheduleAnalysis()})}setForma(h){this.forma=h,this.forceReanalyze()}scheduleAnalysis=fh(()=>{this.runAnalysis()},300);async runAnalysis(){if(this.pendingAnalysis||this.dirtyVersos.size===0)return;this.pendingAnalysis=!0;let h=[...this.dirtyVersos];this.eventBus.emit("analysis:start",{versos:h});try{let f=Math.max(...this.textosVersos.keys(),0),k=D0(this.forma,f),d=h.map((g)=>{let Z=hh(this.forma,g,f);return{numero:g,texto:this.textosVersos.get(g)||"",hiatoForzado:this.hiatosForzados.get(g)||[],opts:Z}}),z=await this.analyzer.analyze({type:"ANALYZE",payload:{versos:d}});for(let[g,Z]of z.payload)this.lastAnalysis.set(g,Z);let B=[...this.textosVersos.keys()].sort((g,Z)=>g-Z).map((g)=>({id:String(g),numero:g,texto:this.textosVersos.get(g)||"",analysis:this.lastAnalysis.get(g)}));this.lastEsquema=this.schemeEngine.detectarEsquema(B,{tipoRima:this.forma.tipoRima,forma:this.forma.id,grupos:k}),this.eventBus.emit("analysis:complete",{analysis:this.lastAnalysis,esquema:this.lastEsquema}),this.dirtyVersos.clear()}catch(f){console.error("[AnalysisService] Error en análisis:",f),this.eventBus.emit("ui:toast",{message:"Error al analizar el verso",level:"error"})}finally{this.pendingAnalysis=!1}}loadVersos(h){for(let f of h)this.textosVersos.set(f.numero,f.texto),this.dirtyVersos.add(f.numero);this.scheduleAnalysis()}reset(){this.lastAnalysis.clear(),this.textosVersos.clear(),this.hiatosForzados.clear(),this.dirtyVersos.clear(),this.lastEsquema=void 0}getAnalysis(h){return this.lastAnalysis.get(h)}getEsquema(){return this.lastEsquema}forceReanalyze(){for(let h of this.textosVersos.keys())this.dirtyVersos.add(h);this.scheduleAnalysis()}destroy(){this.analyzer.terminate()}}class f1{storage;eventBus;dirtyVersos=new Set;lastSoneto=null;getCurrentSoneto;constructor(h,f,k){this.eventBus=h,this.storage=f,this.getCurrentSoneto=k,this.eventBus.on("verso:input",({numero:d})=>{this.dirtyVersos.add(d)}),this.eventBus.on("verso:blur",()=>{this.flush()}),window.addEventListener("beforeunload",()=>{this.flush(!0)}),setInterval(()=>{if(this.dirtyVersos.size>0)this.flush()},30000)}flush(h=!1){if(this.dirtyVersos.size===0)return;let f=this.getCurrentSoneto();if(f){if(h)try{let k=JSON.stringify({soneto:f,savedAt:Date.now()});localStorage.setItem("el-taller:soneto-actual",k)}catch{}else this.storage.autoSave(f);this.lastSoneto=f}this.dirtyVersos.clear()}saveNow(){this.flush()}destroy(){this.flush()}}function ch(h){let f="";for(let k of h){let d=k.charCodeAt(0);if(d===40||d===41||d===92)f+="\\"+k;else if(d>=32&&d<=126)f+=k;else if(d>=161&&d<=255)f+="\\"+d.toString(8);else f+="?"}return f}var C0=595.28,Qh=841.89,M0=72,k1=C0/2;function Yh(h,f,k){let d=h.length*k*0.55,z=k1-d/2;return`1 0 0 1 ${Math.max(M0,Math.min(z,C0-M0-d)).toFixed(2)} ${f.toFixed(2)} Tm
-(${ch(h)}) Tj`}function z5(h){let f=b(h.forma??"soneto"),k=h.versos.map((z,$)=>({id:String($+1),numero:$+1,texto:z.texto})),d=f0(f,k);if(f.modo==="serie"){let z=d.flatMap((B)=>B.versos.map((g)=>g.texto)).filter((B)=>B.trim()),$=[];for(let B=0;B<z.length;B+=4)$.push(z.slice(B,B+4));return $.filter((B)=>B.length>0)}if(f.modo==="estrofa"){let z=d[0],$=d.slice(1),B=z?.versos.map((Z)=>Z.texto).filter((Z)=>Z.trim())??[],g=[];if(B.length>0)g.push(B);for(let Z of $){let Y=Z.versos.map((Q)=>Q.texto).filter((Q)=>Q.trim());if(Y.length>0)g.push(Y);if(B.length>0)g.push(B)}return g}return d.map((z)=>z.versos.map(($)=>$.texto).filter(($)=>$.trim())).filter((z)=>z.length>0)}function $5(h){let f=[],k=(Y)=>f.push(Y),d=Qh-85;if(h.titulo)k("BT"),k("/F1 18 Tf"),k(Yh(h.titulo,d,18)),k("ET"),d-=30,k("q"),k("0.5 w"),k(`${M0} ${d} m`),k(`${C0-M0} ${d} l`),k("S"),k("Q"),d-=16;let z=z5(h);for(let Y=0;Y<z.length;Y++){let Q=z[Y];if(Y>0){d-=10,k("BT"),k("/F1 9 Tf");let K=k1-18;k(`1 0 0 1 ${K.toFixed(2)} ${d.toFixed(2)} Tm`),k("(*   *   *) Tj"),k("ET"),d-=18}k("BT"),k("/F1 12 Tf");for(let K of Q){let F=K.trim()||"·";k(Yh(F,d,12)),d-=18}k("ET")}k("BT"),k("/F1 9 Tf");let $=60,B="-- El Taller",g=B.length*9*0.55,Z=k1-g/2;return k(`1 0 0 1 ${Z.toFixed(2)} ${$.toFixed(2)} Tm`),k(`(${ch(B)}) Tj`),k("ET"),f.join(`
-`)}function Jh(h){let f=$5(h),k=f.length,d={};d[1]="<< /Type /Catalog /Pages 2 0 R >>",d[2]="<< /Type /Pages /Kids [3 0 R] /Count 1 >>",d[3]=`<< /Type /Page /Parent 2 0 R
-   /MediaBox [0 0 ${C0} ${Qh}]
+`),Error(d)}return W0!==void 0?W0.createHTML(o):o}var Lo=(r,o)=>{let d=r.length-1,c=[],i=o===Yr?"<svg>":o===Fr?"<math>":"",g,h=gr;for(let n=0;n<d;n++){let k=r[n],b=-1,t,_=0,w;while(_<k.length){if(h.lastIndex=_,w=h.exec(k),w===null)break;if(_=h.lastIndex,h===gr){if(w[U0]==="!--")h=l0;else if(w[U0]!==void 0)h=j0;else if(w[Cr]!==void 0){if(I0.test(w[Cr]))g=new RegExp(`</${w[Cr]}`,"g");h=A}else if(w[Do]!==void 0)throw Error("Bindings in tag names are not supported. Please use static templates instead. See https://lit.dev/docs/templates/expressions/#static-expressions")}else if(h===A)if(w[Mo]===">")h=g??gr,b=-1;else if(w[q0]===void 0)b=-2;else b=h.lastIndex-w[Io].length,t=w[q0],h=w[N0]===void 0?A:w[N0]==='"'?Mr:Dr;else if(h===Mr||h===Dr)h=A;else if(h===l0||h===j0)h=gr;else h=A,g=void 0}console.assert(b===-1||h===A||h===Dr||h===Mr,"unexpected parse state B");let K=h===A&&r[n+1].startsWith("/>")?" ":"";i+=h===gr?k+jo:b>=0?(c.push(t),k.slice(0,b)+D0+k.slice(b))+M+K:k+M+(b===-2?n:K)}let f=i+(r[d]||"<?>")+(o===Yr?"</svg>":o===Fr?"</math>":"");return[A0(r,f),c]};class kr{constructor({strings:r,["_$litType$"]:o},d){this.parts=[];let c,i=0,g=0,h=r.length-1,f=this.parts,[n,k]=Lo(r,o);if(this.el=kr.createElement(n,d),V.currentNode=this.el.content,o===Yr||o===Fr){let b=this.el.content.firstChild;b.replaceWith(...b.childNodes)}while((c=V.nextNode())!==null&&f.length<h){if(c.nodeType===1){{let b=c.localName;if(/^(?:textarea|template)$/i.test(b)&&c.innerHTML.includes(M)){let t=`Expressions are not supported inside \`${b}\` elements. See https://lit.dev/msg/expression-in-${b} for more information.`;if(b==="template")throw Error(t);else fr("",t)}}if(c.hasAttributes()){for(let b of c.getAttributeNames())if(b.endsWith(D0)){let t=k[g++],w=c.getAttribute(b).split(M),K=/([.?@])?(.*)/.exec(t);f.push({type:Tr,index:i,name:K[2],strings:w,ctor:K[1]==="."?O0:K[1]==="?"?V0:K[1]==="@"?R0:br}),c.removeAttribute(b)}else if(b.startsWith(M))f.push({type:Or,index:i}),c.removeAttribute(b)}if(I0.test(c.tagName)){let b=c.textContent.split(M),t=b.length-1;if(t>0){c.textContent=Br?Br.emptyScript:"";for(let _=0;_<t;_++)c.append(b[_],nr()),V.nextNode(),f.push({type:Xr,index:++i});c.append(b[t],nr())}}}else if(c.nodeType===8)if(c.data===M0)f.push({type:Xr,index:i});else{let t=-1;while((t=c.data.indexOf(M,t+1))!==-1)f.push({type:Ro,index:i}),t+=M.length-1}i++}if(k.length!==g)throw Error('Detected duplicate attribute bindings. This occurs if your template has duplicate attributes on an element tag. For example "<input ?disabled=${true} ?disabled=${false}>" contains a duplicate "disabled" attribute. The error was detected in the following template: \n`'+r.join("${...}")+"`");v&&v({kind:"template prep",template:this,clonableTemplate:this.el,parts:this.parts,strings:r})}static createElement(r,o){let d=R.createElement("template");return d.innerHTML=r,d}}function or(r,o,d=r,c){if(o===L)return o;let i=c!==void 0?d.__directives?.[c]:d.__directive,g=xr(o)?void 0:o._$litDirective$;if(i?.constructor!==g){if(i?._$notifyDirectiveConnectionChanged?.(!1),g===void 0)i=void 0;else i=new g(r),i._$initialize(r,d,c);if(c!==void 0)(d.__directives??=[])[c]=i;else d.__directive=i}if(i!==void 0)o=or(r,i._$resolve(r,o.values),i,c);return o}class T0{constructor(r,o){this._$parts=[],this._$disconnectableChildren=void 0,this._$template=r,this._$parent=o}get parentNode(){return this._$parent.parentNode}get _$isConnected(){return this._$parent._$isConnected}_clone(r){let{el:{content:o},parts:d}=this._$template,c=(r?.creationScope??R).importNode(o,!0);V.currentNode=c;let i=V.nextNode(),g=0,h=0,f=d[0];while(f!==void 0){if(g===f.index){let n;if(f.type===Xr)n=new ar(i,i.nextSibling,this,r);else if(f.type===Tr)n=new f.ctor(i,f.name,f.strings,this,r);else if(f.type===Or)n=new L0(i,this,r);this._$parts.push(n),f=d[++h]}if(g!==f?.index)i=V.nextNode(),g++}return V.currentNode=R,c}_update(r){let o=0;for(let d of this._$parts){if(d!==void 0)if(v&&v({kind:"set part",part:d,value:r[o],valueIndex:o,values:r,templateInstance:this}),d.strings!==void 0)d._$setValue(r,d,o),o+=d.strings.length-2;else d._$setValue(r[o]);o++}}}class ar{get _$isConnected(){return this._$parent?._$isConnected??this.__isConnected}constructor(r,o,d,c){this.type=Xr,this._$committedValue=Q,this._$disconnectableChildren=void 0,this._$startNode=r,this._$endNode=o,this._$parent=d,this.options=c,this.__isConnected=c?.isConnected??!0,this._textSanitizer=void 0}get parentNode(){let r=N(this._$startNode).parentNode,o=this._$parent;if(o!==void 0&&r?.nodeType===11)r=o.parentNode;return r}get startNode(){return this._$startNode}get endNode(){return this._$endNode}_$setValue(r,o=this){if(this.parentNode===null)throw Error("This `ChildPart` has no `parentNode` and therefore cannot accept a value. This likely means the element containing the part was manipulated in an unsupported way outside of Lit's control such that the part's marker nodes were ejected from DOM. For example, setting the element's `innerHTML` or `textContent` can do this.");if(r=or(this,r,o),xr(r)){if(r===Q||r==null||r===""){if(this._$committedValue!==Q)v&&v({kind:"commit nothing to child",start:this._$startNode,end:this._$endNode,parent:this._$parent,options:this.options}),this._$clear();this._$committedValue=Q}else if(r!==this._$committedValue&&r!==L)this._commitText(r)}else if(r._$litType$!==void 0)this._commitTemplateResult(r);else if(r.nodeType!==void 0){if(this.options?.host===r){this._commitText("[probable mistake: rendered a template's host in itself (commonly caused by writing ${this} in a template]"),console.warn("Attempted to render the template host",r,"inside itself. This is almost always a mistake, and in dev mode ","we render some warning text. In production however, we'll ","render it, which will usually result in an error, and sometimes ","in the element disappearing from the DOM.");return}this._commitNode(r)}else if(qo(r))this._commitIterable(r);else this._commitText(r)}_insert(r){return N(N(this._$startNode).parentNode).insertBefore(r,this._$endNode)}_commitNode(r){if(this._$committedValue!==r){if(this._$clear(),u!==Zr){let o=this._$startNode.parentNode?.nodeName;if(o==="STYLE"||o==="SCRIPT"){let d="Forbidden";if(o==="STYLE")d="Lit does not support binding inside style nodes. This is a security risk, as style injection attacks can exfiltrate data and spoof UIs. Consider instead using css`...` literals to compose styles, and do dynamic styling with css custom properties, ::parts, <slot>s, and by mutating the DOM rather than stylesheets.";else d="Lit does not support binding inside script nodes. This is a security risk, as it could allow arbitrary code execution.";throw Error(d)}}v&&v({kind:"commit node",start:this._$startNode,parent:this._$parent,value:r,options:this.options}),this._$committedValue=this._insert(r)}}_commitText(r){if(this._$committedValue!==Q&&xr(this._$committedValue)){let o=N(this._$startNode).nextSibling;if(this._textSanitizer===void 0)this._textSanitizer=Ir(o,"data","property");r=this._textSanitizer(r),v&&v({kind:"commit text",node:o,value:r,options:this.options}),o.data=r}else{let o=R.createTextNode("");if(this._commitNode(o),this._textSanitizer===void 0)this._textSanitizer=Ir(o,"data","property");r=this._textSanitizer(r),v&&v({kind:"commit text",node:o,value:r,options:this.options}),o.data=r}this._$committedValue=r}_commitTemplateResult(r){let{values:o,["_$litType$"]:d}=r,c=typeof d==="number"?this._$getTemplate(r):(d.el===void 0&&(d.el=kr.createElement(A0(d.h,d.h[0]),this.options)),d);if(this._$committedValue?._$template===c)v&&v({kind:"template updating",template:c,instance:this._$committedValue,parts:this._$committedValue._$parts,options:this.options,values:o}),this._$committedValue._update(o);else{let i=new T0(c,this),g=i._clone(this.options);v&&v({kind:"template instantiated",template:c,instance:i,parts:i._$parts,options:this.options,fragment:g,values:o}),i._update(o),v&&v({kind:"template instantiated and updated",template:c,instance:i,parts:i._$parts,options:this.options,fragment:g,values:o}),this._commitNode(g),this._$committedValue=i}}_$getTemplate(r){let o=C0.get(r.strings);if(o===void 0)C0.set(r.strings,o=new kr(r));return o}_commitIterable(r){if(!Ar(this._$committedValue))this._$committedValue=[],this._$clear();let o=this._$committedValue,d=0,c;for(let i of r){if(d===o.length)o.push(c=new ar(this._insert(nr()),this._insert(nr()),this,this.options));else c=o[d];c._$setValue(i),d++}if(d<o.length)this._$clear(c&&N(c._$endNode).nextSibling,d),o.length=d}_$clear(r=N(this._$startNode).nextSibling,o){this._$notifyConnectionChanged?.(!1,!0,o);while(r!==this._$endNode){let d=N(r).nextSibling;N(r).remove(),r=d}}setConnected(r){if(this._$parent===void 0)this.__isConnected=r,this._$notifyConnectionChanged?.(r);else throw Error("part.setConnected() may only be called on a RootPart returned from render().")}}class br{get tagName(){return this.element.tagName}get _$isConnected(){return this._$parent._$isConnected}constructor(r,o,d,c,i){if(this.type=Tr,this._$committedValue=Q,this._$disconnectableChildren=void 0,this.element=r,this.name=o,this._$parent=c,this.options=i,d.length>2||d[0]!==""||d[1]!=="")this._$committedValue=Array(d.length-1).fill(new String),this.strings=d;else this._$committedValue=Q;this._sanitizer=void 0}_$setValue(r,o=this,d,c){let i=this.strings,g=!1;if(i===void 0){if(r=or(this,r,o,0),g=!xr(r)||r!==this._$committedValue&&r!==L,g)this._$committedValue=r}else{let h=r;r=i[0];let f,n;for(f=0;f<i.length-1;f++){if(n=or(this,h[d+f],o,f),n===L)n=this._$committedValue[f];if(g||=!xr(n)||n!==this._$committedValue[f],n===Q)r=Q;else if(r!==Q)r+=(n??"")+i[f+1];this._$committedValue[f]=n}}if(g&&!c)this._commitValue(r)}_commitValue(r){if(r===Q)N(this.element).removeAttribute(this.name);else{if(this._sanitizer===void 0)this._sanitizer=u(this.element,this.name,"attribute");r=this._sanitizer(r??""),v&&v({kind:"commit attribute",element:this.element,name:this.name,value:r,options:this.options}),N(this.element).setAttribute(this.name,r??"")}}}class O0 extends br{constructor(){super(...arguments);this.type=To}_commitValue(r){if(this._sanitizer===void 0)this._sanitizer=u(this.element,this.name,"property");r=this._sanitizer(r),v&&v({kind:"commit property",element:this.element,name:this.name,value:r,options:this.options}),this.element[this.name]=r===Q?void 0:r}}class V0 extends br{constructor(){super(...arguments);this.type=Oo}_commitValue(r){v&&v({kind:"commit boolean attribute",element:this.element,name:this.name,value:!!(r&&r!==Q),options:this.options}),N(this.element).toggleAttribute(this.name,!!r&&r!==Q)}}class R0 extends br{constructor(r,o,d,c,i){super(r,o,d,c,i);if(this.type=Vo,this.strings!==void 0)throw Error(`A \`<${r.localName}>\` has a \`@${o}=...\` listener with invalid content. Event listeners in templates must have exactly one expression and no surrounding text.`)}_$setValue(r,o=this){if(r=or(this,r,o,0)??Q,r===L)return;let d=this._$committedValue,c=r===Q&&d!==Q||r.capture!==d.capture||r.once!==d.once||r.passive!==d.passive,i=r!==Q&&(d===Q||c);if(v&&v({kind:"commit event listener",element:this.element,name:this.name,value:r,options:this.options,removeListener:c,addListener:i,oldListener:d}),c)this.element.removeEventListener(this.name,this,d);if(i)this.element.addEventListener(this.name,this,r);this._$committedValue=r}handleEvent(r){if(typeof this._$committedValue==="function")this._$committedValue.call(this.options?.host??this.element,r);else this._$committedValue.handleEvent(r)}}class L0{constructor(r,o,d){this.element=r,this.type=Or,this._$disconnectableChildren=void 0,this._$parent=o,this.options=d}get _$isConnected(){return this._$parent._$isConnected}_$setValue(r){v&&v({kind:"commit to element binding",element:this.element,value:r,options:this.options}),or(this,r)}}var uo=U.litHtmlPolyfillSupportDevMode;uo?.(kr,ar);(U.litHtmlVersions??=[]).push("3.3.3");if(U.litHtmlVersions.length>1)queueMicrotask(()=>{fr("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var hr=(r,o,d)=>{if(o==null)throw TypeError(`The container to render into may not be ${o}`);let c=Go++,i=d?.renderBefore??o,g=i._$litPart$;if(v&&v({kind:"begin render",id:c,value:r,container:o,options:d,part:g}),g===void 0){let h=d?.renderBefore??null;i._$litPart$=g=new ar(o.insertBefore(nr(),h),h,void 0,d??{})}return g._$setValue(r),v&&v({kind:"end render",id:c,value:r,container:o,options:d,part:g}),g};hr.setSanitizer=Uo,hr.createSanitizer=Ir,hr._testOnlyClearSanitizerFactoryDoNotCallOrElse=lo;var Po=(r,o)=>r,Rr=!0,I=globalThis,u0;if(Rr)I.litIssuedWarnings??=new Set,u0=(r,o)=>{if(o+=` See https://lit.dev/msg/${r} for more information.`,!I.litIssuedWarnings.has(o)&&!I.litIssuedWarnings.has(r))console.warn(o),I.litIssuedWarnings.add(o)};class y extends W{constructor(){super(...arguments);this.renderOptions={host:this},this.__childPart=void 0}createRenderRoot(){let r=super.createRenderRoot();return this.renderOptions.renderBefore??=r.firstChild,r}update(r){let o=this.render();if(!this.hasUpdated)this.renderOptions.isConnected=this.isConnected;super.update(r),this.__childPart=hr(o,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this.__childPart?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this.__childPart?.setConnected(!1)}render(){return L}}y._$litElement$=!0;y[Po("finalized",y)]=!0;I.litElementHydrateSupport?.({LitElement:y});var So=Rr?I.litElementPolyfillSupportDevMode:I.litElementPolyfillSupport;So?.({LitElement:y});(I.litElementVersions??=[]).push("4.2.2");if(Rr&&I.litElementVersions.length>1)queueMicrotask(()=>{u0("multiple-versions","Multiple versions of Lit loaded. Loading multiple versions is not recommended.")});var Y=(r)=>(o,d)=>{if(d!==void 0)d.addInitializer(()=>{customElements.define(r,o)});else customElements.define(r,o)};var P0=!0,S0;if(P0)globalThis.litIssuedWarnings??=new Set,S0=(r,o)=>{if(o+=` See https://lit.dev/msg/${r} for more information.`,!globalThis.litIssuedWarnings.has(o)&&!globalThis.litIssuedWarnings.has(r))console.warn(o),globalThis.litIssuedWarnings.add(o)};var Eo=(r,o,d)=>{let c=o.hasOwnProperty(d);return o.constructor.createProperty(d,r),c?Object.getOwnPropertyDescriptor(o,d):void 0},eo={attribute:!0,type:String,converter:ir,reflect:!1,hasChanged:$r},so=(r=eo,o,d)=>{let{kind:c,metadata:i}=d;if(P0&&i==null)S0("missing-class-metadata",`The class ${o} is missing decorator metadata. This could mean that you're using a compiler that supports decorators but doesn't support decorator metadata, such as TypeScript 5.1. Please update your compiler.`);let g=globalThis.litPropertyMetadata.get(i);if(g===void 0)globalThis.litPropertyMetadata.set(i,g=new Map);if(c==="setter")r=Object.create(r),r.wrapped=!0;if(g.set(d.name,r),c==="accessor"){let{name:h}=d;return{set(f){let n=o.get.call(this);o.set.call(this,f),this.requestUpdate(h,n,r,!0,f)},init(f){if(f!==void 0)this._$changeProperty(h,void 0,r,f);return f}}}else if(c==="setter"){let{name:h}=d;return function(f){let n=this[h];o.call(this,f),this.requestUpdate(h,n,r,!0,f)}}throw Error(`Unsupported decorator location: ${c}`)};function m(r){return(o,d)=>{return typeof d==="object"?so(r,o,d):Eo(r,o,d)}}function Z(r){return m({...r,state:!0,attribute:!1})}var T=(r,o,d)=>{if(d.configurable=!0,d.enumerable=!0,Reflect.decorate&&typeof o!=="object")Object.defineProperty(r,o,d);return d};var Lr=!0,E0;if(Lr)globalThis.litIssuedWarnings??=new Set,E0=(r,o)=>{if(o+=r?` See https://lit.dev/msg/${r} for more information.`:"",!globalThis.litIssuedWarnings.has(o)&&!globalThis.litIssuedWarnings.has(r))console.warn(o),globalThis.litIssuedWarnings.add(o)};function e0(r,o){return(d,c,i)=>{let g=(h)=>{let f=h.renderRoot?.querySelector(r)??null;if(Lr&&f===null&&o&&!h.hasUpdated){let n=typeof c==="object"?c.name:c;E0("",`@query'd field ${JSON.stringify(String(n))} with the 'cache' flag set for selector '${r}' has been accessed before the first update and returned null. This is expected if the renderRoot tree has not been provided beforehand (e.g. via Declarative Shadow DOM). Therefore the value hasn't been cached.`)}return f};if(o){let{get:h,set:f}=typeof c==="object"?d:i??(()=>{let n=Lr?Symbol(`${String(c)} (@query() cache)`):Symbol();return{get(){return this[n]},set(k){this[n]=k}}})();return T(d,c,{get(){let n=h.call(this);if(n===void 0){if(n=g(this),n!==null||this.hasUpdated)f.call(this,n)}return n}})}else return T(d,c,{get(){return g(this)}})}}var rd;function s0(r){return(o,d)=>{return T(o,d,{get(){return(this.renderRoot??(rd??=document.createDocumentFragment())).querySelectorAll(r)}})}}function Qr(r,o,d){let c=[];for(let i=r;i<=Math.min(o,d);i++)c.push(i);return c}var mr=[{id:"soneto",nombre:"Soneto",descripcion:"Dos cuartetos y dos tercetos. Endecasílabos (11) con rima consonante y, por lo general, acento en la 10ª sílaba.",ejemplo:"Un soneto me manda hacer Violante…",modo:"fija",medidaPorVerso:11,silabasObjetivo:11,acentosObligatorios:[10],acentoSugerido:[6],tipoRima:"consonante",esquemaReferencia:"ABBA ABBA CDC DCD",estrofas:[{id:"cuarteto1",nombre:"Primer cuarteto",nVersos:4,tipo:"normal"},{id:"cuarteto2",nombre:"Segundo cuarteto",nVersos:4,tipo:"normal"},{id:"terceto1",nombre:"Primer terceto",nVersos:3,tipo:"normal"},{id:"terceto2",nombre:"Segundo terceto",nVersos:3,tipo:"normal"}],versosIniciales:14,versosMin:14,versosMax:14,medidaDescripcion:"Endecasílabos · 11 sílabas métricas"},{id:"romance",nombre:"Romance",descripcion:"Tirada de octosílabos (8) con rima asonante en los versos pares; los impares quedan libres. Sin estrofas: serie continua.",ejemplo:"—Conde Olinos, Conde Olinos…",modo:"serie",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"asonante",esquemaReferencia:"-a-a (pares asonantes)",estrofas:[{id:"tirada",nombre:"Tirada",nVersos:0,tipo:"normal"}],versosIniciales:8,versosMin:4,versosMax:400,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"letrilla",nombre:"Letrilla",descripcion:"Estribillo que se repite tras cada copla; cada copla combina mudanza y vuelta que enlaza con el estribillo. Octosílabos, con estribillo frecuentemente hexasílabo.",ejemplo:"A mis soledades voy, / de mis soledades vengo…",modo:"estrofa",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"asonante",esquemaReferencia:"AB aba AB",estrofas:[{id:"estribillo",nombre:"Estribillo",nVersos:2,tipo:"estribillo",medidaObjetivo:6,acentos:[5]},{id:"copla",nombre:"Copla",nVersos:4,tipo:"normal"}],estrofaRepetible:!0,versosIniciales:6,versosMin:6,versosMax:34,medidaDescripcion:"Octosílabos · 8 (estribillo 8/6)"},{id:"decima",nombre:"Décima (Espinela)",descripcion:"Décima espinela: diez octosílabos (8) con rima consonante abbaaccddc. Pausa estructural tras el 4º verso (el 5º inicia sentido nuevo).",ejemplo:"Yo, pues mirad si me aflijo…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abbaaccddc",estrofas:[{id:"espinela",nombre:"Décima",nVersos:10,tipo:"normal"}],versosIniciales:10,versosMin:10,versosMax:10,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"octava",nombre:"Octava real",descripcion:"Ocho endecasílabos (11) por estancia con rima consonante ABABABCC: seis versos de rima alterna y un pareado final que cierra cada octava.",ejemplo:"Aquella voluntad honesta y pura, / ilustre y hermosísima María…",modo:"estrofa",medidaPorVerso:11,silabasObjetivo:11,acentosObligatorios:[10],acentoSugerido:[6],tipoRima:"consonante",esquemaReferencia:"ABABABCC",estrofas:[{id:"octava",nombre:"Octava",nVersos:8,tipo:"normal"}],estrofaRepetible:!0,versosIniciales:8,versosMin:8,versosMax:Number.MAX_SAFE_INTEGER,medidaDescripcion:"Endecasílabos · 11 sílabas métricas"},{id:"redondilla",nombre:"Redondilla",descripcion:"Cuatro octosílabos (8) con rima consonante abba.",ejemplo:"Quien bien ama tarde olvida…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abba",estrofas:[{id:"redondilla",nombre:"Redondilla",nVersos:4,tipo:"normal"}],versosIniciales:4,versosMin:4,versosMax:4,medidaDescripcion:"Octosílabos · 8 sílabas métricas"},{id:"cuarteta",nombre:"Cuarteta",descripcion:"Cuatro octosílabos (8) con rima consonante abab.",ejemplo:"No me mueve, mi Dios, para quererte…",modo:"fija",medidaPorVerso:8,silabasObjetivo:8,acentosObligatorios:[7],tipoRima:"consonante",esquemaReferencia:"abab",estrofas:[{id:"cuarteta",nombre:"Cuarteta",nVersos:4,tipo:"normal"}],versosIniciales:4,versosMin:4,versosMax:4,medidaDescripcion:"Octosílabos · 8 sílabas métricas"}];function C(r){return mr.find((o)=>o.id===r)||mr[0]}function ro(r,o,d){let c=d??r.versosIniciales;return Array.from({length:c},(i,g)=>({id:`${o}-v${g+1}`,numero:g+1,texto:""}))}function dr(r,o){let d=[...o].sort((g,h)=>g.numero-h.numero);if(r.modo==="serie"){let g=r.estrofas[0];return[{id:g?.id||"tirada",nombre:g?.nombre||"Tirada",tipo:g?.tipo||"normal",versos:d}]}if(r.modo==="estrofa"){let g=r.estrofas.slice(0,-1),h=r.estrofas[r.estrofas.length-1],f=[],n=0;for(let b of g){let t=Math.min(b.nVersos,d.length-n);if(t<=0)break;f.push({id:b.id,nombre:b.nombre,tipo:b.tipo,versos:d.slice(n,n+t)}),n+=t}let k=1;while(n<d.length&&h){let b=Math.min(h.nVersos,d.length-n);f.push({id:`${h.id}-${k}`,nombre:`${h.nombre} ${k}`,tipo:h.tipo,versos:d.slice(n,n+b)}),n+=b,k++}return f}let c=[],i=0;for(let g of r.estrofas){let h=Math.min(g.nVersos,d.length-i);if(h<=0)break;c.push({id:g.id,nombre:g.nombre,tipo:g.tipo,versos:d.slice(i,i+h)}),i+=h}return c}function Jr(r,o){let d=Math.max(0,o);if(r.modo==="serie"){let g=[];for(let h=1;h<=d;h+=4)g.push(Qr(h,h+3,d));return g.filter((h)=>h.length>0)}if(r.modo==="estrofa"){let g=[],h=r.estrofas.slice(0,-1),f=r.estrofas[r.estrofas.length-1],n=1;for(let k of h)g.push(Qr(n,n+k.nVersos-1,d)),n+=k.nVersos;while(n<=d&&f)g.push(Qr(n,n+f.nVersos-1,d)),n+=f.nVersos;return g.filter((k)=>k.length>0)}let c=[],i=1;for(let g of r.estrofas)c.push(Qr(i,i+g.nVersos-1,d)),i+=g.nVersos;return c.filter((g)=>g.length>0)}function ur(r){return{min:r.versosMin,max:r.versosMax}}function oo(r,o,d){let{silabasObjetivo:c,acentosObligatorios:i}=r;if(r.modo==="estrofa"){let g=r.estrofas.slice(0,-1),h=0;for(let f of g){if(o>h&&o<=h+f.nVersos){if(f.medidaObjetivo)c=f.medidaObjetivo,i=f.acentos??[c-1];break}h+=f.nVersos}}return{silabasObjetivo:c,acentosObligatorios:i,acentosSugeridos:r.acentoSugerido}}class Pr{listeners=new Map;on(r,o){if(!this.listeners.has(r))this.listeners.set(r,new Set);this.listeners.get(r).add(o)}off(r,o){let d=this.listeners.get(r);if(d){if(d.delete(o),d.size===0)this.listeners.delete(r)}}emit(r,o){let d=this.listeners.get(r);if(d)for(let c of d)try{c(o)}catch(i){console.error(`[EventBus] Error in handler for '${String(r)}':`,i)}}clear(){this.listeners.clear()}}var P={CURRENT_SONETO:"el-taller:soneto-actual",HISTORY:"el-taller:historial",PREFERENCES:"el-taller:preferencias"};class Sr{autoSave(r){try{let o=JSON.stringify({soneto:r,savedAt:Date.now()});localStorage.setItem(P.CURRENT_SONETO,o)}catch(o){console.warn("[Storage] Error al auto-guardar:",o)}}loadLastSoneto(){try{let r=localStorage.getItem(P.CURRENT_SONETO);if(!r)return null;let{soneto:o}=JSON.parse(r);return o}catch{return null}}saveToHistory(r){try{let o=this.loadHistory();if(o.unshift(r),o.length>20)o.pop();localStorage.setItem(P.HISTORY,JSON.stringify(o))}catch(o){console.warn("[Storage] Error al guardar historial:",o)}}loadHistory(){try{let r=localStorage.getItem(P.HISTORY);return r?JSON.parse(r):[]}catch{return[]}}savePreferences(r){try{localStorage.setItem(P.PREFERENCES,JSON.stringify(r))}catch{}}loadPreferences(){try{let r=localStorage.getItem(P.PREFERENCES);return r?JSON.parse(r):{}}catch{return{}}}getKeys(){return{...P}}}function co(r,o,d=!1){let c=null,i=!1;return(...g)=>{if(d&&!i)r(...g),i=!0;if(c!==null)clearTimeout(c);c=setTimeout(()=>{if(!d||i)r(...g);i=!1,c=null},o)}}var tr=new Set(["a","e","o","á","é","ó"]),Er=new Set(["i","u","í","ú"]),S=new Set([...tr,...Er]),io=new Set(["ia","ie","io","ua","ue","uo","ai","ei","oi","au","eu","ou","iu","ui"]),go=new Set(["iai","iei","uai","uei","iau","ueu"]),ho=new Set(["pr","pl","br","bl","fr","fl","gr","gl","kr","kl","cr","cl","dr","tr","tl","ch","ll","rr"]);var dd=[{tipo:"heroico",acentos:[6,10],descripcion:"Acento en 6ª y 10ª sílabas"},{tipo:"enfatico",acentos:[1,6,10],descripcion:"Acento en 1ª, 6ª y 10ª sílabas"},{tipo:"melodico",acentos:[3,6,10],descripcion:"Acento en 3ª, 6ª y 10ª sílabas"},{tipo:"safico",acentos:[4,8,10],descripcion:"Acento en 4ª, 8ª y 10ª sílabas"},{tipo:"dactilico",acentos:[4,7,10],descripcion:"Acento en 4ª, 7ª y 10ª sílabas"},{tipo:"anfibraquico",acentos:[2,5,8,10],descripcion:"Acento en 2ª, 5ª, 8ª y 10ª sílabas"}];function fo(r){if(!r.has(10))return;let o=[...dd].sort((d,c)=>c.acentos.length-d.acentos.length);for(let d of o){let c=new Set(d.acentos),i=!0;for(let g of c)if(!r.has(g)){i=!1;break}if(i)return d}return{tipo:"otro",acentos:[...r].sort(),descripcion:"Otra variante"}}class yr{silabearPalabra(r){if(!r)return[];let o=r.toLowerCase();if(o.length<=1)return[o];let d=[],c=0,i="";while(c<o.length){let g=o[c];if(wr(g)){let h=this.leerGrupoVocalico(o,c);if(i.length>0){if(i.length===1)d.push(i+h);else if(i.length===2)if(no(i))d.push(i+h);else{if(d.length>0)d[d.length-1]+=i[0];else d.push(i[0]);d.push(i[1]+h)}else{let f=i.length>=2&&no(i.slice(-2))?i.slice(-2):i.slice(-1),n=i.slice(0,i.length-f.length);if(d.length>0)d[d.length-1]+=n;else if(n.length>0)d.push(n);d.push(f+h)}i=""}else if(d.length===0)d.push(h);else d.push(h);c+=h.length}else if(/[bcdfghjklmnñpqrstvwxyzü]/i.test(g))i+=g,c++;else c++}if(i.length>0)if(d.length>0)d[d.length-1]+=i;else d.push(i);return d.filter((g)=>g.length>0)}normalizarVocal(r){return{"á":"a","é":"e","í":"i","ó":"o","ú":"u","ü":"u"}[r]||r}leerGrupoVocalico(r,o){if(o>=r.length)return"";let d=o+2<r.length?r.slice(o,o+3):"",c=o+1<r.length?r.slice(o,o+2):"",i=[...d].map((h)=>this.normalizarVocal(h)).join(""),g=[...c].map((h)=>this.normalizarVocal(h)).join("");if(i.length===3&&gd(i))return d;if(g.length===2&&id(g)){if(o>0){let h=r[o-1];if(er(h)&&(r[o]==="í"||r[o]==="ú"))return r[o]}if(r[o]==="í"||r[o]==="ú"){if(o+2<r.length){if(er(r[o+1])&&!wr(r[o+2]))return r[o]}if(o+1<r.length&&er(r[o+1])&&o+2>=r.length)return r[o]}return c}if(o>0){let h=r[o-1],f=r[o];if((f==="á"||f==="é"||f==="ó")&&cd(h))return f}return r[o]}leerGrupoConsonantico(r,o){let d="";while(o<r.length&&!wr(r[o]))d+=r[o],o++;return d}detectarSinalefas(r,o=[]){let d=[],c=[],i=0;for(let h=0;h<r.length;h++){let f=r[h];for(let n=0;n<f.length;n++)d.push(f[n]),i++}let g=0;for(let h=0;h<r.length-1;h++){let f=r[h],n=r[h+1],k=f[f.length-1],b=n[0],t=k.charAt(k.length-1),_=b.charAt(0),w=t==="y",K=_==="y"&&o[h+1]==="y";if((wr(t)||w)&&(wr(_)||_==="h"||K)){let J=g+f.length-1;c.push({silabaAnterior:J,silabaSiguiente:J+1,descartada:!1})}g+=f.length}return{silabas:d,sinalefas:c}}aplicarAcentoFinal(r,o){let d=this.determinarAcentoPalabra(o),c=r.length;switch(d){case"aguda":return c+1;case"esdrujula":return c-1;case"llana":default:return c}}determinarAcentoPalabra(r){let o=r.toLowerCase();if(/[áéíóú]/.test(o)){let c=this.silabearPalabra(o);if(c.length===0)return"llana";for(let i=0;i<c.length;i++)if(/[áéíóú]/.test(c[i])){if(i===c.length-1)return"aguda";if(i===c.length-2)return"llana";return"esdrujula"}}let d=o.charAt(o.length-1);if(d==="n"||d==="s"||/[aeiou]/.test(d))return"llana";return"aguda"}identificarTipoVerso(r,o){if(o!==11)return"no_endecasilabo";let d=new Set(r.map((i)=>i+1));return fo(d)?.tipo}encontrarSilabasTonicas(r){let o=[];for(let d of r)if(d.esAcentoEstrófico)o.push(d.index);return o}toggleSinalefa(r,o){let d=[...r.hiatoForzado];if(d.includes(o)){let c=d.indexOf(o);d.splice(c,1)}else d.push(o);return this.analizarVerso(r.texto,d)}analizarVerso(r,o=[],d){let c=d?.silabasObjetivo??11,i=d?.acentosObligatorios??[10],g=d?.acentosSugeridos??(c===11?[6]:[]),h=[],f=[],n=r.toLowerCase().trim();if(!n)return{texto:r,silabas:[],sinalefas:[],numSilabasMetricas:0,numSilabasFonologicas:0,acentoFinal:"llana",silabasTonicas:[],tipoVerso:void 0,errores:[{tipo:"num_silabas",mensaje:"Verso vacío"}],advertencias:[],hiatoForzado:[]};let k=n.replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim(),b=k.split(/\s+/).filter((z)=>z.length>0);if(b.length===0)return{texto:r,silabas:[],sinalefas:[],numSilabasMetricas:0,numSilabasFonologicas:0,acentoFinal:"llana",silabasTonicas:[],tipoVerso:void 0,errores:[{tipo:"num_silabas",mensaje:"Verso vacío"}],advertencias:[],hiatoForzado:[]};let t=b.map((z)=>this.silabearPalabra(z)),{silabas:_,sinalefas:w}=this.detectarSinalefas(t,b),K=0,J=[],_0=k.replace(/h/g,""),pr=0;for(let z of b)for(let j of z)pr++;let $=r.toLowerCase(),X=0;for(let z=0;z<b.length;z++){let j=b[z],F=t[z],zr=$.indexOf(j,X);if(zr!==-1)X=zr;let Y0=0,zo=F.some((H)=>/[áéíóú]/.test(H)),cr=-1;if(zo){for(let H=0;H<F.length;H++)if(/[áéíóú]/.test(F[H])){cr=H;break}}else if(F.length>=2){let H=j.charAt(j.length-1);if(H==="n"||H==="s"||/[aeiou]/.test(H))cr=F.length-2;else cr=F.length-1}else cr=0;for(let H=0;H<F.length;H++){let F0=F[H],Wr=F0.toLowerCase(),X0=X+Y0,_o=X0+Wr.length;Y0+=Wr.length;let $o=/[áéíóú]/.test(Wr)||H===cr;J.push({texto:F0,index:J.length,esAcentoEstrófico:$o,esSinalefa:!1,hiatoForzado:!1,charStart:X0,charEnd:_o})}if(zr!==-1)X=zr+j.length;else X+=j.length}let D=[],s=[];for(let z of w){let j=o.includes(z.silabaAnterior),F=o.includes(z.silabaSiguiente);if(j||F){if(J[z.silabaAnterior])J[z.silabaAnterior].hiatoForzado=!0;D.push({...z,descartada:!0})}else{if(s.push({...z,descartada:!1}),D.push({...z,descartada:!1}),J[z.silabaAnterior])J[z.silabaAnterior].esSinalefa=!0;if(J[z.silabaSiguiente])J[z.silabaSiguiente].esSinalefa=!0}}let O=J.length,vr=s.length,l=O-vr,yo=b[b.length-1],Gr=this.determinarAcentoPalabra(yo);if(Gr==="aguda")l+=1;else if(Gr==="esdrujula")l-=1;let $0=this.encontrarSilabasTonicas(J),B0=$0.map((z)=>{let j=s.filter((F)=>F.silabaSiguiente<=z).length;return z-j}),vo=this.identificarTipoVerso(B0,l);if(l!==c)h.push({tipo:"num_silabas",mensaje:`El verso tiene ${l} sílabas métricas (debería tener ${c})`});else{let z=new Set(B0.map((F)=>F+1));if(c===11&&i.length===1&&i[0]===10&&g.length===1&&g[0]===6){if(!z.has(10))h.push({tipo:"sin_acento_10a",mensaje:"Falta acento en la 10ª sílaba (obligatorio)"});if(!z.has(6))f.push({tipo:"sin_acento_6a",mensaje:"Falta acento en la 6ª sílaba (recomendado)"})}else{for(let F of i)if(!z.has(F))h.push({tipo:"sin_acento_obligatorio",posicion:F,mensaje:`Falta acento en la ${F}ª sílaba (obligatorio)`});for(let F of g){if(i.includes(F))continue;if(z.has(F))continue;f.push({tipo:"sin_acento_sugerido",posicion:F,mensaje:`Falta acento en la ${F}ª sílaba (recomendado)`})}}}return{texto:r,silabas:J,sinalefas:D,numSilabasMetricas:Math.max(0,l),numSilabasFonologicas:O,acentoFinal:Gr,silabasTonicas:$0,tipoVerso:vo,errores:h,advertencias:f,hiatoForzado:o}}}function wr(r){return S.has(r.toLowerCase())}function er(r){return tr.has(r.toLowerCase())}function cd(r){return Er.has(r.toLowerCase())}function id(r){return io.has(r.toLowerCase())}function gd(r){return go.has(r.toLowerCase())}function no(r){return ho.has(r.toLowerCase())}class xo{engine=new yr;analyze(r){let o=new Map;for(let d of r.payload.versos){let c=this.engine.analizarVerso(d.texto,d.hiatoForzado,d.opts);o.set(d.numero,c)}return Promise.resolve({type:"ANALYZE_RESULT",payload:o})}terminate(){}}function ko(){return new xo}var ao={"á":"a","é":"e","í":"i","ó":"o","ú":"u"};class E{metric=new yr;detectarRima(r){if(!r||!r.silabas||r.silabas.length===0)return;let o=r.silabas.filter((g)=>g.esAcentoEstrófico),d;if(o.length>0)d=o[o.length-1];else{let g=r.silabas.filter((h)=>!h.esSinalefa);d=g.length>=2?g[g.length-2]:g[g.length-1]}if(!d)return;let c=this.extraerTerminacion(r.texto,d),i=r.texto.trim().split(/\s+/).pop()||"";return{terminacionFonetica:c,claveCompleta:c,claveVocales:this.extraerClaveAsonante(i),letra:"",esConsonante:!0,versosRelacionados:[]}}obtenerClaves(r){return{completa:this.extraerTerminacionPalabra(r),vocales:this.extraerClaveAsonante(r)}}extraerTerminacion(r,o){let d=r.toLowerCase().replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim(),c=d.split(/\s+/),i=c[c.length-1]||"";if(!i)return d;return this.extraerTerminacionPalabra(i)}extraerTerminacionPalabra(r){let o=r.toLowerCase(),d=o.match(/[áéíóú]/);if(d){let k=o.lastIndexOf(d[0]);return o.slice(k)}let c=[...o].filter((k)=>S.has(k));if(c.length===0)return o;let i=c[c.length-1],g=o.lastIndexOf(i),h=o.charAt(o.length-1);if(h!=="n"&&h!=="s"&&!S.has(h))return o.slice(g);let f=c.length>=2?c[c.length-2]:i,n=o.lastIndexOf(f);if(c.length>=2){let b=o.substring(0,o.lastIndexOf(i)).lastIndexOf(f);if(b>=0)return o.slice(b)}return o.slice(g)}extraerClaveAsonante(r){if(!r)return"";let o=r.toLowerCase().replace(/[¿?!¡;:.,()\-"'«»]/g,"").trim();if(!o)return"";let d=this.metric.silabearPalabra(o);if(d.length===0)return"";let c=this.indiceSilabaTonica(o,d);if(c<0)return"";let i=[];for(let g=c;g<d.length;g++){let h=[...d[g]].filter((n)=>S.has(n)).join(""),f=this.procesarGrupoVocalico(h);for(let n of f)i.push(ao[n]||n)}return i.join("")}esRimaConsonante(r,o){return r.toLowerCase()===o.toLowerCase()}esRimaAsonante(r,o){let d=this.extraerClaveAsonante(r),c=this.extraerClaveAsonante(o);return d!==""&&d===c}esRima(r,o,d){return d?this.esRimaConsonante(r,o):this.esRimaAsonante(r,o)}indiceSilabaTonica(r,o){for(let c=0;c<o.length;c++)if(/[áéíóú]/.test(o[c]))return c;if(o.length===1)return 0;let d=r.charAt(r.length-1);if(d==="n"||d==="s"||S.has(d))return o.length-2;return o.length-1}procesarGrupoVocalico(r){if(!r)return[];if(r.length===1)return[r];if([...r].filter((d)=>tr.has(d)).length>=2)return[...r];if(/[íú]/.test(r))return[...r];return[this.vocalMasAbierta(r)]}vocalMasAbierta(r){let o="",d=-1;for(let c of r){let i=ao[c]||c,g=i==="a"?3:i==="e"||i==="o"?2:1;if(g>d)d=g,o=c}return o}}class sr{rhymeEngine;constructor(){this.rhymeEngine=new E}detectarEsquema(r,o={}){let d=o.tipoRima??"consonante",i=o.forma==="romance",g=new Map;for(let $ of r){let X=$.texto.trim();if(!X)continue;let D=X.split(/\s+/).pop()||"";if(!D)continue;g.set($.numero,this.rhymeEngine.obtenerClaves(D))}let h=r.map(($)=>$.numero).sort(($,X)=>$-X),f=new Map,n=[],k=new Map,b=["A","B","C","D","E","F","G","H","I","J","K","L","M","N"],t=0;for(let $ of h){let X=g.get($);if(i){if(!X||$%2!==0||!X.vocales){if(f.set($,"·"),!n.includes($))n.push($);continue}let vr=`v:${X.vocales}`,l=k.get(vr);if(!l)l=b[t++%b.length],k.set(vr,l);f.set($,l);continue}if(!X){if(f.set($,"·"),!n.includes($))n.push($);continue}let D=d==="asonante"?X.vocales:X.completa,s=d==="asonante"?`v:${D}`:`c:${D}`,O=k.get(s);if(!O)O=b[t++%b.length],k.set(s,O);f.set($,O)}let _=new Map;for(let $ of f.values())if($!=="·")_.set($,(_.get($)||0)+1);for(let $ of h){let X=f.get($);if(X&&X!=="·"&&(_.get(X)||0)<2){if(f.set($,"·"),!n.includes($))n.push($)}}let w=this.formatEsquema(f,o.grupos),{forma:K,nombre:J,esClasica:_0,aviso:pr}=this.identificarForma(w,o.grupos,d);return{asignacion:f,patron:w,versosSueltos:n,esClasico:_0,nombreClasico:J,forma:K,aviso:pr}}formatEsquema(r,o){return(o??[[1,2,3,4],[5,6,7,8],[9,10,11],[12,13,14]]).map((i)=>{return i.map((g)=>r.get(g)||"·").join("")}).join(" ")}identificarForma(r,o,d="consonante"){let c=r.replace(/\s+/g," ").trim(),i=c.split(" ").join(""),g=(h,f,n,k)=>({forma:f,nombre:n,esClasica:h,esClasico:h,aviso:k});if(d!=="asonante"){let h=[{patron:"ABBA ABBA CDC DCD",nombre:"Soneto (Petrarquista)"},{patron:"ABBA ABBA CDE CDE",nombre:"Soneto"},{patron:"ABBA ABBA CDE DCE",nombre:"Soneto (variante)"},{patron:"ABBA ABBA CDE EDC",nombre:"Soneto (variante)"},{patron:"ABBA ABBA CDE DEC",nombre:"Soneto (variante)"},{patron:"ABBA ABBA CDE CED",nombre:"Soneto (variante)"},{patron:"ABBA ABBA CCD EED",nombre:"Soneto (variante)"},{patron:"ABAB ABAB CDC DCD",nombre:"Soneto isabelino (Shakespeare)"},{patron:"ABAB ABAB CDE CDE",nombre:"Soneto isabelino (variante)"}];for(let n of h)if(c===n.patron)return g(!0,"soneto",n.nombre);let f=c.split(" ");if(f.length===4){let[n,k,b,t]=f,_=(w)=>w.length===4&&w[0]===w[3]&&w[1]===w[2]&&w[0]!==w[1];if(_(n)&&_(k)&&n===k&&b.length===3&&t.length===3)return g(!0,"soneto","Soneto (variante libre)")}}if(i==="ABBA")return g(!0,"redondilla","Redondilla");if(i==="ABAB")return g(!0,"cuarteta","Cuarteta");if(i==="ABBAACCDDC")return g(!0,"decima","Décima (Espinela)");if(this.pareceOctava(c))return g(!0,"octava","Octava real");if(this.pareceOctavaImperfecta(c))return g(!1,"octava","Octava real (pareado reutilizado)","El pareado final debe usar una rima nueva (C ≠ A, B)");if(this.pareceRomance(i))return g(!0,"romance","Romance");if(this.pareceLetrilla(c))return g(!0,"letrilla","Letrilla");return g(!1)}pareceRomance(r){let o=r.split("");if(o.length<4)return!1;let d="",c=!1;for(let i=0;i<o.length;i++){let g=o[i];if((i+1)%2===0){if(g==="·")return!1;if(c=!0,!d)d=g;else if(g!==d)return!1}else if(g!=="·"&&g!=="-")return!1}return c&&d!==""}clasificarOctava(r){if(r.length!==8)return"no";let o=r[0],d=r[1],c=r[6];if(r[2]!==o||r[4]!==o)return"no";if(r[3]!==d||r[5]!==d)return"no";if(r[7]!==c)return"no";if(o===d)return"no";if(c===o||c===d)return"imperfecta";return"perfecta"}pareceOctava(r){let o=r.split(" ").filter(Boolean),d=r.split(" ").join("");if(o.length>=1&&o.every((c)=>this.clasificarOctava(c)==="perfecta"))return!0;if(d.length>=1&&this.clasificarOctava(d)==="perfecta")return!0;return!1}pareceOctavaImperfecta(r){let o=r.split(" ").filter(Boolean),d=r.split(" ").join("");if(o.length>=1&&o.every((c)=>this.clasificarOctava(c)==="imperfecta"))return!0;if(d.length>=1&&this.clasificarOctava(d)==="imperfecta")return!0;return!1}pareceLetrilla(r){let o=r.split(" ").filter(Boolean);if(o.length<3)return!1;let d=o[0];if(!d||d.includes("·")&&d.length<=1)return!1;if(d.includes("·"))return!1;if(d.length<2||d.length>4)return!1;let c=o[1].length;if(c!==4)return!1;for(let i of o.slice(2))if(i.length!==c)return!1;return!0}}class r0{analyzer;rhymeEngine;schemeEngine;eventBus;pendingAnalysis=!1;forma={id:"soneto"};lastAnalysis=new Map;lastEsquema;dirtyVersos=new Set;textosVersos=new Map;hiatosForzados=new Map;constructor(r){this.analyzer=ko(),this.rhymeEngine=new E,this.schemeEngine=new sr,this.eventBus=r,this.eventBus.on("verso:input",({numero:o,texto:d})=>{this.textosVersos.set(o,d),this.dirtyVersos.add(o),this.scheduleAnalysis()}),this.eventBus.on("hiato:toggle",({numero:o,silabaIndex:d})=>{let c=this.hiatosForzados.get(o)||[],i=c.indexOf(d);if(i>=0)c.splice(i,1);else c.push(d);this.hiatosForzados.set(o,c),this.dirtyVersos.add(o),this.scheduleAnalysis()})}setForma(r){this.forma=r,this.forceReanalyze()}scheduleAnalysis=co(()=>{this.runAnalysis()},300);async runAnalysis(){if(this.pendingAnalysis||this.dirtyVersos.size===0)return;this.pendingAnalysis=!0;let r=[...this.dirtyVersos];this.eventBus.emit("analysis:start",{versos:r});try{let o=Math.max(...this.textosVersos.keys(),0),d=Jr(this.forma,o),c=r.map((f)=>{let n=oo(this.forma,f,o);return{numero:f,texto:this.textosVersos.get(f)||"",hiatoForzado:this.hiatosForzados.get(f)||[],opts:n}}),i=await this.analyzer.analyze({type:"ANALYZE",payload:{versos:c}});for(let[f,n]of i.payload)this.lastAnalysis.set(f,n);let h=[...this.textosVersos.keys()].sort((f,n)=>f-n).map((f)=>({id:String(f),numero:f,texto:this.textosVersos.get(f)||"",analysis:this.lastAnalysis.get(f)}));this.lastEsquema=this.schemeEngine.detectarEsquema(h,{tipoRima:this.forma.tipoRima,forma:this.forma.id,grupos:d}),this.eventBus.emit("analysis:complete",{analysis:this.lastAnalysis,esquema:this.lastEsquema}),this.dirtyVersos.clear()}catch(o){console.error("[AnalysisService] Error en análisis:",o),this.eventBus.emit("ui:toast",{message:"Error al analizar el verso",level:"error"})}finally{this.pendingAnalysis=!1}}loadVersos(r){for(let o of r)this.textosVersos.set(o.numero,o.texto),this.dirtyVersos.add(o.numero);this.scheduleAnalysis()}reset(){this.lastAnalysis.clear(),this.textosVersos.clear(),this.hiatosForzados.clear(),this.dirtyVersos.clear(),this.lastEsquema=void 0}getAnalysis(r){return this.lastAnalysis.get(r)}getEsquema(){return this.lastEsquema}forceReanalyze(){for(let r of this.textosVersos.keys())this.dirtyVersos.add(r);this.scheduleAnalysis()}destroy(){this.analyzer.terminate()}}class o0{storage;eventBus;dirtyVersos=new Set;lastSoneto=null;getCurrentSoneto;constructor(r,o,d){this.eventBus=r,this.storage=o,this.getCurrentSoneto=d,this.eventBus.on("verso:input",({numero:c})=>{this.dirtyVersos.add(c)}),this.eventBus.on("verso:blur",()=>{this.flush()}),window.addEventListener("beforeunload",()=>{this.flush(!0)}),setInterval(()=>{if(this.dirtyVersos.size>0)this.flush()},30000)}flush(r=!1){if(this.dirtyVersos.size===0)return;let o=this.getCurrentSoneto();if(o){if(r)try{let d=JSON.stringify({soneto:o,savedAt:Date.now()});localStorage.setItem("el-taller:soneto-actual",d)}catch{}else this.storage.autoSave(o);this.lastSoneto=o}this.dirtyVersos.clear()}saveNow(){this.flush()}destroy(){this.flush()}}function mo(r){let o="";for(let d of r){let c=d.charCodeAt(0);if(c===40||c===41||c===92)o+="\\"+d;else if(c>=32&&c<=126)o+=d;else if(c>=161&&c<=255)o+="\\"+c.toString(8);else o+="?"}return o}var Kr=595.28,to=841.89,Hr=72,d0=Kr/2;function bo(r,o,d){let c=r.length*d*0.55,i=d0-c/2;return`1 0 0 1 ${Math.max(Hr,Math.min(i,Kr-Hr-c)).toFixed(2)} ${o.toFixed(2)} Tm
+(${mo(r)}) Tj`}function hd(r){let o=C(r.forma??"soneto"),d=r.versos.map((i,g)=>({id:String(g+1),numero:g+1,texto:i.texto})),c=dr(o,d);if(o.modo==="serie"){let i=c.flatMap((h)=>h.versos.map((f)=>f.texto)).filter((h)=>h.trim()),g=[];for(let h=0;h<i.length;h+=4)g.push(i.slice(h,h+4));return g.filter((h)=>h.length>0)}if(o.modo==="estrofa"){if(o.estrofas.length<=1)return c.map((n)=>n.versos.map((k)=>k.texto).filter((k)=>k.trim())).filter((n)=>n.length>0);let i=c[0],g=c.slice(1),h=i?.versos.map((n)=>n.texto).filter((n)=>n.trim())??[],f=[];if(h.length>0)f.push(h);for(let n of g){let k=n.versos.map((b)=>b.texto).filter((b)=>b.trim());if(k.length>0)f.push(k);if(h.length>0)f.push(h)}return f}return c.map((i)=>i.versos.map((g)=>g.texto).filter((g)=>g.trim())).filter((i)=>i.length>0)}function fd(r){let o=[],d=(k)=>o.push(k),c=to-85;if(r.titulo)d("BT"),d("/F1 18 Tf"),d(bo(r.titulo,c,18)),d("ET"),c-=30,d("q"),d("0.5 w"),d(`${Hr} ${c} m`),d(`${Kr-Hr} ${c} l`),d("S"),d("Q"),c-=16;let i=hd(r);for(let k=0;k<i.length;k++){let b=i[k];if(k>0){c-=10,d("BT"),d("/F1 9 Tf");let t=d0-18;d(`1 0 0 1 ${t.toFixed(2)} ${c.toFixed(2)} Tm`),d("(*   *   *) Tj"),d("ET"),c-=18}d("BT"),d("/F1 12 Tf");for(let t of b){let _=t.trim()||"·";d(bo(_,c,12)),c-=18}d("ET")}d("BT"),d("/F1 9 Tf");let g=60,h="-- El Taller",f=h.length*9*0.55,n=d0-f/2;return d(`1 0 0 1 ${n.toFixed(2)} ${g.toFixed(2)} Tm`),d(`(${mo(h)}) Tj`),d("ET"),o.join(`
+`)}function wo(r){let o=fd(r),d=o.length,c={};c[1]="<< /Type /Catalog /Pages 2 0 R >>",c[2]="<< /Type /Pages /Kids [3 0 R] /Count 1 >>",c[3]=`<< /Type /Page /Parent 2 0 R
+   /MediaBox [0 0 ${Kr} ${to}]
    /Contents 4 0 R
-   /Resources << /Font << /F1 5 0 R >> >> >>`,d[4]=`<< /Length ${k} >>
+   /Resources << /Font << /F1 5 0 R >> >> >>`,c[4]=`<< /Length ${d} >>
 stream
-${f}
-endstream`,d[5]="<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman /Encoding /WinAnsiEncoding >>";let z=Object.keys(d).map(Number).sort((Y,Q)=>Y-Q),$=`%PDF-1.4
-`,B={};for(let Y of z)B[Y]=$.length,$+=`${Y} 0 obj
-${d[Y]}
+${o}
+endstream`,c[5]="<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman /Encoding /WinAnsiEncoding >>";let i=Object.keys(c).map(Number).sort((k,b)=>k-b),g=`%PDF-1.4
+`,h={};for(let k of i)h[k]=g.length,g+=`${k} 0 obj
+${c[k]}
 endobj
-`;let g=$.length,Z=z.length+1;$+=`xref
-`,$+=`0 ${Z}
-`,$+=`0000000000 65535 f 
-`;for(let Y of z)$+=`${String(B[Y]).padStart(10,"0")} 00000 n 
-`;return $+=`trailer
-`,$+=`<< /Size ${Z} /Root 1 0 R >>
-`,$+=`startxref
-`,$+=`${g}
-`,$+="%%EOF",new TextEncoder().encode($)}class d1{formatAsText(h){let f=b(h.forma),k=[];if(h.titulo)k.push(`${h.titulo}
-${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let z=d.map(($)=>$.versos.map((B)=>B.texto).join(`
+`;let f=g.length,n=i.length+1;g+=`xref
+`,g+=`0 ${n}
+`,g+=`0000000000 65535 f 
+`;for(let k of i)g+=`${String(h[k]).padStart(10,"0")} 00000 n 
+`;return g+=`trailer
+`,g+=`<< /Size ${n} /Root 1 0 R >>
+`,g+=`startxref
+`,g+=`${f}
+`,g+="%%EOF",new TextEncoder().encode(g)}class c0{formatAsText(r){let o=C(r.forma),d=[];if(r.titulo)d.push(`${r.titulo}
+${"═".repeat(r.titulo.length)}`);let c=dr(o,r.versos);if(o.modo==="serie"){let i=c.map((g)=>g.versos.map((h)=>h.texto).join(`
 `)).join(`
-`);if(z)k.push(z);return k.join(`
+`);if(i)d.push(i);return d.join(`
 
-`)}if(f.modo==="estrofa"){let z=d[0],$=d.slice(1),B=z?.versos.map((g)=>g.texto).join(`
-`)||"";if(B)k.push(B);for(let g of $){let Z=g.versos.map((Y)=>Y.texto).join(`
-`);if(Z)k.push(Z);if(B)k.push(B)}return k.join(`
+`)}if(o.modo==="estrofa"){if(o.estrofas.length<=1){for(let f of c){let n=f.versos.map((k)=>k.texto).join(`
+`);if(n)d.push(n)}return d.join(`
 
-`)}for(let z of d){let $=z.versos.map((B)=>B.texto).join(`
-`);if($)k.push($)}return k.join(`
+`)}let i=c[0],g=c.slice(1),h=i?.versos.map((f)=>f.texto).join(`
+`)||"";if(h)d.push(h);for(let f of g){let n=f.versos.map((k)=>k.texto).join(`
+`);if(n)d.push(n);if(h)d.push(h)}return d.join(`
 
-`)}exportToTxt(h){let f=this.formatAsText(h),k=new Blob([f],{type:"text/plain;charset=utf-8"}),d=URL.createObjectURL(k),z=document.createElement("a");z.href=d,z.download=this.getFileName(h),z.click(),URL.revokeObjectURL(d)}exportToPdf(h){let f=Jh(h),k=new Blob([f.buffer],{type:"application/pdf"}),d=URL.createObjectURL(k),z=document.createElement("a");z.href=d,z.download=this.getFileName(h).replace(/\.txt$/,".pdf"),z.click(),URL.revokeObjectURL(d)}async copyToClipboard(h){try{let f=this.formatAsText(h);return await navigator.clipboard.writeText(f),!0}catch{try{let f=document.createElement("textarea");return f.value=this.formatAsText(h),f.style.position="fixed",f.style.opacity="0",document.body.appendChild(f),f.select(),document.execCommand("copy"),document.body.removeChild(f),!0}catch{return!1}}}getFileName(h){if(h.titulo)return`${h.titulo.toLowerCase().replace(/[^a-záéíóúüñ\s]/g,"").trim().replace(/\s+/g,"-").slice(0,50)||"poema"}.txt`;return`poema-${new Date(h.createdAt).toISOString().slice(0,10)}.txt`}}class z1 extends H{constructor(){super(...arguments);this.numero=1;this.texto="";this.isActive=!1}static styles=W`
+`)}for(let i of c){let g=i.versos.map((h)=>h.texto).join(`
+`);if(g)d.push(g)}return d.join(`
+
+`)}exportToTxt(r){let o=this.formatAsText(r),d=new Blob([o],{type:"text/plain;charset=utf-8"}),c=URL.createObjectURL(d),i=document.createElement("a");i.href=c,i.download=this.getFileName(r),i.click(),URL.revokeObjectURL(c)}exportToPdf(r){let o=wo(r),d=new Blob([o.buffer],{type:"application/pdf"}),c=URL.createObjectURL(d),i=document.createElement("a");i.href=c,i.download=this.getFileName(r).replace(/\.txt$/,".pdf"),i.click(),URL.revokeObjectURL(c)}async copyToClipboard(r){try{let o=this.formatAsText(r);return await navigator.clipboard.writeText(o),!0}catch{try{let o=document.createElement("textarea");return o.value=this.formatAsText(r),o.style.position="fixed",o.style.opacity="0",document.body.appendChild(o),o.select(),document.execCommand("copy"),document.body.removeChild(o),!0}catch{return!1}}}getFileName(r){if(r.titulo)return`${r.titulo.toLowerCase().replace(/[^a-záéíóúüñ\s]/g,"").trim().replace(/\s+/g,"-").slice(0,50)||"poema"}.txt`;return`poema-${new Date(r.createdAt).toISOString().slice(0,10)}.txt`}}class i0 extends y{constructor(){super(...arguments);this.numero=1;this.texto="";this.isActive=!1}static styles=B`
     :host {
       display: block;
       width: 100%;
@@ -54,29 +57,34 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     .verso-container {
       display: flex;
       align-items: flex-start;
-      gap: 0.5rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.15s ease;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+      position: relative;
     }
 
     .verso-container:hover {
-      background: rgba(139, 69, 19, 0.04);
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.04), rgba(139, 69, 19, 0.06), rgba(139, 69, 19, 0.04));
     }
 
     .verso-container--active {
-      background: rgba(139, 69, 19, 0.06);
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.06), rgba(139, 69, 19, 0.09), rgba(139, 69, 19, 0.06));
+      box-shadow: inset 0 0 0 1px rgba(139, 69, 19, 0.08);
     }
 
     .verso-numero {
-      font-size: 0.75rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-metrica);
+      color: var(--color-ink-muted);
       width: 1.5rem;
       text-align: right;
       flex-shrink: 0;
       padding-top: 0.35em;
       user-select: none;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
 
     .verso-line-wrapper {
@@ -85,10 +93,10 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .verso-editor {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      font-family: 'Crimson Text', Georgia, serif;
-      color: #2C1810;
+      font-size: var(--font-size-verso);
+      line-height: var(--line-height-verso);
+      font-family: var(--font-serif);
+      color: var(--color-ink);
       background: transparent;
       border-bottom: 1px solid transparent;
       min-height: 1.6em;
@@ -97,40 +105,98 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       overflow-x: auto;
       overflow-y: hidden;
       cursor: text;
-      transition: border-color 0.15s ease;
+      transition: border-color var(--duration-fast) var(--ease-out);
+      text-shadow: 0.3px 0 0 rgba(44, 24, 16, 0.04);
+      position: relative;
     }
 
     .verso-editor:focus {
-      border-bottom-color: #A0522D;
+      border-bottom-color: var(--color-accent-light);
+      outline: none;
+    }
+
+    .verso-editor:focus::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent), var(--color-accent-light));
+      background-size: 200% 100%;
+      animation: underline-shimmer 1.2s var(--ease-in-out);
+    }
+
+    @keyframes underline-shimmer {
+      from { background-position: 100% 0; }
+      to { background-position: -100% 0; }
+    }
+
+    .verso-editor:empty::before {
+      content: 'escribe el verso…';
+      color: var(--color-ink-faint);
+      font-style: italic;
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     .verso-metrica {
-      font-size: 0.75rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-metrica);
+      color: var(--color-ink-muted);
       margin-top: 0.15em;
-      padding-left: 0.5rem;
+      padding-left: var(--spacing-sm);
       min-height: 1.2em;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
     }
 
     .verso-metrica--ok {
-      color: #6B8E23;
+      color: var(--color-success);
     }
 
     .verso-metrica--error {
-      color: #CD5C5C;
+      color: var(--color-error);
+    }
+
+    .verso-metrica--warning {
+      color: var(--color-warning);
     }
 
     .verso-estado {
-      font-size: 0.625rem;
-      width: 1rem;
+      font-size: var(--font-size-micro);
+      width: 1.2rem;
       text-align: center;
       flex-shrink: 0;
       padding-top: 0.5em;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .verso-estado--ok {
+      color: var(--color-success);
+      animation: pop-success var(--duration-slow) var(--ease-spring);
+    }
+
+    .verso-estado--error {
+      color: var(--color-error);
+      animation: pop-error var(--duration-normal) var(--ease-out);
+    }
+
+    @keyframes pop-success {
+      0% { transform: scale(0.6); opacity: 0; }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pop-error {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      75% { transform: translateX(2px); }
     }
 
     @media (max-width: 767px) {
-      /* En móvil los versos deben poder envolver en lugar de scroll infinito */
       .verso-editor {
         white-space: normal;
         overflow-wrap: break-word;
@@ -138,6 +204,10 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         overflow-x: visible;
         font-size: 1.0625rem;
         line-height: 1.5;
+      }
+
+      .verso-editor:focus::after {
+        display: none;
       }
 
       .verso-container {
@@ -154,7 +224,16 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         font-size: 0.7rem;
       }
     }
-  `;firstUpdated(){this.actualizarTextoEnDOM()}updated(h){if(h.has("texto")&&this.editorRef)this.actualizarTextoEnDOM()}actualizarTextoEnDOM(){if(!this.editorRef)return;let h=this.texto||"";if(this.editorRef.textContent!==h)this.editorRef.textContent=h}render(){let h=this.getEstadoClass();return c`
+
+    @media (prefers-reduced-motion: reduce) {
+      .verso-editor:focus::after {
+        animation: none;
+      }
+      .verso-estado--ok, .verso-estado--error {
+        animation: none;
+      }
+    }
+  `;firstUpdated(){this.actualizarTextoEnDOM()}updated(r){if(r.has("texto")&&this.editorRef)this.actualizarTextoEnDOM()}actualizarTextoEnDOM(){if(!this.editorRef)return;let r=this.texto||"";if(this.editorRef.textContent!==r)this.editorRef.textContent=r}render(){let r=this.getEstadoClass(),o=this.analysis&&this.texto.trim(),d=o&&this.analysis.errores.length>0;return a`
       <div class="verso-container ${this.isActive?"verso-container--active":""}">
         <span class="verso-numero">${this.numero}</span>
         <div class="verso-line-wrapper">
@@ -167,15 +246,15 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
                role="textbox"
                aria-label="Verso ${this.numero}">
           </div>
-          <div class="verso-metrica ${h}">
+          <div class="verso-metrica ${r}">
             ${this.renderMetrica()}
           </div>
         </div>
-        <div class="verso-estado ${h}">
-          ${this.renderEstado()}
+        <div class="verso-estado ${r}">
+          ${o?d?a`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`:a`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`:""}
         </div>
       </div>
-    `}getEstadoClass(){if(!this.analysis||!this.texto.trim())return"";if(this.analysis.errores.length>0)return"verso-metrica--error";return"verso-metrica--ok"}renderMetrica(){if(!this.analysis||!this.texto.trim())return"";let h=[];if(h.push(`${this.analysis.numSilabasMetricas} síl.`),this.analysis.tipoVerso&&this.analysis.tipoVerso!=="no_endecasilabo")h.push(`· ${this.analysis.tipoVerso}`);if(this.analysis.errores.length>0)h.push(`· ${this.analysis.errores[0].mensaje}`);return h.join(" ")}renderEstado(){if(!this.analysis||!this.texto.trim())return"";if(this.analysis.errores.length>0)return"✗";return"✓"}onInput(){let h=this.editorRef.textContent||"";this.dispatchEvent(new CustomEvent("verso-input",{detail:{numero:this.numero,texto:h},bubbles:!0,composed:!0}))}onBlur(){this.dispatchEvent(new CustomEvent("verso-blur",{detail:{numero:this.numero},bubbles:!0,composed:!0}))}onFocus(){this.dispatchEvent(new CustomEvent("verso-focus",{detail:{numero:this.numero},bubbles:!0,composed:!0}))}onKeyDown(h){if(h.key==="Enter")h.preventDefault()}}X([J({type:Number})],z1.prototype,"numero",void 0),X([J({type:String})],z1.prototype,"texto",void 0),X([J({type:Object})],z1.prototype,"analysis",void 0),X([J({type:Boolean})],z1.prototype,"isActive",void 0),X([s1(".verso-editor")],z1.prototype,"editorRef",void 0),z1=X([y("verso-line")],z1);class $1 extends H{constructor(){super(...arguments);this.estrategia="";this.open=!1}static styles=W`
+    `}getEstadoClass(){if(!this.analysis||!this.texto.trim())return"";if(this.analysis.errores.length>0)return"verso-metrica--error";if(this.analysis.advertencias&&this.analysis.advertencias.length>0)return"verso-metrica--warning";return"verso-metrica--ok"}renderMetrica(){if(!this.analysis||!this.texto.trim())return"";let r=[];if(r.push(`${this.analysis.numSilabasMetricas} síl.`),this.analysis.tipoVerso&&this.analysis.tipoVerso!=="no_endecasilabo")r.push(`· ${this.analysis.tipoVerso}`);if(this.analysis.errores.length>0)r.push(`· ${this.analysis.errores[0].mensaje}`);else if(this.analysis.advertencias&&this.analysis.advertencias.length>0)r.push(`· ${this.analysis.advertencias[0].mensaje}`);return r.join(" ")}renderEstado(){if(!this.analysis||!this.texto.trim())return"";if(this.analysis.errores.length>0)return"✗";return"✓"}onInput(){let r=this.editorRef.textContent||"";this.dispatchEvent(new CustomEvent("verso-input",{detail:{numero:this.numero,texto:r},bubbles:!0,composed:!0}))}onBlur(){this.dispatchEvent(new CustomEvent("verso-blur",{detail:{numero:this.numero},bubbles:!0,composed:!0}))}onFocus(){this.dispatchEvent(new CustomEvent("verso-focus",{detail:{numero:this.numero},bubbles:!0,composed:!0}))}onKeyDown(r){if(r.key==="Enter")r.preventDefault()}}x([m({type:Number})],i0.prototype,"numero",void 0),x([m({type:String})],i0.prototype,"texto",void 0),x([m({type:Object})],i0.prototype,"analysis",void 0),x([m({type:Boolean})],i0.prototype,"isActive",void 0),x([e0(".verso-editor")],i0.prototype,"editorRef",void 0),i0=x([Y("verso-line")],i0);class g0 extends y{constructor(){super(...arguments);this.estrategia="";this.open=!1}static styles=B`
     :host {
       display: block;
       width: 100%;
@@ -190,26 +269,30 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.7rem;
-      font-family: 'Crimson Text', Georgia, serif;
-      color: #A0522D;
+      font-size: var(--font-size-metrica);
+      font-family: var(--font-display);
+      font-weight: 500;
+      color: var(--color-accent-light);
       cursor: pointer;
       user-select: none;
       padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.15s ease;
+      border-radius: var(--radius-sm);
+      transition: background-color var(--duration-fast) var(--ease-out);
       border: none;
       background: transparent;
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-wide);
     }
 
     .estrategia-toggle:hover {
-      background: rgba(139, 69, 19, 0.08);
+      background: linear-gradient(180deg, rgba(139, 69, 19, 0.06), rgba(139, 69, 19, 0.1));
+      color: var(--color-accent);
     }
 
-    .estrategia-toggle .arrow {
-      font-size: 0.6rem;
-      transition: transform 0.2s ease;
+    .estrategia-toggle svg {
+      transition: transform var(--duration-normal) var(--ease-out);
       display: inline-block;
+      flex-shrink: 0;
     }
 
     .estrategia-toggle .arrow--open {
@@ -218,7 +301,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
 
     .estrategia-body {
       overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease;
+      transition: max-height var(--duration-slow) var(--ease-out), opacity var(--duration-normal) var(--ease-out), margin-top var(--duration-normal) var(--ease-out);
       max-height: 0;
       opacity: 0;
       margin-top: 0;
@@ -234,36 +317,43 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       width: 100%;
       min-height: 72px;
       padding: 0.6rem 0.75rem;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.875rem;
-      line-height: 1.55;
-      color: #5C4033;
-      background: rgba(232, 213, 176, 0.35);
-      border: 1px dashed rgba(139, 69, 19, 0.2);
-      border-radius: 6px;
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
+      line-height: var(--line-height-snug);
+      color: var(--color-ink-soft);
+      background: linear-gradient(180deg, rgba(232, 213, 176, 0.3), rgba(232, 213, 176, 0.42));
+      background-image: var(--texture-paper), linear-gradient(180deg, rgba(232, 213, 176, 0.3), rgba(232, 213, 176, 0.42));
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border: 1px dashed rgba(139, 69, 19, 0.25);
+      border-radius: var(--radius-md);
       resize: vertical;
       outline: none;
       box-sizing: border-box;
       font-style: italic;
-      transition: border-color 0.15s ease, background-color 0.15s ease;
+      transition: border-color var(--duration-normal) var(--ease-out), background-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+      box-shadow: var(--shadow-inset);
     }
 
     .estrategia-textarea:focus {
-      border-color: rgba(160, 82, 45, 0.45);
-      background: rgba(232, 213, 176, 0.55);
+      border-color: rgba(160, 82, 45, 0.5);
+      background: linear-gradient(180deg, rgba(232, 213, 176, 0.45), rgba(232, 213, 176, 0.55));
+      background-image: var(--texture-paper), linear-gradient(180deg, rgba(232, 213, 176, 0.45), rgba(232, 213, 176, 0.55));
+      background-blend-mode: soft-light, normal;
       border-style: solid;
+      box-shadow: var(--shadow-inset), 0 0 0 2px rgba(139, 69, 19, 0.08);
     }
 
     .estrategia-textarea::placeholder {
-      color: #B8A88A;
+      color: var(--color-ink-faint);
       font-style: italic;
     }
-  `;render(){return c`
+  `;render(){return a`
       <div class="estrategia-container">
         <button class="estrategia-toggle" @click=${this.toggle} aria-label="Mostrar/ocultar estrategia del poema">
-          <span class="arrow ${this.open?"arrow--open":""}">▸</span>
+          <svg class="arrow ${this.open?"arrow--open":""}" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           Estrategia del poema
-          ${!this.open&&this.estrategia.trim()?c`<span style="color:#8B7D6B">— ${this.truncate(this.estrategia)}</span>`:""}
+          ${!this.open&&this.estrategia.trim()?a`<span style="color:var(--color-ink-muted); font-weight: 400; text-transform: none; letter-spacing: normal; font-family: var(--font-serif); font-style: italic; font-size: var(--font-size-caption);">— ${this.truncate(this.estrategia)}</span>`:""}
         </button>
 
         <div class="estrategia-body ${this.open?"estrategia-body--open":""}">
@@ -276,7 +366,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           ></textarea>
         </div>
       </div>
-    `}toggle(){this.open=!this.open}truncate(h){return h.length>55?h.slice(0,55)+"…":h}onInput(h){let f=h.target;this.dispatchEvent(new CustomEvent("estrategia-change",{detail:{estrategia:f.value},bubbles:!0,composed:!0}))}}X([J({type:String})],$1.prototype,"estrategia",void 0),X([J({type:Boolean})],$1.prototype,"open",void 0),$1=X([y("estrategia-line")],$1);class B1 extends H{constructor(){super(...arguments);this.forma={id:"soneto"};this.versos=[];this.titulo="";this.estrategia="";this.activeVerso=null}static styles=W`
+    `}toggle(){this.open=!this.open}truncate(r){return r.length>55?r.slice(0,55)+"…":r}onInput(r){let o=r.target;this.dispatchEvent(new CustomEvent("estrategia-change",{detail:{estrategia:o.value},bubbles:!0,composed:!0}))}}x([m({type:String})],g0.prototype,"estrategia",void 0),x([m({type:Boolean})],g0.prototype,"open",void 0),g0=x([Y("estrategia-line")],g0);class h0 extends y{constructor(){super(...arguments);this.forma={id:"soneto"};this.versos=[];this.titulo="";this.estrategia="";this.activeVerso=null}static styles=B`
     :host {
       display: block;
       width: 100%;
@@ -287,116 +377,167 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .parte-container {
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--spacing-lg);
     }
 
     .parte-label {
-      font-size: 0.6875rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-caption);
+      color: var(--color-ink-muted);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-      padding-left: 0.5rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: var(--letter-spacing-caps);
+      margin-bottom: var(--spacing-sm);
+      padding-left: var(--spacing-sm);
+      font-family: var(--font-display);
+      font-weight: 500;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       flex-wrap: wrap;
+      position: relative;
+    }
+
+    .parte-label::before {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 0.85em;
+      background: linear-gradient(180deg, var(--color-accent), var(--color-accent-light));
+      border-radius: 2px;
+      margin-right: var(--spacing-xs);
     }
 
     .parte-label__tag {
       text-transform: none;
-      letter-spacing: 0.02em;
+      letter-spacing: var(--letter-spacing-display);
       font-style: italic;
-      color: #A0522D;
+      color: var(--color-accent-light);
+      font-weight: 400;
+      font-size: var(--font-size-micro);
     }
 
     .parte-separator {
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        #8B7D6B 20%,
-        #8B7D6B 80%,
-        transparent
-      );
-      margin: 1.5rem 0;
-      opacity: 0.3;
+      height: 24px;
+      background:
+        radial-gradient(circle, var(--color-ink-muted) 1px, transparent 1.5px) center / 5px 5px no-repeat,
+        linear-gradient(to right, transparent, rgba(139, 69, 19, 0.18) 25%, rgba(139, 69, 19, 0.22) 50%, rgba(139, 69, 19, 0.18) 75%, transparent);
+      margin: var(--spacing-lg) 0;
+      opacity: 0.6;
+      position: relative;
+    }
+
+    .parte-separator::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      background:
+        radial-gradient(circle at 35% 50%, var(--color-ink-muted) 0.7px, transparent 1.2px),
+        radial-gradient(circle at 65% 50%, var(--color-ink-muted) 0.7px, transparent 1.2px),
+        radial-gradient(circle at 50% 35%, var(--color-accent) 1px, transparent 1.6px),
+        radial-gradient(circle at 50% 65%, var(--color-accent) 1px, transparent 1.6px);
+      background-repeat: no-repeat;
     }
 
     .editor-header {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .editor-title {
-      font-size: 1.25rem;
+      font-size: var(--font-size-h2);
       font-weight: 600;
-      color: #2C1810;
-      font-family: 'Crimson Text', Georgia, serif;
+      color: var(--color-ink);
+      font-family: var(--font-display);
     }
 
     .titulo-input {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 1.25rem;
-      color: #2C1810;
+      font-family: var(--font-display);
+      font-size: var(--font-size-h1);
+      font-weight: 600;
+      color: var(--color-ink);
       background: transparent;
       border: none;
       border-bottom: 1px solid rgba(44, 24, 16, 0.2);
       padding: 0.25rem 0.5rem;
       flex: 1;
       min-width: 200px;
+      text-align: center;
       outline: none;
-      transition: border-color 0.15s ease;
+      transition: border-color var(--duration-normal) var(--ease-out);
+      letter-spacing: var(--letter-spacing-display);
     }
 
     .titulo-input:focus {
-      border-bottom-color: #A0522D;
+      border-bottom-color: var(--color-accent);
+      border-bottom-width: 2px;
+      margin-bottom: -1px;
     }
 
     .titulo-input::placeholder {
-      color: #8B7D6B;
+      color: var(--color-ink-faint);
       font-style: italic;
+      font-weight: 400;
     }
 
     .editor-meta {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       flex-wrap: wrap;
-      margin-bottom: 1.25rem;
+      margin-bottom: var(--spacing-lg);
+      justify-content: center;
     }
 
     .forma-badge {
-      font-size: 0.6875rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-size: var(--font-size-caption);
+      font-family: var(--font-display);
       font-weight: 600;
-      color: #FFF8EC;
-      background: #8B4513;
-      padding: 0.2rem 0.6rem;
-      border-radius: 10px;
-      letter-spacing: 0.04em;
+      color: var(--color-parchment-light);
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: var(--letter-spacing-caps);
       text-transform: uppercase;
+      box-shadow: var(--elevation-1);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2xs);
+    }
+
+    .forma-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255, 248, 236, 0.7);
+      flex-shrink: 0;
     }
 
     .esquema-badge {
-      font-size: 0.6875rem;
-      font-family: 'Crimson Text', Georgia, serif;
-      color: #A0522D;
-      background: rgba(139, 69, 19, 0.08);
+      font-size: var(--font-size-caption);
+      font-family: var(--font-mono);
+      color: var(--color-accent-light);
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(139, 69, 19, 0.05));
       padding: 0.2rem 0.6rem;
-      border-radius: 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(139, 69, 19, 0.15);
+      letter-spacing: var(--letter-spacing-wide);
     }
 
     .editor-controls {
       display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .control-btn {
@@ -404,25 +545,36 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       align-items: center;
       gap: 0.3rem;
       padding: 0.4rem 0.85rem;
-      border-radius: 6px;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.8125rem;
-      color: #5C4033;
-      background: rgba(139, 69, 19, 0.06);
+      border-radius: var(--radius-md);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
+      color: var(--color-ink-soft);
+      background: linear-gradient(180deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.04));
       border: 1px solid rgba(44, 24, 16, 0.15);
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+      box-shadow: var(--elevation-1);
     }
 
     .control-btn:hover:not(:disabled) {
-      background: rgba(139, 69, 19, 0.12);
-      color: #8B4513;
+      background: linear-gradient(180deg, rgba(139, 69, 19, 0.14), rgba(139, 69, 19, 0.08));
+      color: var(--color-accent);
       border-color: rgba(139, 69, 19, 0.35);
+      transform: translateY(-1px);
+      box-shadow: var(--elevation-2);
+    }
+
+    .control-btn:active:not(:disabled) {
+      transform: translateY(-1px) scale(0.96);
     }
 
     .control-btn:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+    }
+
+    .control-btn svg {
+      flex-shrink: 0;
     }
 
     @media (max-width: 767px) {
@@ -448,7 +600,13 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         justify-content: center;
       }
     }
-  `;render(){let h=f0(this.forma,this.versos);return c`
+
+    @media (prefers-reduced-motion: reduce) {
+      .control-btn:hover:not(:disabled) {
+        transform: none;
+      }
+    }
+  `;render(){let r=dr(this.forma,this.versos);return a`
       <div class="editor-section">
         <div class="editor-header">
           <input
@@ -463,7 +621,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
 
         <div class="editor-meta">
           <span class="forma-badge">${this.forma.nombre}</span>
-          ${this.forma.esquemaReferencia?c`<span class="esquema-badge">${this.forma.esquemaReferencia}</span>`:""}
+          ${this.forma.esquemaReferencia?a`<span class="esquema-badge">${this.forma.esquemaReferencia}</span>`:""}
           <span class="esquema-badge">${this.forma.medidaDescripcion}</span>
         </div>
 
@@ -472,18 +630,18 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           @estrategia-change=${this.onEstrategiaChange}
         ></estrategia-line>
 
-        ${h.map((f,k)=>c`
+        ${r.map((o,d)=>a`
           <div class="parte-container">
             <div class="parte-label">
-              ${f.nombre}
-              ${f.tipo==="estribillo"?c`<span class="parte-label__tag">(se repite tras cada copla)</span>`:""}
+              ${o.nombre}
+              ${o.tipo==="estribillo"?a`<span class="parte-label__tag">(se repite tras cada copla)</span>`:""}
             </div>
-            ${f.versos.map((d)=>c`
+            ${o.versos.map((c)=>a`
               <verso-line
-                .numero=${d.numero}
-                .texto=${d.texto||""}
-                .analysis=${d.analysis}
-                .isActive=${this.activeVerso===d.numero}
+                .numero=${c.numero}
+                .texto=${c.texto||""}
+                .analysis=${c.analysis}
+                .isActive=${this.activeVerso===c.numero}
                 @verso-input=${this.onVersoInput}
                 @verso-blur=${this.onVersoBlur}
                 @verso-focus=${this.onVersoFocus}
@@ -491,53 +649,59 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
               ></verso-line>
             `)}
           </div>
-          ${k<h.length-1?c`<div class="parte-separator"></div>`:""}
+          ${d<r.length-1?a`<div class="parte-separator"></div>`:""}
         `)}
 
         ${this.renderControls()}
       </div>
-    `}renderControls(){if(this.forma.modo==="serie"){let{min:h,max:f}=n0(this.forma),k=this.versos.length;return c`
+    `}renderControls(){if(this.forma.modo==="serie"){let{min:r,max:o}=ur(this.forma),d=this.versos.length;return a`
         <div class="editor-controls">
-          <button class="control-btn" ?disabled=${k>=f} @click=${this.onVersoAdd} title="Añadir un verso">
-            ＋ verso
+          <button class="control-btn" ?disabled=${d>=o} @click=${this.onVersoAdd} title="Añadir un verso">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            verso
           </button>
-          <button class="control-btn" ?disabled=${k<=h} @click=${this.onVersoRemove} title="Quitar el último verso">
-            − verso
+          <button class="control-btn" ?disabled=${d<=r} @click=${this.onVersoRemove} title="Quitar el último verso">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            verso
           </button>
         </div>
-      `}if(this.forma.modo==="estrofa"){let{max:h}=n0(this.forma),f=this.versos.length,k=this.forma.versosIniciales;return c`
+      `}if(this.forma.modo==="estrofa"){let{max:r}=ur(this.forma),o=this.versos.length,d=this.forma.versosIniciales,i=(this.forma.estrofas[this.forma.estrofas.length-1]?.nombre??"estrofa").toLowerCase();return a`
         <div class="editor-controls">
-          <button class="control-btn" ?disabled=${f>=h} @click=${this.onEstrofaAdd} title="Añadir una copla (mudanza + vuelta)">
-            ＋ estrofa
+          <button class="control-btn" ?disabled=${o>=r} @click=${this.onEstrofaAdd} title="Añadir ${i}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            estrofa
           </button>
-          <button class="control-btn" ?disabled=${f<=k} @click=${this.onEstrofaRemove} title="Quitar la última copla">
-            − estrofa
+          <button class="control-btn" ?disabled=${o<=d} @click=${this.onEstrofaRemove} title="Quitar la última ${i}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            estrofa
           </button>
         </div>
-      `}return c``}getVerso(h){return this.versos.find((f)=>f.numero===h)}onTituloInput(h){let f=h.target;this.dispatchEvent(new CustomEvent("titulo-change",{detail:{titulo:f.value},bubbles:!0,composed:!0}))}onEstrategiaChange(h){h.stopPropagation();let{estrategia:f}=h.detail;this.dispatchEvent(new CustomEvent("estrategia-change",{detail:{estrategia:f},bubbles:!0,composed:!0}))}onVersoInput(h){h.stopPropagation();let{numero:f,texto:k}=h.detail;this.dispatchEvent(new CustomEvent("verso-input",{detail:{numero:f,texto:k},bubbles:!0,composed:!0}))}onVersoBlur(h){h.stopPropagation(),this.dispatchEvent(new CustomEvent("verso-blur",{detail:h.detail,bubbles:!0,composed:!0}))}onVersoFocus(h){h.stopPropagation();let{numero:f}=h.detail;this.activeVerso=f,this.dispatchEvent(new CustomEvent("verso-focus",{detail:{numero:f},bubbles:!0,composed:!0}))}onHiatoToggle(h){h.stopPropagation(),this.dispatchEvent(new CustomEvent("hiato-toggle",{detail:h.detail,bubbles:!0,composed:!0}))}onVersoAdd(){this.dispatchEvent(new CustomEvent("verso-add",{bubbles:!0,composed:!0}))}onVersoRemove(){this.dispatchEvent(new CustomEvent("verso-remove",{bubbles:!0,composed:!0}))}onEstrofaAdd(){this.dispatchEvent(new CustomEvent("estrofa-add",{bubbles:!0,composed:!0}))}onEstrofaRemove(){this.dispatchEvent(new CustomEvent("estrofa-remove",{bubbles:!0,composed:!0}))}focusVerso(h){this.activeVerso=h,this.shadowRoot?.querySelector(`verso-line[numero="${h}"]`)?.querySelector("[contenteditable]")?.focus()}}X([J({type:Object})],B1.prototype,"forma",void 0),X([J({type:Array})],B1.prototype,"versos",void 0),X([J({type:String})],B1.prototype,"titulo",void 0),X([J({type:String})],B1.prototype,"estrategia",void 0),X([J({type:Number})],B1.prototype,"activeVerso",void 0),X([a1("verso-line")],B1.prototype,"versoLines",void 0),B1=X([y("soneto-editor")],B1);class g1 extends H{constructor(){super(...arguments);this.showErrors=!0;this.silabasObjetivo=11}static styles=W`
+      `}return a``}getVerso(r){return this.versos.find((o)=>o.numero===r)}onTituloInput(r){let o=r.target;this.dispatchEvent(new CustomEvent("titulo-change",{detail:{titulo:o.value},bubbles:!0,composed:!0}))}onEstrategiaChange(r){r.stopPropagation();let{estrategia:o}=r.detail;this.dispatchEvent(new CustomEvent("estrategia-change",{detail:{estrategia:o},bubbles:!0,composed:!0}))}onVersoInput(r){r.stopPropagation();let{numero:o,texto:d}=r.detail;this.dispatchEvent(new CustomEvent("verso-input",{detail:{numero:o,texto:d},bubbles:!0,composed:!0}))}onVersoBlur(r){r.stopPropagation(),this.dispatchEvent(new CustomEvent("verso-blur",{detail:r.detail,bubbles:!0,composed:!0}))}onVersoFocus(r){r.stopPropagation();let{numero:o}=r.detail;this.activeVerso=o,this.dispatchEvent(new CustomEvent("verso-focus",{detail:{numero:o},bubbles:!0,composed:!0}))}onHiatoToggle(r){r.stopPropagation(),this.dispatchEvent(new CustomEvent("hiato-toggle",{detail:r.detail,bubbles:!0,composed:!0}))}onVersoAdd(){this.dispatchEvent(new CustomEvent("verso-add",{bubbles:!0,composed:!0}))}onVersoRemove(){this.dispatchEvent(new CustomEvent("verso-remove",{bubbles:!0,composed:!0}))}onEstrofaAdd(){this.dispatchEvent(new CustomEvent("estrofa-add",{bubbles:!0,composed:!0}))}onEstrofaRemove(){this.dispatchEvent(new CustomEvent("estrofa-remove",{bubbles:!0,composed:!0}))}focusVerso(r){this.activeVerso=r,this.shadowRoot?.querySelector(`verso-line[numero="${r}"]`)?.querySelector("[contenteditable]")?.focus()}}x([m({type:Object})],h0.prototype,"forma",void 0),x([m({type:Array})],h0.prototype,"versos",void 0),x([m({type:String})],h0.prototype,"titulo",void 0),x([m({type:String})],h0.prototype,"estrategia",void 0),x([m({type:Number})],h0.prototype,"activeVerso",void 0),x([s0("verso-line")],h0.prototype,"versoLines",void 0),h0=x([Y("soneto-editor")],h0);class f0 extends y{constructor(){super(...arguments);this.showErrors=!0;this.silabasObjetivo=11}static styles=B`
     :host {
       display: block;
-      font-size: 0.75rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-size: var(--font-size-metrica);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
       margin-top: 0.15em;
-      padding-left: 0.5rem;
+      padding-left: var(--spacing-sm);
       min-height: 1.2em;
+      letter-spacing: -0.01em;
     }
 
     .metric--ok {
-      color: #6B8E23;
+      color: var(--color-success);
     }
 
     .metric--error {
-      color: #CD5C5C;
+      color: var(--color-error);
     }
 
     .metric--warning {
-      color: #D2691E;
+      color: var(--color-warning);
     }
 
     .metric--muted {
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
     }
 
     .error-list {
@@ -545,20 +709,27 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       flex-direction: column;
       gap: 0.1em;
     }
-  `;render(){if(!this.analysis)return c`<span class="metric--muted">· · ·</span>`;let h=[];if(h.push({text:`${this.analysis.numSilabasMetricas} síl.`,class:this.analysis.numSilabasMetricas===this.silabasObjetivo?"metric--ok":"metric--error"}),this.silabasObjetivo===11&&this.analysis.tipoVerso&&this.analysis.tipoVerso!=="no_endecasilabo")h.push({text:this.analysis.tipoVerso,class:"metric--muted"});if(this.analysis.acentoFinal)h.push({text:this.analysis.acentoFinal,class:"metric--muted"});return c`
+  `;render(){if(!this.analysis)return a`<span class="metric--muted">· · ·</span>`;let r=[];if(r.push({text:`${this.analysis.numSilabasMetricas} síl.`,class:this.analysis.numSilabasMetricas===this.silabasObjetivo?"metric--ok":"metric--error"}),this.silabasObjetivo===11&&this.analysis.tipoVerso&&this.analysis.tipoVerso!=="no_endecasilabo")r.push({text:this.analysis.tipoVerso,class:"metric--muted"});if(this.analysis.acentoFinal)r.push({text:this.analysis.acentoFinal,class:"metric--muted"});return a`
       <div>
-        <span class="${h[0]?.class||"metric--muted"}">
-          ${h.map((f)=>f.text).join(" · ")}
+        <span class="${r[0]?.class||"metric--muted"}">
+          ${r.map((o)=>o.text).join(" · ")}
         </span>
-        ${this.showErrors&&this.analysis.errores.length>0?c`
+        ${this.showErrors&&this.analysis.errores.length>0?a`
           <div class="error-list">
-            ${this.analysis.errores.map((f)=>c`
-              <span class="metric--error">${f.mensaje}</span>
+            ${this.analysis.errores.map((o)=>a`
+              <span class="metric--error">${o.mensaje}</span>
+            `)}
+          </div>
+        `:""}
+        ${this.showErrors&&this.analysis.advertencias&&this.analysis.advertencias.length>0?a`
+          <div class="error-list">
+            ${this.analysis.advertencias.map((o)=>a`
+              <span class="metric--warning">${o.mensaje}</span>
             `)}
           </div>
         `:""}
       </div>
-    `}}X([J({type:Object})],g1.prototype,"analysis",void 0),X([J({type:Boolean})],g1.prototype,"showErrors",void 0),X([J({type:Number})],g1.prototype,"silabasObjetivo",void 0),g1=X([y("verse-metrics")],g1);class Z1 extends H{constructor(){super(...arguments);this.sinalefas=[]}static styles=W`
+    `}}x([m({type:Object})],f0.prototype,"analysis",void 0),x([m({type:Boolean})],f0.prototype,"showErrors",void 0),x([m({type:Number})],f0.prototype,"silabasObjetivo",void 0),f0=x([Y("verse-metrics")],f0);class n0 extends y{constructor(){super(...arguments);this.sinalefas=[]}static styles=B`
     :host {
       display: block;
       position: absolute;
@@ -573,44 +744,77 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     svg {
       width: 100%;
       height: 100%;
+      overflow: visible;
     }
 
     path {
       pointer-events: stroke;
       cursor: pointer;
-      transition: stroke 0.15s ease, stroke-width 0.15s ease;
+      filter: drop-shadow(0 1px 1px rgba(44, 24, 16, 0.15));
+      transition: stroke var(--duration-fast) var(--ease-out), stroke-width var(--duration-fast) var(--ease-out);
     }
 
     path:hover {
-      stroke: #6B5335;
+      stroke: var(--color-sinalefa-hover);
       stroke-width: 2.5;
+      filter: drop-shadow(0 1px 2px rgba(44, 24, 16, 0.25));
     }
-  `;render(){return c`
+  `;render(){return a`
       <svg>
         ${this.renderArcs()}
       </svg>
-    `}renderArcs(){if(!this.editorElement||!this.sinalefas.length)return"";let h=this.editorElement.getBoundingClientRect();return this.sinalefas.filter((k)=>!k.descartada).map((k)=>{let d=this.editorElement.querySelectorAll("[data-silaba]"),z=d[k.silabaAnterior],$=d[k.silabaSiguiente];if(!z||!$)return"";let B=z.getBoundingClientRect(),g=$.getBoundingClientRect(),Z=B.right-h.left,Y=g.left-h.left,Q=B.bottom-h.top+2;return c`
+    `}renderArcs(){if(!this.editorElement||!this.sinalefas.length)return"";let r=this.editorElement.getBoundingClientRect();return this.sinalefas.filter((d)=>!d.descartada).map((d)=>{let c=this.editorElement.querySelectorAll("[data-silaba]"),i=c[d.silabaAnterior],g=c[d.silabaSiguiente];if(!i||!g)return"";let h=i.getBoundingClientRect(),f=g.getBoundingClientRect(),n=h.right-r.left,k=f.left-r.left,b=h.bottom-r.top+2;return a`
         <path
-          d="M ${Z} ${Q} Q ${(Z+Y)/2} ${Q+10}, ${Y} ${Q}"
+          d="M ${n} ${b} Q ${(n+k)/2} ${b+10}, ${k} ${b}"
           fill="none"
           stroke="#8B7355"
           stroke-width="1.5"
-          data-silaba="${k.silabaAnterior}"
-          @click=${()=>this.onArcClick(k.silabaAnterior)}
+          data-silaba="${d.silabaAnterior}"
+          @click=${()=>this.onArcClick(d.silabaAnterior)}
         />
-      `})}onArcClick(h){this.dispatchEvent(new CustomEvent("sinalefa-click",{detail:{silabaIndex:h},bubbles:!0,composed:!0}))}updated(h){if(h.has("sinalefas")||h.has("editorElement"))this.requestUpdate()}}X([J({type:Array})],Z1.prototype,"sinalefas",void 0),X([J({type:Object})],Z1.prototype,"editorElement",void 0),Z1=X([y("sinalefa-overlay")],Z1);class X1 extends H{constructor(){super(...arguments);this.versos=[];this.silabasObjetivo=11}static styles=W`
+      `})}onArcClick(r){this.dispatchEvent(new CustomEvent("sinalefa-click",{detail:{silabaIndex:r},bubbles:!0,composed:!0}))}updated(r){if(r.has("sinalefas")||r.has("editorElement"))this.requestUpdate()}}x([m({type:Array})],n0.prototype,"sinalefas",void 0),x([m({type:Object})],n0.prototype,"editorElement",void 0),n0=x([Y("sinalefa-overlay")],n0);class x0 extends y{constructor(){super(...arguments);this.versos=[];this.silabasObjetivo=11}static styles=B`
     :host {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
     }
 
     .panel-title {
-      font-size: 0.75rem;
+      font-size: var(--font-size-metrica);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #8B7D6B;
-      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: var(--letter-spacing-caps);
+      color: var(--color-ink-muted);
+      font-family: var(--font-display);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      position: relative;
+      padding-bottom: var(--spacing-xs);
+    }
+
+    .panel-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.2), transparent);
+      margin-left: var(--spacing-xs);
+    }
+
+    .panel-title svg {
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .panel-title__count {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-caption);
+      color: var(--color-accent);
+      font-weight: 600;
+      padding: 0 4px;
+      background: rgba(139, 69, 19, 0.08);
+      border-radius: var(--radius-xs);
+      font-variant-numeric: tabular-nums;
     }
 
     .metrics-list {
@@ -623,356 +827,560 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2px 0.5rem;
-      border-radius: 2px;
-      font-size: 0.75rem;
+      padding: 4px var(--spacing-sm);
+      border-radius: var(--radius-xs);
+      font-size: var(--font-size-metrica);
       cursor: default;
-      transition: background-color 0.15s ease;
-      font-family: 'Crimson Text', Georgia, serif;
+      transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      position: relative;
     }
 
     .metrics-item:hover {
-      background: rgba(139, 69, 19, 0.06);
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.05), rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.05));
+      transform: translateX(1px);
     }
 
     .metrics-item__numero {
       font-variant-numeric: tabular-nums;
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
       width: 1.2rem;
       flex-shrink: 0;
+      font-weight: 500;
     }
 
     .metrics-item__silabas {
       font-variant-numeric: tabular-nums;
-      font-weight: 500;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
     }
 
     .metrics-item__silabas--ok {
-      color: #6B8E23;
+      color: var(--color-success);
+    }
+
+    .metrics-item__silabas--ok::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-success);
+      box-shadow: 0 0 4px rgba(107, 142, 35, 0.5);
+      margin-right: 4px;
     }
 
     .metrics-item__silabas--error {
-      color: #CD5C5C;
+      color: var(--color-error);
+    }
+
+    .metrics-item__silabas--error::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-error);
+      margin-right: 4px;
     }
 
     .metrics-item__tipo {
-      color: #5C4033;
-      font-size: 0.65rem;
+      color: var(--color-ink-soft);
+      font-size: var(--font-size-micro);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       max-width: 7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .metrics-item__tipo svg {
+      flex-shrink: 0;
     }
 
     .metrics-item__error {
-      color: #CD5C5C;
-      font-size: 0.65rem;
+      color: var(--color-error);
+      font-size: var(--font-size-micro);
+      font-family: var(--font-mono);
     }
 
     .no-data {
-      color: #8B7D6B;
-      font-size: 0.75rem;
+      color: var(--color-ink-muted);
+      font-size: var(--font-size-metrica);
       font-style: italic;
       text-align: center;
       padding: 1rem 0;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-serif);
     }
-
-    .panel-subtitle {
-      font-size: 0.65rem;
-      color: #A0522D;
-      font-style: italic;
-      padding-left: 0.5rem;
-    }
-  `;render(){let h=this.getPosiciones(),f=this.analysisMap&&this.analysisMap.size>0;return c`
-      <div class="panel-title">📊 Métrica · ${this.silabasObjetivo}</div>
-      ${!f||h.length===0?c`<div class="no-data">Escribe para ver análisis</div>`:c`<div class="metrics-list">${this.renderItems(h)}</div>`}
-    `}getPosiciones(){if(this.versos.length>0)return this.versos.map((h)=>h.numero).sort((h,f)=>h-f);return Array.from({length:14},(h,f)=>f+1)}renderItems(h){let f=[];for(let k of h){let d=this.analysisMap?.get(k);if(!d)f.push(c`
+  `;render(){let r=this.getPosiciones(),o=this.analysisMap&&this.analysisMap.size>0;return a`
+      <div class="panel-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Métrica
+        <span class="panel-title__count">${this.silabasObjetivo}</span>
+      </div>
+      ${!o||r.length===0?a`<div class="no-data">Escribe para ver análisis</div>`:a`<div class="metrics-list">${this.renderItems(r)}</div>`}
+    `}getPosiciones(){if(this.versos.length>0)return this.versos.map((r)=>r.numero).sort((r,o)=>r-o);return Array.from({length:14},(r,o)=>o+1)}renderItems(r){let o=[];for(let d of r){let c=this.analysisMap?.get(d);if(!c)o.push(a`
           <div class="metrics-item">
-            <span class="metrics-item__numero">${k}</span>
+            <span class="metrics-item__numero">${d}</span>
             <span class="metrics-item__tipo">—</span>
           </div>
-        `);else{let z=d.numSilabasMetricas===this.silabasObjetivo?"metrics-item__silabas--ok":"metrics-item__silabas--error",$=this.silabasObjetivo===11&&d.tipoVerso&&d.tipoVerso!=="no_endecasilabo";f.push(c`
-          <div class="metrics-item" title="${d.errores.map((B)=>B.mensaje).join(" · ")}">
-            <span class="metrics-item__numero">${k}</span>
-            <span class="metrics-item__silabas ${z}">
-              ${d.numSilabasMetricas}
+        `);else{let i=c.numSilabasMetricas===this.silabasObjetivo?"metrics-item__silabas--ok":"metrics-item__silabas--error",g=this.silabasObjetivo===11&&c.tipoVerso&&c.tipoVerso!=="no_endecasilabo",h=[...c.errores.map((f)=>f.mensaje),...(c.advertencias??[]).map((f)=>f.mensaje)];o.push(a`
+          <div class="metrics-item" title="${h.join(" · ")}">
+            <span class="metrics-item__numero">${d}</span>
+            <span class="metrics-item__silabas ${i}">
+              ${c.numSilabasMetricas}
             </span>
             <span class="metrics-item__tipo">
-              ${$?d.tipoVerso:d.errores.length>0?"⚠":""}
+              ${g?c.tipoVerso:c.errores.length>0?a`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`:""}
             </span>
           </div>
-        `)}}return f}}X([J({type:Object})],X1.prototype,"analysisMap",void 0),X([J({type:Array})],X1.prototype,"versos",void 0),X([J({type:Number})],X1.prototype,"silabasObjetivo",void 0),X1=X([y("metrics-panel")],X1);class Y1 extends H{constructor(){super(...arguments);this.versos=[];this.grupos=[]}static styles=W`
+        `)}}return o}}x([m({type:Object})],x0.prototype,"analysisMap",void 0),x([m({type:Array})],x0.prototype,"versos",void 0),x([m({type:Number})],x0.prototype,"silabasObjetivo",void 0),x0=x([Y("metrics-panel")],x0);class k0 extends y{constructor(){super(...arguments);this.versos=[];this.grupos=[]}static styles=B`
     :host {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
     }
 
     .panel-title {
-      font-size: 0.75rem;
+      font-size: var(--font-size-metrica);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #8B7D6B;
-      font-family: 'Crimson Text', Georgia, serif;
+      letter-spacing: var(--letter-spacing-caps);
+      color: var(--color-ink-muted);
+      font-family: var(--font-display);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding-bottom: var(--spacing-xs);
+    }
+
+    .panel-title svg {
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .panel-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.2), transparent);
+      margin-left: var(--spacing-xs);
     }
 
     .patron-display {
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.875rem;
-      color: #8B4513;
-      line-height: 1.6;
-      padding: 0.5rem;
-      background: rgba(139, 69, 19, 0.05);
-      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: var(--font-size-small);
+      color: var(--color-accent);
+      line-height: var(--line-height-snug);
+      letter-spacing: var(--letter-spacing-caps);
+      padding: var(--spacing-sm);
+      background: linear-gradient(135deg, rgba(255, 248, 236, 0.6), rgba(245, 230, 200, 0.4));
+      border: var(--border-light);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-inset);
       white-space: pre-wrap;
       text-align: center;
+      font-weight: 600;
     }
 
+    /* Color-coding de rimas en el patrón */
+    .patron-display .rhyme-a { color: var(--color-rhyme-a); }
+    .patron-display .rhyme-b { color: var(--color-rhyme-b); }
+    .patron-display .rhyme-c { color: var(--color-rhyme-c); }
+    .patron-display .rhyme-d { color: var(--color-rhyme-d); }
+    .patron-display .rhyme-e { color: var(--color-rhyme-e); }
+    .patron-display .rhyme-f { color: var(--color-rhyme-f); }
+    .patron-display .rhyme-g { color: var(--color-rhyme-g); }
+    .patron-display .rhyme-h { color: var(--color-rhyme-h); }
+
     .clasico-badge {
-      font-size: 0.75rem;
-      color: #6B8E23;
+      font-size: var(--font-size-metrica);
+      color: var(--color-success);
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2xs);
       text-align: center;
-      padding: 0.25rem;
-      background: rgba(107, 142, 35, 0.08);
-      border-radius: 4px;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: linear-gradient(135deg, rgba(107, 142, 35, 0.12), rgba(107, 142, 35, 0.06));
+      border: 1px solid rgba(107, 142, 35, 0.25);
+      border-radius: var(--radius-pill);
+      align-self: center;
+      font-family: var(--font-display);
     }
 
     .libre-badge {
-      font-size: 0.75rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-metrica);
+      color: var(--color-ink-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2xs);
       text-align: center;
       font-style: italic;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: rgba(139, 69, 19, 0.05);
+      border: 1px solid rgba(44, 24, 16, 0.1);
+      border-radius: var(--radius-pill);
+      align-self: center;
+      font-family: var(--font-serif);
+    }
+
+    .aviso-badge {
+      font-size: var(--font-size-metrica);
+      color: var(--color-warning);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2xs);
+      text-align: center;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: linear-gradient(135deg, rgba(210, 105, 30, 0.12), rgba(210, 105, 30, 0.05));
+      border: 1px solid rgba(210, 105, 30, 0.28);
+      border-radius: var(--radius-pill);
+      align-self: center;
+      font-family: var(--font-serif);
     }
 
     .scheme-part {
-      margin-bottom: 0.25rem;
+      margin-bottom: var(--spacing-xs);
     }
 
     .scheme-line {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: var(--spacing-xs);
       padding: 1px 0;
-      font-size: 0.75rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-size: var(--font-size-metrica);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
     }
 
     .scheme-line__letra {
       font-weight: 700;
-      width: 1rem;
+      width: 1.2rem;
       text-align: center;
-      transition: color 0.3s ease;
+      transition: color var(--duration-slow) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+      font-size: var(--font-size-caption);
+      border-radius: var(--radius-xs);
+      padding: 0 1px;
     }
 
-    .scheme-line__letra--active {
-      color: #6B8E23;
-    }
+    /* Color-coding por letra de rima */
+    .scheme-line__letra--rhyme-a { color: var(--color-rhyme-a); }
+    .scheme-line__letra--rhyme-b { color: var(--color-rhyme-b); }
+    .scheme-line__letra--rhyme-c { color: var(--color-rhyme-c); }
+    .scheme-line__letra--rhyme-d { color: var(--color-rhyme-d); }
+    .scheme-line__letra--rhyme-e { color: var(--color-rhyme-e); }
+    .scheme-line__letra--rhyme-f { color: var(--color-rhyme-f); }
+    .scheme-line__letra--rhyme-g { color: var(--color-rhyme-g); }
+    .scheme-line__letra--rhyme-h { color: var(--color-rhyme-h); }
 
     .scheme-line__letra--pending {
-      color: #8B7D6B;
+      color: var(--color-ink-faint);
     }
 
     .scheme-line__texto {
-      color: #5C4033;
+      color: var(--color-ink-soft);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 0.7rem;
+      font-size: var(--font-size-micro);
+      font-family: var(--font-serif);
     }
 
     .scheme-line__numero {
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
       width: 1rem;
       flex-shrink: 0;
-      font-size: 0.65rem;
+      font-size: var(--font-size-micro);
+      font-weight: 500;
     }
 
     .no-data {
-      color: #8B7D6B;
-      font-size: 0.75rem;
+      color: var(--color-ink-muted);
+      font-size: var(--font-size-metrica);
       font-style: italic;
       text-align: center;
       padding: 1rem 0;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-serif);
     }
-  `;render(){if(!this.esquema)return c`
-        <div class="panel-title">🎯 Rimas</div>
+  `;render(){if(!this.esquema)return a`
+        <div class="panel-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          Rimas
+        </div>
         <div class="no-data">Completa versos para ver el esquema</div>
-      `;let h=this.getPartes();return c`
-      <div class="panel-title">🎯 Rimas</div>
+      `;let r=this.getPartes();return a`
+      <div class="panel-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        Rimas
+      </div>
 
-      <div class="patron-display">${this.esquema.patron}</div>
+      <div class="patron-display">${this.renderPatronColoreado(this.esquema.patron)}</div>
 
-      ${this.esquema.esClasico?c`<div class="clasico-badge">✓ ${this.esquema.nombreClasico||"Forma clásica"}</div>`:c`<div class="libre-badge">✗ Esquema libre</div>`}
+      ${this.esquema.esClasico?a`<div class="clasico-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            ${this.esquema.nombreClasico||"Forma clásica"}
+          </div>`:this.esquema.aviso?a`<div class="aviso-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              ${this.esquema.nombreClasico||"Casi una forma clásica"}
+              <span title="${this.esquema.aviso}">· ${this.esquema.aviso}</span>
+            </div>`:a`<div class="libre-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Esquema libre
+            </div>`}
 
-      ${h.map((f)=>c`
+      ${r.map((o)=>a`
         <div class="scheme-part">
-          ${f.map((k)=>{let d=this.esquema?.asignacion.get(k)||"·",z=this.versos.find((B)=>B.numero===k),$=z?.texto?z.texto.slice(0,20)+(z.texto.length>20?"…":""):"";return c`
+          ${o.map((d)=>{let c=this.esquema?.asignacion.get(d)||"·",i=c.toLowerCase(),g=c!=="·"&&/^[a-h]$/.test(i)?`scheme-line__letra--rhyme-${i}`:"scheme-line__letra--pending",h=this.versos.find((n)=>n.numero===d),f=h?.texto?h.texto.slice(0,20)+(h.texto.length>20?"…":""):"";return a`
               <div class="scheme-line">
-                <span class="scheme-line__numero">${k}</span>
-                <span class="scheme-line__letra ${d!=="·"?"scheme-line__letra--active":"scheme-line__letra--pending"}">
-                  ${d}
+                <span class="scheme-line__numero">${d}</span>
+                <span class="scheme-line__letra ${g}">
+                  ${c}
                 </span>
-                <span class="scheme-line__texto">${$||"—"}</span>
+                <span class="scheme-line__texto">${f||"—"}</span>
               </div>
             `})}
         </div>
       `)}
-    `}getPartes(){if(this.grupos&&this.grupos.length>0)return this.grupos;return[[1,2,3,4],[5,6,7,8],[9,10,11],[12,13,14]]}}X([J({type:Object})],Y1.prototype,"esquema",void 0),X([J({type:Array})],Y1.prototype,"versos",void 0),X([J({type:Array})],Y1.prototype,"grupos",void 0),Y1=X([y("rhyme-scheme-panel")],Y1);class c1 extends H{constructor(){super(...arguments);this.total=14;this.completados=0;this.conErrores=0}static styles=W`
+    `}renderPatronColoreado(r){return r.split("").map((o)=>{let d=o.toLowerCase();if(/^[a-h]$/.test(d))return a`<span class="rhyme-${d}">${o}</span>`;return o})}getPartes(){if(this.grupos&&this.grupos.length>0)return this.grupos;return[[1,2,3,4],[5,6,7,8],[9,10,11],[12,13,14]]}}x([m({type:Object})],k0.prototype,"esquema",void 0),x([m({type:Array})],k0.prototype,"versos",void 0),x([m({type:Array})],k0.prototype,"grupos",void 0),k0=x([Y("rhyme-scheme-panel")],k0);class a0 extends y{constructor(){super(...arguments);this.total=14;this.completados=0;this.conErrores=0}static styles=B`
     :host {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       width: 100%;
-      padding: 0.5rem 0;
+      padding: var(--spacing-sm) 0;
     }
 
-    .track {
+    .progress-bar__track {
       flex: 1;
-      height: 4px;
-      background: #E8D5B0;
-      border-radius: 2px;
-      overflow: hidden;
+      display: flex;
+      gap: 3px;
+      height: 6px;
+      align-items: center;
     }
 
-    .fill {
+    .segment {
+      flex: 1;
       height: 100%;
-      background: #8B4513;
-      border-radius: 2px;
-      transition: width 0.3s ease;
+      min-width: 2px;
+      border-radius: var(--radius-xs);
+      background: rgba(44, 24, 16, 0.12);
+      transition: background var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-spring), box-shadow var(--duration-slow) var(--ease-out);
     }
 
-    .text {
-      font-size: 0.75rem;
-      color: #8B7D6B;
+    .segment--complete {
+      background: linear-gradient(180deg, var(--color-success-soft), var(--color-success));
+      box-shadow: 0 0 4px rgba(107, 142, 35, 0.4);
+    }
+
+    .segment--error {
+      background: linear-gradient(180deg, var(--color-error-soft), var(--color-error));
+      box-shadow: 0 0 4px rgba(205, 92, 92, 0.4);
+    }
+
+    .progress-bar--all-complete .segment--complete:last-child {
+      transform: scaleY(1.6);
+    }
+
+    .progress-bar__text {
+      font-size: var(--font-size-metrica);
+      color: var(--color-ink-muted);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-mono);
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
     }
 
-    .ok-icon {
-      color: #6B8E23;
-      font-size: 0.75rem;
+    .progress-bar__count {
+      color: var(--color-ink-soft);
+      font-weight: 600;
     }
-  `;render(){let h=this.total>0?this.completados/this.total*100:0;return c`
-      <div class="track">
-        <div class="fill" style="width: ${h}%"></div>
+
+    .progress-bar__total {
+      color: var(--color-ink-muted);
+    }
+
+    .progress-bar__label {
+      color: var(--color-ink-muted);
+    }
+
+    .progress-bar__warnings {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: var(--color-warning);
+      font-weight: 600;
+    }
+
+    .progress-bar__warnings svg {
+      filter: drop-shadow(0 0 3px rgba(210, 105, 30, 0.4));
+    }
+  `;render(){let r=Math.max(0,this.completados-this.conErrores),o=this.completados===this.total&&this.conErrores===0,d=[];for(let c=0;c<this.total;c++){let i="segment";if(c<r)i+=" segment--complete";else if(c<r+this.conErrores)i+=" segment--error";d.push(a`<div class="${i}"></div>`)}return a`
+      <div class="progress-bar__track ${o?"progress-bar--all-complete":""}">
+        ${d}
       </div>
-      <div class="text">
-        ${this.completados} / ${this.total} versos
-        ${this.conErrores>0?c`· ⚠ ${this.conErrores}`:""}
+      <div class="progress-bar__text">
+        <span class="progress-bar__count">${this.completados}</span>
+        <span class="progress-bar__total">/ ${this.total}</span>
+        <span class="progress-bar__label">versos</span>
+        ${this.conErrores>0?a`<span class="progress-bar__warnings">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              ${this.conErrores}
+            </span>`:""}
       </div>
-    `}}X([J({type:Number})],c1.prototype,"total",void 0),X([J({type:Number})],c1.prototype,"completados",void 0),X([J({type:Number})],c1.prototype,"conErrores",void 0),c1=X([y("progress-bar")],c1);class Q1 extends H{constructor(){super(...arguments);this.messages=[]}static styles=W`
+    `}}x([m({type:Number})],a0.prototype,"total",void 0),x([m({type:Number})],a0.prototype,"completados",void 0),x([m({type:Number})],a0.prototype,"conErrores",void 0),a0=x([Y("progress-bar")],a0);class b0 extends y{constructor(){super(...arguments);this.messages=[]}static styles=B`
     :host {
       position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
+      bottom: var(--spacing-lg);
+      right: var(--spacing-lg);
       z-index: 1000;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       pointer-events: none;
     }
 
     .toast {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-family: 'Crimson Text', Georgia, serif;
-      box-shadow: 0 8px 30px rgba(44, 24, 16, 0.12);
-      animation: toast-in 0.3s ease;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-small);
+      font-family: var(--font-serif);
+      box-shadow: var(--elevation-5);
+      animation: toast-in var(--duration-slow) var(--ease-spring), toast-out var(--duration-normal) var(--ease-in-out) 2.7s forwards;
       max-width: 300px;
       pointer-events: auto;
+      border: 1px solid rgba(255, 248, 236, 0.1);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      cursor: pointer;
     }
 
     .toast--info {
-      background: #2C1810;
-      color: #FFF8EC;
+      background: linear-gradient(135deg, #3B2418, #2C1810);
+      color: var(--color-parchment-light);
     }
 
     .toast--warn {
-      background: #D2691E;
-      color: #2C1810;
+      background: linear-gradient(135deg, #E6862B, var(--color-warning));
+      color: var(--color-ink);
     }
 
     .toast--error {
-      background: #CD5C5C;
+      background: linear-gradient(135deg, #E07070, var(--color-error));
       color: white;
     }
 
     .toast--closing {
-      animation: toast-out 0.3s ease forwards;
+      animation: toast-out var(--duration-normal) var(--ease-in-out) forwards;
     }
 
     @keyframes toast-in {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(16px) scale(0.92);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
     @keyframes toast-out {
       from {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
       to {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px) scale(0.96);
       }
     }
-  `;nextId=0;show(h,f="info"){let k=++this.nextId;this.messages=[...this.messages,{id:k,message:h,level:f}],setTimeout(()=>{this.dismissToast(k)},3000)}dismissToast(h){this.messages=this.messages.filter((f)=>f.id!==h)}render(){return c`
-      ${this.messages.map((h)=>c`
-        <div class="toast toast--${h.level}" @click=${()=>this.dismissToast(h.id)}>
-          ${h.message}
+
+    @media (prefers-reduced-motion: reduce) {
+      .toast {
+        animation: none;
+      }
+    }
+  `;nextId=0;show(r,o="info"){let d=++this.nextId;this.messages=[...this.messages,{id:d,message:r,level:o}],setTimeout(()=>{this.dismissToast(d)},3000)}dismissToast(r){this.messages=this.messages.filter((o)=>o.id!==r)}render(){return a`
+      ${this.messages.map((r)=>a`
+        <div class="toast toast--${r.level}" @click=${()=>this.dismissToast(r.id)}>
+          ${r.message}
         </div>
       `)}
-    `}}X([N()],Q1.prototype,"messages",void 0),Q1=X([y("app-toast")],Q1);class J1 extends H{constructor(){super(...arguments);this.title="";this.open=!1}static styles=W`
+    `}}x([Z()],b0.prototype,"messages",void 0),b0=x([Y("app-toast")],b0);class m0 extends y{constructor(){super(...arguments);this.title="";this.open=!1}static styles=B`
     :host {
       position: fixed;
       inset: 0;
-      background: rgba(44, 24, 16, 0.4);
+      background: radial-gradient(ellipse at center, rgba(44, 24, 16, 0.4), rgba(44, 24, 16, 0.55));
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 900;
-      animation: fade-in 0.2s ease;
+      animation: fade-in var(--duration-normal) var(--ease-out);
     }
 
     .modal {
-      background: #FFF8EC;
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: linear-gradient(180deg, var(--color-parchment-light) 0%, #FBF3E4 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, var(--color-parchment-light) 0%, #FBF3E4 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
       min-width: 320px;
       max-width: 480px;
-      box-shadow: 0 8px 30px rgba(44, 24, 16, 0.12);
-      border: 1px solid rgba(44, 24, 16, 0.1);
-      font-family: 'Crimson Text', Georgia, serif;
+      box-shadow: var(--elevation-4);
+      border: 1px solid rgba(44, 24, 16, 0.12);
+      font-family: var(--font-serif);
+      animation: modal-in var(--duration-slow) var(--ease-spring);
+      position: relative;
+    }
+
+    .modal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+
+    @keyframes modal-in {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     .modal__title {
-      font-size: 1.25rem;
+      font-size: var(--font-size-h2);
       font-weight: 600;
-      margin-bottom: 1rem;
-      color: #2C1810;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-ink);
+      font-family: var(--font-display);
     }
 
     .modal__content {
-      color: #5C4033;
-      line-height: 1.6;
+      color: var(--color-ink-soft);
+      line-height: var(--line-height-verso);
     }
 
     .modal__actions {
       display: flex;
       justify-content: flex-end;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
     }
 
     @media (max-width: 767px) {
@@ -983,7 +1391,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         margin: 0 1rem;
         max-height: 84vh;
         overflow-y: auto;
-        padding: 1.25rem 1rem;
+        padding: var(--spacing-md);
       }
 
       .btn {
@@ -995,41 +1403,58 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .btn {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.875rem;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
     }
 
     .btn--primary {
-      background: #8B4513;
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
       color: white;
       border: none;
+      box-shadow: var(--elevation-1);
     }
 
     .btn--primary:hover {
-      background: #A0522D;
+      background: linear-gradient(180deg, #B3623A, var(--color-accent-light));
+      box-shadow: var(--elevation-2);
+    }
+
+    .btn--primary:active {
+      transform: scale(0.96);
     }
 
     .btn--secondary {
       background: transparent;
-      color: #5C4033;
+      color: var(--color-ink-soft);
       border: 1px solid rgba(44, 24, 16, 0.2);
     }
 
     .btn--secondary:hover {
       background: rgba(139, 69, 19, 0.08);
+      box-shadow: var(--elevation-1);
+    }
+
+    .btn--secondary:active {
+      transform: scale(0.96);
     }
 
     @keyframes fade-in {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-  `;render(){if(!this.open)return c``;return c`
-      <div class="modal" @click=${(h)=>h.stopPropagation()}>
-        ${this.title?c`<div class="modal__title">${this.title}</div>`:""}
+
+    @media (prefers-reduced-motion: reduce) {
+      .modal {
+        animation: none;
+      }
+    }
+  `;render(){if(!this.open)return a``;return a`
+      <div class="modal" @click=${(r)=>r.stopPropagation()}>
+        ${this.title?a`<div class="modal__title">${this.title}</div>`:""}
         <div class="modal__content">
           <slot></slot>
         </div>
@@ -1042,13 +1467,13 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           </button>
         </div>
       </div>
-    `}onConfirm(){this.dispatchEvent(new CustomEvent("confirm",{bubbles:!0,composed:!0}))}onCancel(){this.dispatchEvent(new CustomEvent("cancel",{bubbles:!0,composed:!0}))}onBackdropClick(){this.onCancel()}}X([J({type:String})],J1.prototype,"title",void 0),X([J({type:Boolean})],J1.prototype,"open",void 0),J1=X([y("app-modal")],J1);class K1 extends H{constructor(){super(...arguments);this.query="";this.tipoRima="consonante";this.categoria="";this.numSilabas=0}static styles=W`
+    `}onConfirm(){this.dispatchEvent(new CustomEvent("confirm",{bubbles:!0,composed:!0}))}onCancel(){this.dispatchEvent(new CustomEvent("cancel",{bubbles:!0,composed:!0}))}onBackdropClick(){this.onCancel()}}x([m({type:String})],m0.prototype,"title",void 0),x([m({type:Boolean})],m0.prototype,"open",void 0),m0=x([Y("app-modal")],m0);class t0 extends y{constructor(){super(...arguments);this.query="";this.tipoRima="consonante";this.categoria="";this.numSilabas=0}static styles=B`
     :host {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
       padding: 0.75rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-serif);
     }
 
     .search-container {
@@ -1057,66 +1482,104 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
 
     .search-icon {
       position: absolute;
-      left: 0.5rem;
+      left: 0.6rem;
       top: 50%;
       transform: translateY(-50%);
-      color: #8B7D6B;
-      font-size: 0.8125rem;
+      color: var(--color-ink-muted);
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .search-input:focus ~ .search-icon {
+      color: var(--color-accent);
     }
 
     .search-input {
       width: 100%;
-      padding: 0.4rem 0.5rem 0.4rem 1.75rem;
+      padding: 0.45rem 0.5rem 0.45rem 1.9rem;
       border: 1px solid rgba(44, 24, 16, 0.2);
-      border-radius: 4px;
-      background: #FFF8EC;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.875rem;
-      color: #2C1810;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(180deg, #FFFDF8, #FFF8EC);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
+      color: var(--color-ink);
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
       box-sizing: border-box;
+      box-shadow: var(--shadow-inset);
     }
 
     .search-input:focus {
-      border-color: #8B4513;
-      box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.1);
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-focus-strong), var(--shadow-inset);
     }
 
     .search-input::placeholder {
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
       font-style: italic;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 0.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--color-ink-muted);
+      padding: 0.25rem;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .search-clear--visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-clear:hover {
+      background: rgba(139, 69, 19, 0.12);
+      color: var(--color-accent);
     }
 
     .rhyme-type-toggle {
       display: flex;
       gap: 0.25rem;
-      background: #F5E6C8;
-      border-radius: 4px;
-      padding: 2px;
+      background: rgba(44, 24, 16, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      box-shadow: var(--shadow-inset);
     }
 
     .rhyme-type-btn {
       flex: 1;
-      padding: 0.25rem 0.5rem;
+      padding: 0.3rem 0.5rem;
       border: none;
-      border-radius: 3px;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.75rem;
+      border-radius: var(--radius-xs);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-metrica);
       cursor: pointer;
       background: transparent;
-      color: #5C4033;
-      transition: background 0.15s ease, color 0.15s ease;
+      color: var(--color-ink-soft);
+      transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
     }
 
     .rhyme-type-btn--active {
-      background: #8B4513;
-      color: #FFF8EC;
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+      color: var(--color-parchment-light);
+      box-shadow: var(--elevation-2);
     }
 
     .rhyme-type-btn:hover:not(.rhyme-type-btn--active) {
-      background: rgba(139, 69, 19, 0.1);
+      background: rgba(139, 69, 19, 0.08);
     }
 
     .filtros-section {
@@ -1126,10 +1589,12 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .filtros-label {
-      font-size: 0.6875rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-caption);
+      color: var(--color-ink-muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: var(--letter-spacing-wide);
+      font-family: var(--font-display);
+      font-weight: 500;
     }
 
     .chips {
@@ -1141,19 +1606,21 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     .chip {
       padding: 0.15rem 0.5rem;
       border: 1px solid rgba(44, 24, 16, 0.15);
-      border-radius: 12px;
-      font-size: 0.6875rem;
-      font-family: 'Crimson Text', Georgia, serif;
+      border-radius: var(--radius-pill);
+      font-size: var(--font-size-caption);
+      font-family: var(--font-serif);
       cursor: pointer;
       background: transparent;
-      color: #5C4033;
-      transition: all 0.15s ease;
+      color: var(--color-ink-soft);
+      transition: all var(--duration-fast) var(--ease-out);
     }
 
     .chip--active {
-      background: #8B4513;
-      color: #FFF8EC;
-      border-color: #8B4513;
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+      color: var(--color-parchment-light);
+      border-color: var(--color-accent);
+      box-shadow: var(--elevation-1);
+      transform: scale(1.04);
     }
 
     .chip:hover:not(.chip--active) {
@@ -1186,17 +1653,24 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         min-height: 34px;
       }
     }
-  `;debounceTimer=null;onInput(h){let f=h.target.value;if(this.query=f,this.debounceTimer)clearTimeout(this.debounceTimer);this.debounceTimer=setTimeout(()=>{this.emitSearch()},200)}setTipoRima(h){this.tipoRima=h,this.emitSearch()}setCategoria(h){this.categoria=this.categoria===h?"":h,this.emitSearch()}setNumSilabas(h){this.numSilabas=this.numSilabas===h?0:h,this.emitSearch()}emitSearch(){let h={tipoRima:this.tipoRima};if(this.categoria)h.categoria=this.categoria;if(this.numSilabas>0)h.numSilabas=this.numSilabas;this.dispatchEvent(new CustomEvent("search-change",{detail:{query:this.query,filtros:h},bubbles:!0,composed:!0}))}render(){let h=[{key:"",label:"Todas"},{key:"sustantivo",label:"Sustantivo"},{key:"verbo",label:"Verbo"},{key:"adjetivo",label:"Adjetivo"},{key:"adverbio",label:"Adverbio"}],f=[1,2,3,4,5];return c`
+  `;debounceTimer=null;onInput(r){let o=r.target.value;if(this.query=o,this.debounceTimer)clearTimeout(this.debounceTimer);this.debounceTimer=setTimeout(()=>{this.emitSearch()},200)}clearSearch(){this.query="",this.emitSearch()}setTipoRima(r){this.tipoRima=r,this.emitSearch()}setCategoria(r){this.categoria=this.categoria===r?"":r,this.emitSearch()}setNumSilabas(r){this.numSilabas=this.numSilabas===r?0:r,this.emitSearch()}emitSearch(){let r={tipoRima:this.tipoRima};if(this.categoria)r.categoria=this.categoria;if(this.numSilabas>0)r.numSilabas=this.numSilabas;this.dispatchEvent(new CustomEvent("search-change",{detail:{query:this.query,filtros:r},bubbles:!0,composed:!0}))}render(){let r=[{key:"",label:"Todas"},{key:"sustantivo",label:"Sustantivo"},{key:"verbo",label:"Verbo"},{key:"adjetivo",label:"Adjetivo"},{key:"adverbio",label:"Adverbio"}],o=[1,2,3,4,5];return a`
       <div class="search-container">
-        <span class="search-icon">🔍</span>
         <input
           class="search-input"
           type="text"
-          placeholder="Buscar rima..."
+          placeholder="Buscar rima…"
           .value=${this.query}
           @input=${this.onInput}
           aria-label="Buscar rima"
         />
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        ${this.query?a`
+          <button class="search-clear search-clear--visible" @click=${this.clearSearch} aria-label="Limpiar búsqueda">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        `:""}
       </div>
 
       <div class="rhyme-type-toggle">
@@ -1217,12 +1691,12 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       <div class="filtros-section">
         <span class="filtros-label">Categoría</span>
         <div class="chips">
-          ${h.map((k)=>c`
+          ${r.map((d)=>a`
             <button
-              class="chip ${this.categoria===k.key?"chip--active":""}"
-              @click=${()=>this.setCategoria(k.key)}
+              class="chip ${this.categoria===d.key?"chip--active":""}"
+              @click=${()=>this.setCategoria(d.key)}
             >
-              ${k.label}
+              ${d.label}
             </button>
           `)}
         </div>
@@ -1231,12 +1705,12 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       <div class="filtros-section">
         <span class="filtros-label">Sílabas</span>
         <div class="silabas-filtro">
-          ${f.map((k)=>c`
+          ${o.map((d)=>a`
             <button
-              class="chip silaba-chip ${this.numSilabas===k?"chip--active":""}"
-              @click=${()=>this.setNumSilabas(k)}
+              class="chip silaba-chip ${this.numSilabas===d?"chip--active":""}"
+              @click=${()=>this.setNumSilabas(d)}
             >
-              ${k}
+              ${d}
             </button>
           `)}
           <button
@@ -1247,13 +1721,13 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           </button>
         </div>
       </div>
-    `}}X([J({type:String})],K1.prototype,"query",void 0),X([J({type:String})],K1.prototype,"tipoRima",void 0),X([J({type:String})],K1.prototype,"categoria",void 0),X([J({type:Number})],K1.prototype,"numSilabas",void 0),K1=X([y("rhyme-search-input")],K1);class H1 extends H{constructor(){super(...arguments);this.results=[];this.loading=!1;this.page=0;this.totalPages=0;this.totalResults=0}static styles=W`
+    `}}x([m({type:String})],t0.prototype,"query",void 0),x([m({type:String})],t0.prototype,"tipoRima",void 0),x([m({type:String})],t0.prototype,"categoria",void 0),x([m({type:Number})],t0.prototype,"numSilabas",void 0),t0=x([Y("rhyme-search-input")],t0);class w0 extends y{constructor(){super(...arguments);this.results=[];this.loading=!1;this.page=0;this.totalPages=0;this.totalResults=0}static styles=B`
     :host {
       display: flex;
       flex-direction: column;
       flex: 1;
       min-height: 0;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-family: var(--font-serif);
     }
 
     .results-container {
@@ -1264,22 +1738,47 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
 
     .loading {
       display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0.5rem 0.75rem;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skeleton-row {
+      height: 14px;
+      border-radius: var(--radius-xs);
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.18), rgba(139, 69, 19, 0.08));
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.4s var(--ease-in-out) infinite;
+    }
+    .skeleton-row--short { width: 40%; }
+    .skeleton-row--medium { width: 65%; }
+    .skeleton-row--long { width: 85%; }
+
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .loading-spinner-wrapper {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-      color: #8B7D6B;
+      gap: var(--spacing-sm);
+      color: var(--color-ink-muted);
       font-style: italic;
-      font-size: 0.875rem;
+      font-size: var(--font-size-small);
+      padding: 1rem 0.75rem;
     }
 
     .loading-spinner {
       width: 16px;
       height: 16px;
       border: 2px solid rgba(139, 69, 19, 0.15);
-      border-top-color: #8B4513;
+      border-top-color: var(--color-accent);
+      border-right-color: var(--color-accent-light);
       border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      margin-right: 0.5rem;
+      animation: spin var(--duration-slow) linear infinite;
     }
 
     @keyframes spin {
@@ -1288,40 +1787,74 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
 
     .empty-state {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem 1rem;
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
       font-style: italic;
-      font-size: 0.875rem;
+      font-family: var(--font-serif);
+      gap: var(--spacing-sm);
       text-align: center;
+    }
+
+    .empty-state svg {
+      color: var(--color-ink-faint);
+    }
+
+    .empty-state-text {
+      font-size: var(--font-size-small);
     }
 
     .categoria-group {
       margin-bottom: 0.75rem;
+      animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .categoria-header {
-      font-size: 0.6875rem;
+      font-size: var(--font-size-caption);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #8B7D6B;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--color-ink-muted);
       margin-bottom: 0.25rem;
-      padding: 0.15rem 0.5rem;
-      background: rgba(139, 69, 19, 0.06);
-      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.09), rgba(139, 69, 19, 0.05));
+      border-radius: var(--radius-xs);
       font-weight: 600;
+      font-family: var(--font-display);
+      position: relative;
+      padding-left: 0.55rem;
+    }
+
+    .categoria-header::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 60%;
+      background: linear-gradient(180deg, var(--color-accent), var(--color-accent-light));
+      border-radius: 2px;
     }
 
     .campo-group {
       margin-bottom: 0.25rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid rgba(139, 69, 19, 0.12);
     }
 
     .campo-header {
-      font-size: 0.65rem;
-      color: #A0522D;
+      font-size: var(--font-size-micro);
+      color: var(--color-accent-light);
       padding: 0.1rem 0.5rem;
       font-style: italic;
+      font-family: var(--font-serif);
     }
 
     .result-item {
@@ -1329,45 +1862,70 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       align-items: center;
       gap: 0.5rem;
       padding: 0.2rem 0.5rem;
-      border-radius: 3px;
+      border-radius: var(--radius-xs);
       cursor: pointer;
-      transition: background 0.1s ease;
+      transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+      position: relative;
     }
 
     .result-item:hover {
-      background: rgba(139, 69, 19, 0.08);
+      background: linear-gradient(90deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.12), rgba(139, 69, 19, 0.08));
+      transform: translateX(3px);
     }
 
     .result-item:active {
-      background: rgba(139, 69, 19, 0.12);
+      background: rgba(139, 69, 19, 0.15);
+      transform: translateX(3px) scale(0.99);
+    }
+
+    .insert-arrow {
+      margin-left: auto;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+      color: var(--color-accent);
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .result-item:hover .insert-arrow {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .result-palabra {
       font-size: 0.9375rem;
       font-weight: 600;
-      color: #2C1810;
-      font-family: 'Crimson Text', Georgia, 'Times New Roman', serif;
+      color: var(--color-ink);
+      font-family: var(--font-serif);
     }
 
     .result-meta {
-      font-size: 0.6875rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-caption);
+      color: var(--color-ink-muted);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
     }
 
     .result-meta--categoria {
-      color: #A0522D;
+      color: var(--color-accent-light);
+      font-family: var(--font-serif);
+      font-style: italic;
     }
 
     .result-count {
-      font-size: 0.65rem;
-      color: #8B7D6B;
-      padding: 0.1rem 0.5rem;
+      font-size: var(--font-size-micro);
+      color: var(--color-ink-muted);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
     }
 
     .pagination {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 0.25rem;
       padding: 0.5rem 0.75rem;
       border-top: 1px solid rgba(44, 24, 16, 0.1);
@@ -1375,21 +1933,30 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .pagination-btn {
-      background: rgba(139, 69, 19, 0.08);
+      background: rgba(139, 69, 19, 0.06);
       border: 1px solid rgba(139, 69, 19, 0.15);
-      color: #5C4033;
-      padding: 0.2rem 0.6rem;
-      border-radius: 3px;
+      color: var(--color-ink-soft);
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-xs);
       cursor: pointer;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.75rem;
-      transition: background 0.15s ease;
+      font-family: var(--font-mono);
+      font-size: var(--font-size-caption);
+      font-variant-numeric: tabular-nums;
+      transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
       min-width: 28px;
       text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .pagination-btn:hover:not(:disabled) {
       background: rgba(139, 69, 19, 0.15);
+      box-shadow: var(--elevation-1);
+    }
+
+    .pagination-btn:active:not(:disabled) {
+      transform: scale(0.94);
     }
 
     .pagination-btn:disabled {
@@ -1398,72 +1965,84 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .pagination-btn--active {
-      background: #8B4513;
-      color: #F5E6C8;
-      border-color: #8B4513;
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+      color: var(--color-parchment-light);
+      border-color: var(--color-accent);
+      box-shadow: var(--elevation-1);
     }
 
     .pagination-info {
-      font-size: 0.65rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-micro);
+      color: var(--color-ink-muted);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
       margin: 0 0.5rem;
       white-space: nowrap;
     }
-  `;onSelect(h){this.dispatchEvent(new CustomEvent("rhyme-select",{detail:{palabra:h},bubbles:!0,composed:!0}))}gotoPage(h){if(h<0||h>=this.totalPages)return;this.dispatchEvent(new CustomEvent("page-change",{detail:{page:h},bubbles:!0,composed:!0}))}render(){if(this.loading)return c`
+  `;onSelect(r){this.dispatchEvent(new CustomEvent("rhyme-select",{detail:{palabra:r},bubbles:!0,composed:!0}))}gotoPage(r){if(r<0||r>=this.totalPages)return;this.dispatchEvent(new CustomEvent("page-change",{detail:{page:r},bubbles:!0,composed:!0}))}render(){if(this.loading)return a`
         <div class="results-container">
           <div class="loading">
-            <div class="loading-spinner"></div>
-            Buscando...
+            ${[1,2,3,4,5,6,7,8].map((o)=>a`
+              <div class="skeleton-row skeleton-row--${o%3===0?"short":o%2===0?"long":"medium"}"></div>
+            `)}
           </div>
         </div>
-      `;if(this.results.length===0)return c`
+      `;if(this.results.length===0)return a`
         <div class="results-container">
           <div class="empty-state">
-            No se encontraron rimas
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span class="empty-state-text">No se encontraron rimas</span>
           </div>
         </div>
-      `;let h=this.agruparPorCategoria(this.results);return c`
+      `;let r=this.agruparPorCategoria(this.results);return a`
       <div class="results-container">
-        ${Array.from(h.entries()).map(([f,k])=>{let d=this.agruparPorCampo(k),z=d.size>1;return c`
+        ${Array.from(r.entries()).map(([o,d])=>{let c=this.agruparPorCampo(d),i=c.size>1;return a`
             <div class="categoria-group">
-              <div class="categoria-header">${f}</div>
-              ${z?Array.from(d.entries()).map(([$,B])=>c`
+              <div class="categoria-header">${o}</div>
+              ${i?Array.from(c.entries()).map(([g,h])=>a`
                     <div class="campo-group">
-                      <div class="campo-header">${$==="sin_campo"?"":$} (${B.length})</div>
-                      ${B.map((g)=>this.renderItem(g))}
+                      <div class="campo-header">${g==="sin_campo"?"":g} (${h.length})</div>
+                      ${h.map((f)=>this.renderItem(f))}
                     </div>
-                  `):k.map(($)=>this.renderItem($))}
+                  `):d.map((g)=>this.renderItem(g))}
             </div>
           `})}
         <div class="result-count">${this.totalResults} resultados</div>
       </div>
       ${this.totalPages>1?this.renderPagination():""}
-    `}renderItem(h){return c`
-      <div class="result-item" @click=${()=>this.onSelect(h.palabra)}>
-        <span class="result-palabra">${h.palabra}</span>
-        <span class="result-meta result-meta--categoria">(${h.categoria})</span>
-        <span class="result-meta">${h.numSilabas} síl.</span>
+    `}renderItem(r){return a`
+      <div class="result-item" @click=${()=>this.onSelect(r.palabra)}>
+        <span class="result-palabra">${r.palabra}</span>
+        <span class="result-meta result-meta--categoria">(${r.categoria})</span>
+        <span class="result-meta">${r.numSilabas} síl.</span>
+        <span class="insert-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </span>
       </div>
-    `}renderPagination(){let f=Math.floor(2.5),k=Math.max(0,this.page-f),d=Math.min(this.totalPages,k+5);if(d-k<5)k=Math.max(0,d-5);let z=[];for(let $=k;$<d;$++)z.push($);return c`
+    `}renderPagination(){let o=Math.floor(2.5),d=Math.max(0,this.page-o),c=Math.min(this.totalPages,d+5);if(c-d<5)d=Math.max(0,c-5);let i=[];for(let g=d;g<c;g++)i.push(g);return a`
       <div class="pagination">
         <button
           class="pagination-btn"
           ?disabled=${this.page<=0}
           @click=${()=>this.gotoPage(0)}
           title="Primera página"
-        >⟪</button>
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+        </button>
         <button
           class="pagination-btn"
           ?disabled=${this.page<=0}
           @click=${()=>this.gotoPage(this.page-1)}
           title="Anterior"
-        >⟨</button>
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-        ${z.map(($)=>c`
+        ${i.map((g)=>a`
           <button
-            class="pagination-btn ${$===this.page?"pagination-btn--active":""}"
-            @click=${()=>this.gotoPage($)}
-          >${$+1}</button>
+            class="pagination-btn ${g===this.page?"pagination-btn--active":""}"
+            @click=${()=>this.gotoPage(g)}
+          >${g+1}</button>
         `)}
 
         <button
@@ -1471,26 +2050,33 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           ?disabled=${this.page>=this.totalPages-1}
           @click=${()=>this.gotoPage(this.page+1)}
           title="Siguiente"
-        >⟩</button>
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
         <button
           class="pagination-btn"
           ?disabled=${this.page>=this.totalPages-1}
           @click=${()=>this.gotoPage(this.totalPages-1)}
           title="Última página"
-        >⟫</button>
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+        </button>
 
         <span class="pagination-info">${this.page+1} / ${this.totalPages}</span>
       </div>
-    `}agruparPorCategoria(h){let f=new Map;for(let k of h){let d=k.categoria||"otro";if(!f.has(d))f.set(d,[]);f.get(d).push(k)}return f}agruparPorCampo(h){let f=new Map;for(let k of h){let d=k.campoSemantico||"sin_campo";if(!f.has(d))f.set(d,[]);f.get(d).push(k)}return f}}X([J({type:Array})],H1.prototype,"results",void 0),X([J({type:Boolean})],H1.prototype,"loading",void 0),X([J({type:Number})],H1.prototype,"page",void 0),X([J({type:Number})],H1.prototype,"totalPages",void 0),X([J({type:Number})],H1.prototype,"totalResults",void 0),H1=X([y("rhyme-result-list")],H1);class w1{db=null;async initialize(){if(this.db)return;return new Promise((h,f)=>{let k=indexedDB.open("ElTallerCorpus",1);k.onupgradeneeded=(d)=>{let z=d.target.result;if(!z.objectStoreNames.contains("palabras")){let $=z.createObjectStore("palabras",{keyPath:"palabra"});$.createIndex("terminacion","terminacion",{unique:!1}),$.createIndex("categoria","categoria",{unique:!1}),$.createIndex("campoSemantico","campoSemantico",{unique:!1})}},k.onsuccess=()=>{this.db=k.result,h()},k.onerror=()=>{f(k.error||Error("Error al abrir IndexedDB"))}})}async isPopulated(){if(!this.db)return!1;return new Promise((h)=>{try{let d=this.db.transaction("palabras","readonly").objectStore("palabras").count();d.onsuccess=()=>h(d.result>0),d.onerror=()=>h(!1)}catch{h(!1)}})}async importWords(h){if(!this.db)throw Error("CorpusDB no inicializada");let f=await this.getExistingKeys();for(let k=0;k<h.length;k+=500){let d=h.slice(k,k+500);await this.importBatch(d,f)}}async getExistingKeys(){return new Promise((h)=>{let d=this.db.transaction("palabras","readonly").objectStore("palabras").getAllKeys();d.onsuccess=()=>h(new Set(d.result.map((z)=>String(z)))),d.onerror=()=>h(new Set)})}async importBatch(h,f){return new Promise((k,d)=>{let z=this.db.transaction("palabras","readwrite"),$=z.objectStore("palabras");for(let B of h)if(!f.has(B.palabra))$.put(B),f.add(B.palabra);z.oncomplete=()=>k(),z.onerror=()=>d(z.error)})}async buscarPorTerminacion(h,f,k=0){if(!this.db)throw Error("CorpusDB no inicializada");let d=await this.getAllByIndex("terminacion",h,k);return this.aplicarFiltros(d,f)}async buscarPorTexto(h,f=200){if(!this.db)throw Error("CorpusDB no inicializada");if(!h||h.length<1)return[];let k=h.toLowerCase().trim(),d=[];return new Promise((z,$)=>{let B=this.db.transaction("palabras","readonly"),g=B.objectStore("palabras"),Z=IDBKeyRange.bound(k,k+"￿"),Y=g.openCursor(Z);Y.onsuccess=(Q)=>{let K=Q.target.result;if(K){if(d.push(K.value),f===0||d.length<f)K.continue()}},B.oncomplete=()=>z(d),B.onerror=()=>$(B.error)})}async buscarRimas(h,f="consonante",k){if(f==="consonante")return this.buscarPorTerminacion(h,k);let d=[...h.toLowerCase()].filter((B)=>"aeiouáéíóú".includes(B)).join("");if(!d)return[];let $=(await this.getAllByIndex("terminacion",h[0])).filter((B)=>{return[...B.terminacion.toLowerCase()].filter((Z)=>"aeiouáéíóú".includes(Z)).join("")===d});return this.aplicarFiltros($,k)}async count(){if(!this.db)return 0;return new Promise((h)=>{let d=this.db.transaction("palabras","readonly").objectStore("palabras").count();d.onsuccess=()=>h(d.result),d.onerror=()=>h(0)})}close(){if(this.db)this.db.close(),this.db=null}getAllByIndex(h,f,k=500){return new Promise((d,z)=>{let $=this.db.transaction("palabras","readonly"),g=$.objectStore("palabras").index(h),Z=IDBKeyRange.only(f),Y=[],Q=g.openCursor(Z);Q.onsuccess=(K)=>{let F=K.target.result;if(F){if(Y.push(F.value),k===0||Y.length<k)F.continue()}},$.oncomplete=()=>d(Y),$.onerror=()=>z($.error)})}aplicarFiltros(h,f){if(!f)return h;let k=h;if(f?.categoria)k=k.filter((d)=>d.categoria===f.categoria);if(f?.campoSemantico)k=k.filter((d)=>d.campoSemantico===f.campoSemantico);if(f?.numSilabas!==void 0&&f.numSilabas>0)k=k.filter((d)=>d.numSilabas===f.numSilabas);return k}}var B5=500,g5="data/corpus/palabras.json";class s{static async ensureLoaded(h){if(await h.isPopulated())return;document.dispatchEvent(new CustomEvent("corpus:loading-start",{detail:{message:"Cargando diccionario de rimas..."}}));try{let k=await fetch(g5);if(!k.ok)throw Error(`Error al cargar corpus: ${k.status} ${k.statusText}`);await s.streamImport(h,k),document.dispatchEvent(new CustomEvent("corpus:ready"))}catch(k){console.error("[CorpusLoader] Error al cargar corpus:",k),document.dispatchEvent(new CustomEvent("corpus:error",{detail:{message:"Error al cargar el diccionario de rimas"}}))}}static async streamImport(h,f){let k=f.body;if(!k)throw Error("Response body is null");let d=0,z=[],$=new Set,Z=k.pipeThrough(new DecompressionStream("gzip")).pipeThrough(new TextDecoderStream).getReader(),Y="";try{while(!0){let{done:Q,value:K}=await Z.read();if(Q)break;Y+=K;let F=Y.split(`
-`);Y=F.pop()||"";for(let w of F){if(!w.trim())continue;try{let U=JSON.parse(w);if(z.push(U),z.length>=B5)await h.importBatch(z,$),d+=z.length,s.reportProgress(d),z=[],await s.yieldToEventLoop()}catch{}}}if(Y.trim())try{let Q=JSON.parse(Y);z.push(Q)}catch{}if(z.length>0)await h.importBatch(z,$),d+=z.length,s.reportProgress(d)}finally{Z.releaseLock()}}static reportProgress(h){document.dispatchEvent(new CustomEvent("corpus:progress",{detail:{progress:-1,loaded:h,total:0}}))}static async yieldToEventLoop(){if(typeof requestIdleCallback<"u")await new Promise((h)=>{requestIdleCallback(()=>h(),{timeout:500})});else await new Promise((h)=>setTimeout(h,0))}}class G1 extends H{constructor(){super(...arguments);this.open=!1;this.versoActivo=null;this.palabraActual="";this.corpusReady=!1;this.loading=!1;this.corpusWordsLoaded=0;this.results=[];this.searchQuery="";this.searchFiltros={};this.allResults=[];this.page=0}static styles=W`
+    `}agruparPorCategoria(r){let o=new Map;for(let d of r){let c=d.categoria||"otro";if(!o.has(c))o.set(c,[]);o.get(c).push(d)}return o}agruparPorCampo(r){let o=new Map;for(let d of r){let c=d.campoSemantico||"sin_campo";if(!o.has(c))o.set(c,[]);o.get(c).push(d)}return o}}x([m({type:Array})],w0.prototype,"results",void 0),x([m({type:Boolean})],w0.prototype,"loading",void 0),x([m({type:Number})],w0.prototype,"page",void 0),x([m({type:Number})],w0.prototype,"totalPages",void 0),x([m({type:Number})],w0.prototype,"totalResults",void 0),w0=x([Y("rhyme-result-list")],w0);class y0{db=null;async initialize(){if(this.db)return;return new Promise((r,o)=>{let d=indexedDB.open("ElTallerCorpus",1);d.onupgradeneeded=(c)=>{let i=c.target.result;if(!i.objectStoreNames.contains("palabras")){let g=i.createObjectStore("palabras",{keyPath:"palabra"});g.createIndex("terminacion","terminacion",{unique:!1}),g.createIndex("categoria","categoria",{unique:!1}),g.createIndex("campoSemantico","campoSemantico",{unique:!1})}},d.onsuccess=()=>{this.db=d.result,r()},d.onerror=()=>{o(d.error||Error("Error al abrir IndexedDB"))}})}async isPopulated(){if(!this.db)return!1;return new Promise((r)=>{try{let c=this.db.transaction("palabras","readonly").objectStore("palabras").count();c.onsuccess=()=>r(c.result>0),c.onerror=()=>r(!1)}catch{r(!1)}})}async importWords(r){if(!this.db)throw Error("CorpusDB no inicializada");let o=await this.getExistingKeys();for(let d=0;d<r.length;d+=500){let c=r.slice(d,d+500);await this.importBatch(c,o)}}async getExistingKeys(){return new Promise((r)=>{let c=this.db.transaction("palabras","readonly").objectStore("palabras").getAllKeys();c.onsuccess=()=>r(new Set(c.result.map((i)=>String(i)))),c.onerror=()=>r(new Set)})}async importBatch(r,o){return new Promise((d,c)=>{let i=this.db.transaction("palabras","readwrite"),g=i.objectStore("palabras");for(let h of r)if(!o.has(h.palabra))g.put(h),o.add(h.palabra);i.oncomplete=()=>d(),i.onerror=()=>c(i.error)})}async buscarPorTerminacion(r,o,d=0){if(!this.db)throw Error("CorpusDB no inicializada");let c=await this.getAllByIndex("terminacion",r,d);return this.aplicarFiltros(c,o)}async buscarPorTexto(r,o=200){if(!this.db)throw Error("CorpusDB no inicializada");if(!r||r.length<1)return[];let d=r.toLowerCase().trim(),c=[];return new Promise((i,g)=>{let h=this.db.transaction("palabras","readonly"),f=h.objectStore("palabras"),n=IDBKeyRange.bound(d,d+"￿"),k=f.openCursor(n);k.onsuccess=(b)=>{let t=b.target.result;if(t){if(c.push(t.value),o===0||c.length<o)t.continue()}},h.oncomplete=()=>i(c),h.onerror=()=>g(h.error)})}async buscarRimas(r,o="consonante",d){if(o==="consonante")return this.buscarPorTerminacion(r,d);let c=[...r.toLowerCase()].filter((h)=>"aeiouáéíóú".includes(h)).join("");if(!c)return[];let g=(await this.getAllByIndex("terminacion",r[0])).filter((h)=>{return[...h.terminacion.toLowerCase()].filter((n)=>"aeiouáéíóú".includes(n)).join("")===c});return this.aplicarFiltros(g,d)}async count(){if(!this.db)return 0;return new Promise((r)=>{let c=this.db.transaction("palabras","readonly").objectStore("palabras").count();c.onsuccess=()=>r(c.result),c.onerror=()=>r(0)})}close(){if(this.db)this.db.close(),this.db=null}getAllByIndex(r,o,d=500){return new Promise((c,i)=>{let g=this.db.transaction("palabras","readonly"),f=g.objectStore("palabras").index(r),n=IDBKeyRange.only(o),k=[],b=f.openCursor(n);b.onsuccess=(t)=>{let _=t.target.result;if(_){if(k.push(_.value),d===0||k.length<d)_.continue()}},g.oncomplete=()=>c(k),g.onerror=()=>i(g.error)})}aplicarFiltros(r,o){if(!o)return r;let d=r;if(o?.categoria)d=d.filter((c)=>c.categoria===o.categoria);if(o?.campoSemantico)d=d.filter((c)=>c.campoSemantico===o.campoSemantico);if(o?.numSilabas!==void 0&&o.numSilabas>0)d=d.filter((c)=>c.numSilabas===o.numSilabas);return d}}var nd=500,xd="data/corpus/palabras.json";class e{static async ensureLoaded(r){if(await r.isPopulated())return;document.dispatchEvent(new CustomEvent("corpus:loading-start",{detail:{message:"Cargando diccionario de rimas..."}}));try{let d=await fetch(xd);if(!d.ok)throw Error(`Error al cargar corpus: ${d.status} ${d.statusText}`);await e.streamImport(r,d),document.dispatchEvent(new CustomEvent("corpus:ready"))}catch(d){console.error("[CorpusLoader] Error al cargar corpus:",d),document.dispatchEvent(new CustomEvent("corpus:error",{detail:{message:"Error al cargar el diccionario de rimas"}}))}}static async streamImport(r,o){let d=o.body;if(!d)throw Error("Response body is null");let c=0,i=[],g=new Set,n=d.pipeThrough(new DecompressionStream("gzip")).pipeThrough(new TextDecoderStream).getReader(),k="";try{while(!0){let{done:b,value:t}=await n.read();if(b)break;k+=t;let _=k.split(`
+`);k=_.pop()||"";for(let w of _){if(!w.trim())continue;try{let K=JSON.parse(w);if(i.push(K),i.length>=nd)await r.importBatch(i,g),c+=i.length,e.reportProgress(c),i=[],await e.yieldToEventLoop()}catch{}}}if(k.trim())try{let b=JSON.parse(k);i.push(b)}catch{}if(i.length>0)await r.importBatch(i,g),c+=i.length,e.reportProgress(c)}finally{n.releaseLock()}}static reportProgress(r){document.dispatchEvent(new CustomEvent("corpus:progress",{detail:{progress:-1,loaded:r,total:0}}))}static async yieldToEventLoop(){if(typeof requestIdleCallback<"u")await new Promise((r)=>{requestIdleCallback(()=>r(),{timeout:500})});else await new Promise((r)=>setTimeout(r,0))}}class v0 extends y{constructor(){super(...arguments);this.open=!1;this.versoActivo=null;this.palabraActual="";this.corpusReady=!1;this.loading=!1;this.corpusWordsLoaded=0;this.results=[];this.searchQuery="";this.searchFiltros={};this.allResults=[];this.page=0}static styles=B`
     :host {
       display: flex;
       flex-direction: column;
       height: 100%;
-      font-family: 'Crimson Text', Georgia, serif;
-      background: #E8D5B0;
+      font-family: var(--font-serif);
+      background: linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
       overflow: hidden;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
     }
 
     :host([closed]) {
@@ -1507,42 +2093,69 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .panel-title {
-      font-size: 0.8125rem;
+      font-size: var(--font-size-small);
       font-weight: 600;
-      color: #8B4513;
-      letter-spacing: 0.04em;
+      color: var(--color-accent);
+      letter-spacing: var(--letter-spacing-wide);
+      font-family: var(--font-display);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .panel-title svg {
+      flex-shrink: 0;
     }
 
     .panel-subtitle {
-      font-size: 0.65rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-micro);
+      color: var(--color-ink-muted);
       font-style: italic;
+      font-family: var(--font-mono);
     }
 
     .close-btn {
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1rem;
-      color: #8B7D6B;
-      padding: 0.15rem 0.35rem;
-      border-radius: 3px;
-      transition: background 0.15s ease;
-      font-family: 'Crimson Text', Georgia, serif;
+      color: var(--color-ink-muted);
+      padding: 0.3rem;
+      border-radius: var(--radius-sm);
+      transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .close-btn:hover {
       background: rgba(139, 69, 19, 0.1);
-      color: #5C4033;
+      color: var(--color-ink-soft);
+    }
+
+    .close-btn:active {
+      transform: scale(0.92);
     }
 
     .active-verso {
-      font-size: 0.6875rem;
-      color: #A0522D;
+      font-size: var(--font-size-caption);
+      color: var(--color-accent-light);
       padding: 0.3rem 0.75rem;
       border-bottom: 1px solid rgba(44, 24, 16, 0.06);
       flex-shrink: 0;
       font-style: italic;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .active-verso::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+      box-shadow: 0 0 4px rgba(139, 69, 19, 0.4);
+      flex-shrink: 0;
     }
 
     .loading-corpus {
@@ -1551,17 +2164,19 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       align-items: center;
       justify-content: center;
       padding: 2rem 1rem;
-      gap: 0.75rem;
+      gap: var(--spacing-md);
       flex: 1;
     }
 
     .corpus-spinner {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       border: 3px solid rgba(139, 69, 19, 0.15);
-      border-top-color: #8B4513;
+      border-top-color: var(--color-accent);
+      border-right-color: var(--color-accent-light);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
+      filter: drop-shadow(0 2px 4px rgba(44, 24, 16, 0.12));
     }
 
     @keyframes spin {
@@ -1569,36 +2184,45 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     }
 
     .corpus-loading-text {
-      font-size: 0.8125rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-small);
+      color: var(--color-ink-muted);
       font-style: italic;
+      font-family: var(--font-serif);
       text-align: center;
     }
 
     .corpus-loading-sub {
-      font-size: 0.6875rem;
-      color: #B8A88A;
+      font-size: var(--font-size-caption);
+      color: var(--color-ink-faint);
+      font-family: var(--font-mono);
       text-align: center;
-      margin-top: -0.25rem;
+      margin-top: -0.5rem;
     }
 
     .corpus-loading-progress {
-      font-size: 0.75rem;
-      color: #8B4513;
+      font-size: var(--font-size-metrica);
+      color: var(--color-accent);
       font-weight: 600;
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
       text-align: center;
-      background: rgba(139, 69, 19, 0.06);
-      padding: 0.3rem 0.75rem;
-      border-radius: 6px;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.04));
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(139, 69, 19, 0.12);
       margin-top: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2xs);
     }
 
     .corpus-loading-note {
-      font-size: 0.625rem;
-      color: #C4B5A5;
+      font-size: var(--font-size-micro);
+      color: var(--color-ink-faint);
       text-align: center;
-      margin-top: 0.5rem;
+      margin-top: var(--spacing-sm);
       font-style: italic;
+      font-family: var(--font-serif);
     }
 
     .content {
@@ -1607,36 +2231,46 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       flex-direction: column;
       min-height: 0;
       overflow: hidden;
+      animation: fadeIn var(--duration-slow) var(--ease-out);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 767px) {
       .close-btn {
         min-height: 40px;
         min-width: 40px;
-        font-size: 1.1rem;
       }
     }
-  `;pageSize=50;db=null;rhymeEngine=new t;connectedCallback(){super.connectedCallback(),this.initCorpus(),document.addEventListener("keydown",this.onKeyDown),document.addEventListener("corpus:progress",this.onCorpusProgress)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.onKeyDown),document.removeEventListener("corpus:progress",this.onCorpusProgress)}async initCorpus(){try{if(this.db=new w1,await this.db.initialize(),await s.ensureLoaded(this.db),this.corpusReady=!0,this.palabraActual)this.doSearch(this.palabraActual,this.searchFiltros)}catch(h){console.error("[RhymeBrowser] Error al inicializar corpus:",h)}}onKeyDown=(h)=>{if(h.key==="Escape"&&this.open)this.close()};onCorpusProgress=(h)=>{let{loaded:f}=h.detail;if(typeof f==="number")this.corpusWordsLoaded=f};close(){this.dispatchEvent(new CustomEvent("panel-close",{bubbles:!0,composed:!0}))}onSearchChange(h){let{query:f,filtros:k}=h.detail;if(this.searchQuery=f,this.searchFiltros=k,!f||f.length<1){this.results=[],this.allResults=[];return}this.page=0,this.doSearch(f,k)}get totalPages(){return Math.ceil(this.allResults.length/this.pageSize)}onPageChange(h){this.page=h.detail.page,this.updateResults()}updateResults(){let h=this.page*this.pageSize;this.results=this.allResults.slice(h,h+this.pageSize)}async doSearch(h,f){if(!this.db||!this.corpusReady)return;this.loading=!0;try{let k=this.rhymeEngine.extraerTerminacionPalabra(h);if(!k){this.results=[];return}let d=await this.db.buscarRimas(k,f.tipoRima||"consonante",f);this.allResults=d.map((z)=>({palabra:z.palabra,terminacion:z.terminacion,categoria:z.categoria,campoSemantico:z.campoSemantico,numSilabas:z.numSilabas,acento:z.acento})),this.updateResults()}catch(k){console.error("[RhymeBrowser] Error en búsqueda:",k),this.results=[]}finally{this.loading=!1}}onRhymeSelect(h){let{palabra:f}=h.detail;this.dispatchEvent(new CustomEvent("rhyme-insert",{detail:{palabra:f,verso:this.versoActivo},bubbles:!0,composed:!0}))}render(){if(!this.open)return c``;return c`
+  `;pageSize=50;db=null;rhymeEngine=new E;connectedCallback(){super.connectedCallback(),this.initCorpus(),document.addEventListener("keydown",this.onKeyDown),document.addEventListener("corpus:progress",this.onCorpusProgress)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.onKeyDown),document.removeEventListener("corpus:progress",this.onCorpusProgress)}async initCorpus(){try{if(this.db=new y0,await this.db.initialize(),await e.ensureLoaded(this.db),this.corpusReady=!0,this.palabraActual)this.doSearch(this.palabraActual,this.searchFiltros)}catch(r){console.error("[RhymeBrowser] Error al inicializar corpus:",r)}}onKeyDown=(r)=>{if(r.key==="Escape"&&this.open)this.close()};onCorpusProgress=(r)=>{let{loaded:o}=r.detail;if(typeof o==="number")this.corpusWordsLoaded=o};close(){this.dispatchEvent(new CustomEvent("panel-close",{bubbles:!0,composed:!0}))}onSearchChange(r){let{query:o,filtros:d}=r.detail;if(this.searchQuery=o,this.searchFiltros=d,!o||o.length<1){this.results=[],this.allResults=[];return}this.page=0,this.doSearch(o,d)}get totalPages(){return Math.ceil(this.allResults.length/this.pageSize)}onPageChange(r){this.page=r.detail.page,this.updateResults()}updateResults(){let r=this.page*this.pageSize;this.results=this.allResults.slice(r,r+this.pageSize)}async doSearch(r,o){if(!this.db||!this.corpusReady)return;this.loading=!0;try{let d=this.rhymeEngine.extraerTerminacionPalabra(r);if(!d){this.results=[];return}let c=await this.db.buscarRimas(d,o.tipoRima||"consonante",o);this.allResults=c.map((i)=>({palabra:i.palabra,terminacion:i.terminacion,categoria:i.categoria,campoSemantico:i.campoSemantico,numSilabas:i.numSilabas,acento:i.acento})),this.updateResults()}catch(d){console.error("[RhymeBrowser] Error en búsqueda:",d),this.results=[]}finally{this.loading=!1}}onRhymeSelect(r){let{palabra:o}=r.detail;this.dispatchEvent(new CustomEvent("rhyme-insert",{detail:{palabra:o,verso:this.versoActivo},bubbles:!0,composed:!0}))}render(){if(!this.open)return a``;return a`
       <div class="panel-header">
         <div>
-          <div class="panel-title">Buscador de rimas</div>
-          <div class="panel-subtitle">Cmd+R para cerrar</div>
+          <div class="panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Buscador de rimas
+          </div>
+          <div class="panel-subtitle">⌘R para cerrar</div>
         </div>
-        <button class="close-btn" @click=${this.close} aria-label="Cerrar panel de rimas">✕</button>
+        <button class="close-btn" @click=${this.close} aria-label="Cerrar panel de rimas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
 
-      ${this.versoActivo?c`
+      ${this.versoActivo?a`
         <div class="active-verso">
           Verso ${this.versoActivo}${this.palabraActual?`: «${this.palabraActual}»`:""}
         </div>
       `:""}
 
-      ${!this.corpusReady?c`
+      ${!this.corpusReady?a`
         <div class="loading-corpus">
           <div class="corpus-spinner"></div>
           <div class="corpus-loading-text">Preparando el diccionario de rimas…</div>
           <div class="corpus-loading-sub">642 mil palabras con todas sus conjugaciones</div>
-          ${this.corpusWordsLoaded>0?c`
+          ${this.corpusWordsLoaded>0?a`
             <div class="corpus-loading-progress">
               ${this.corpusWordsLoaded.toLocaleString()} palabras indexadas
             </div>
@@ -1645,7 +2279,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
             Solo la primera vez — después será instantáneo
           </div>
         </div>
-      `:c`
+      `:a`
         <div class="content">
           <rhyme-search-input
             @search-change=${this.onSearchChange}
@@ -1662,34 +2296,73 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           ></rhyme-result-list>
         </div>
       `}
-    `}}X([J({type:Boolean,reflect:!0})],G1.prototype,"open",void 0),X([J({type:Object})],G1.prototype,"versoActivo",void 0),X([J({type:String})],G1.prototype,"palabraActual",void 0),X([N()],G1.prototype,"corpusReady",void 0),X([N()],G1.prototype,"loading",void 0),X([N()],G1.prototype,"corpusWordsLoaded",void 0),X([N()],G1.prototype,"results",void 0),X([N()],G1.prototype,"searchQuery",void 0),X([N()],G1.prototype,"searchFiltros",void 0),X([N()],G1.prototype,"allResults",void 0),X([N()],G1.prototype,"page",void 0),G1=X([y("rhyme-browser-panel")],G1);class F1 extends H{static styles=W`
+    `}}x([m({type:Boolean,reflect:!0})],v0.prototype,"open",void 0),x([m({type:Object})],v0.prototype,"versoActivo",void 0),x([m({type:String})],v0.prototype,"palabraActual",void 0),x([Z()],v0.prototype,"corpusReady",void 0),x([Z()],v0.prototype,"loading",void 0),x([Z()],v0.prototype,"corpusWordsLoaded",void 0),x([Z()],v0.prototype,"results",void 0),x([Z()],v0.prototype,"searchQuery",void 0),x([Z()],v0.prototype,"searchFiltros",void 0),x([Z()],v0.prototype,"allResults",void 0),x([Z()],v0.prototype,"page",void 0),v0=x([Y("rhyme-browser-panel")],v0);class z0 extends y{static styles=B`
     :host {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background-color: #F5E6C8;
-      font-family: 'Crimson Text', 'IBM Plex Serif', 'Georgia', serif;
+      background-color: var(--color-parchment);
+      font-family: var(--font-serif);
     }
 
     .toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 48px;
-      padding: 0 1.5rem;
-      background: #E8D5B0;
-      border-bottom: 1px solid rgba(44, 24, 16, 0.1);
+      height: var(--toolbar-height);
+      padding: 0 var(--spacing-lg);
+      background: linear-gradient(180deg, #E8D5B0 0%, #DECBA0 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, #E8D5B0 0%, #DECBA0 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border-bottom: 1px solid rgba(44, 24, 16, 0.14);
       flex-shrink: 0;
-      gap: 0.5rem;
+      gap: var(--spacing-sm);
+      box-shadow: var(--elevation-2);
+      position: relative;
+      z-index: 100;
+    }
+
+    .toolbar::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.3) 20%, rgba(139, 69, 19, 0.3) 80%, transparent);
     }
 
     .toolbar__title {
-      font-size: 1.25rem;
+      font-family: var(--font-display);
+      font-size: var(--font-size-h2);
       font-weight: 600;
-      color: #8B4513;
-      letter-spacing: 0.02em;
-      font-family: 'Crimson Text', Georgia, serif;
+      color: var(--color-accent);
+      letter-spacing: var(--letter-spacing-display);
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .toolbar__title svg {
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 1px rgba(44, 24, 16, 0.1));
+    }
+
+    .toolbar__title-text {
+      background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent), var(--color-accent-dark));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--color-accent);
+    }
+
+    .toolbar__title-divider {
+      width: 1px;
+      height: 18px;
+      background: linear-gradient(180deg, transparent, rgba(139, 69, 19, 0.3), transparent);
+      margin: 0 var(--spacing-2xs);
     }
 
     .toolbar__forms {
@@ -1703,6 +2376,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       gap: 0.25rem;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .toolbar-btn {
@@ -1710,55 +2384,101 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       align-items: center;
       gap: 0.35rem;
       padding: 0.35rem 0.75rem;
-      border-radius: 4px;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.8125rem;
-      color: #5C4033;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
+      color: var(--color-ink-soft);
+      transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
       background: transparent;
       border: 1px solid transparent;
+      position: relative;
+    }
+
+    .toolbar-btn svg {
+      flex-shrink: 0;
+      transition: transform var(--duration-fast) var(--ease-out);
     }
 
     .toolbar-btn:hover {
-      background: rgba(139, 69, 19, 0.1);
-      color: #8B4513;
+      background: linear-gradient(180deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.12));
+      color: var(--color-accent);
+      box-shadow: var(--elevation-1);
+    }
+
+    .toolbar-btn:hover svg {
+      transform: scale(1.08);
     }
 
     .toolbar-btn:active {
       background: rgba(139, 69, 19, 0.15);
+      transform: scale(0.96);
+    }
+
+    .toolbar-btn__label {
+      line-height: 1;
+    }
+
+    .toolbar-btn__kbd {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-micro);
+      color: var(--color-ink-faint);
+      margin-left: var(--spacing-xs);
+      padding: 1px 4px;
+      border-radius: var(--radius-xs);
+      background: rgba(44, 24, 16, 0.06);
+      border: 1px solid rgba(44, 24, 16, 0.1);
+      box-shadow: 0 1px 0 rgba(44, 24, 16, 0.08);
+      line-height: 1.3;
     }
 
     .toolbar-forma {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      font-size: 0.75rem;
-      color: #A0522D;
+      font-size: var(--font-size-metrica);
+      color: var(--color-accent-light);
       padding: 0.2rem 0.6rem;
-      border-radius: 12px;
-      background: rgba(139, 69, 19, 0.08);
-      font-family: 'Crimson Text', Georgia, serif;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(139, 69, 19, 0.06));
+      border: 1px solid rgba(139, 69, 19, 0.15);
+      font-family: var(--font-display);
+      font-weight: 500;
       white-space: nowrap;
+      letter-spacing: var(--letter-spacing-display);
+    }
+
+    .toolbar-forma::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+      box-shadow: 0 0 4px rgba(139, 69, 19, 0.4);
+      flex-shrink: 0;
     }
 
     .layout-grid {
       display: grid;
-      grid-template-columns: 280px 1fr 240px;
+      grid-template-columns: var(--panel-left-width) 1fr var(--panel-right-width);
       flex: 1;
       overflow: hidden;
-      height: calc(100vh - 48px - 36px);
+      height: calc(100vh - var(--toolbar-height) - var(--footer-height));
     }
 
     .layout-grid--rhyme-hidden {
-      grid-template-columns: 0 1fr 240px;
+      grid-template-columns: 0 1fr var(--panel-right-width);
     }
 
     .panel-left {
-      background: #E8D5B0;
-      border-right: 1px solid rgba(44, 24, 16, 0.1);
+      background: linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border-right: 1px solid rgba(44, 24, 16, 0.12);
+      box-shadow: inset -8px 0 12px -8px rgba(44, 24, 16, 0.1);
       overflow-y: auto;
       overflow-x: hidden;
-      transition: width 0.3s ease;
+      transition: width var(--duration-slow) var(--ease-out);
     }
 
     .layout-grid--rhyme-hidden .panel-left {
@@ -1770,40 +2490,53 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1.5rem;
+      padding: var(--spacing-xl) var(--spacing-lg);
       overflow-y: auto;
-      max-width: 720px;
+      max-width: var(--editor-max-width);
       justify-self: center;
       width: 100%;
     }
 
     .panel-right {
-      background: #E8D5B0;
-      border-left: 1px solid rgba(44, 24, 16, 0.1);
+      background: linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, #E8D5B0 0%, #E2CFAB 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border-left: 1px solid rgba(44, 24, 16, 0.12);
+      box-shadow: inset 8px 0 12px -8px rgba(44, 24, 16, 0.1);
       overflow-y: auto;
-      padding: 1rem;
+      padding: var(--spacing-md);
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--spacing-md);
     }
 
     .app-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 36px;
-      padding: 0 1.5rem;
-      background: #E8D5B0;
-      border-top: 1px solid rgba(44, 24, 16, 0.1);
+      height: var(--footer-height);
+      padding: 0 var(--spacing-lg);
+      background: linear-gradient(180deg, #E2CFAB 0%, #D8C49E 100%);
+      border-top: 1px solid rgba(44, 24, 16, 0.14);
       flex-shrink: 0;
-      font-size: 0.6875rem;
-      color: #8B7D6B;
-      font-family: 'Crimson Text', Georgia, serif;
+      font-size: var(--font-size-caption);
+      color: var(--color-ink-muted);
+      font-family: var(--font-mono);
+      letter-spacing: var(--letter-spacing-wide);
+      box-shadow: inset 0 2px 4px rgba(44, 24, 16, 0.06);
+    }
+
+    .app-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
     }
 
     .shortcut-hint {
-      color: #8B7D6B;
-      font-size: 0.65rem;
+      color: var(--color-ink-muted);
+      font-size: var(--font-size-micro);
+      font-family: var(--font-mono);
     }
 
     .rhyme-panel-placeholder {
@@ -1811,10 +2544,10 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       align-items: center;
       justify-content: center;
       height: 100%;
-      color: #8B7D6B;
+      color: var(--color-ink-muted);
       font-style: italic;
-      font-size: 0.875rem;
-      padding: 1rem;
+      font-size: var(--font-size-small);
+      padding: var(--spacing-md);
       text-align: center;
     }
 
@@ -1822,39 +2555,87 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
     .form-selector-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(44, 24, 16, 0.45);
+      background: radial-gradient(ellipse at center, rgba(44, 24, 16, 0.42), rgba(44, 24, 16, 0.58));
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 950;
-      padding: 1rem;
+      padding: var(--spacing-md);
+      animation: fade-in var(--duration-normal) var(--ease-out);
     }
 
     .form-selector {
-      background: #FFF8EC;
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: linear-gradient(180deg, var(--color-parchment-light) 0%, #FBF3E4 100%);
+      background-image: var(--texture-paper), linear-gradient(180deg, var(--color-parchment-light) 0%, #FBF3E4 100%);
+      background-size: 200px 200px, 100% 100%;
+      background-blend-mode: soft-light, normal;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
       max-width: 560px;
       width: 100%;
       max-height: 86vh;
       overflow-y: auto;
-      box-shadow: 0 8px 30px rgba(44, 24, 16, 0.18);
-      border: 1px solid rgba(44, 24, 16, 0.1);
-      font-family: 'Crimson Text', Georgia, serif;
+      box-shadow: var(--elevation-4);
+      border: 1px solid rgba(44, 24, 16, 0.12);
+      font-family: var(--font-serif);
+      animation: modal-in var(--duration-slow) var(--ease-spring);
+      position: relative;
+    }
+
+    .form-selector::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+
+    @keyframes modal-in {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .form-selector__ornament {
+      text-align: center;
+      margin-bottom: var(--spacing-sm);
+      opacity: 0.4;
+      color: var(--color-accent);
+      font-size: var(--font-size-metrica);
+      letter-spacing: 0.3em;
+      font-family: var(--font-display);
     }
 
     .form-selector__title {
       font-size: 1.35rem;
-      font-weight: 700;
-      color: #2C1810;
+      font-weight: 600;
+      color: var(--color-ink);
       margin-bottom: 0.25rem;
+      font-family: var(--font-display);
+      text-align: center;
+      letter-spacing: var(--letter-spacing-display);
     }
 
     .form-selector__sub {
-      font-size: 0.875rem;
-      color: #8B7D6B;
+      font-size: var(--font-size-small);
+      color: var(--color-ink-muted);
       font-style: italic;
-      margin-bottom: 1.25rem;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      font-family: var(--font-serif);
     }
 
     .form-selector__list {
@@ -1871,61 +2652,90 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       text-align: left;
       width: 100%;
       padding: 0.85rem 1rem;
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       border: 1px solid rgba(44, 24, 16, 0.12);
-      background: rgba(245, 230, 200, 0.45);
+      background: linear-gradient(180deg, rgba(245, 230, 200, 0.5), rgba(245, 230, 200, 0.3));
       cursor: pointer;
-      font-family: 'Crimson Text', Georgia, serif;
-      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+      font-family: var(--font-serif);
+      transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+      position: relative;
     }
 
     .form-option:hover {
-      background: rgba(139, 69, 19, 0.08);
-      border-color: rgba(139, 69, 19, 0.4);
+      background: linear-gradient(180deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.04));
+      border-color: rgba(139, 69, 19, 0.35);
       transform: translateX(2px);
+      box-shadow: var(--elevation-2);
+    }
+
+    .form-option:active {
+      transform: translateX(2px) scale(0.99);
     }
 
     .form-option__name {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #8B4513;
+      color: var(--color-accent);
+      font-family: var(--font-display);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .form-option__name::before {
+      content: '';
+      width: 3px;
+      height: 1em;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+      flex-shrink: 0;
     }
 
     .form-option__desc {
-      font-size: 0.8125rem;
-      color: #5C4033;
-      line-height: 1.45;
+      font-size: var(--font-size-small);
+      color: var(--color-ink-soft);
+      line-height: var(--line-height-snug);
+      padding-left: var(--spacing-sm);
     }
 
     .form-option__esquema {
-      font-size: 0.75rem;
-      color: #A0522D;
+      font-size: var(--font-size-metrica);
+      color: var(--color-accent-light);
       font-style: italic;
-      background: rgba(139, 69, 19, 0.06);
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.08), rgba(139, 69, 19, 0.04));
       padding: 0.1rem 0.45rem;
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      letter-spacing: var(--letter-spacing-wide);
+      margin-left: var(--spacing-sm);
+      border: 1px solid rgba(139, 69, 19, 0.1);
     }
 
     .form-selector__actions {
       display: flex;
       justify-content: flex-end;
-      margin-top: 1.25rem;
+      margin-top: var(--spacing-lg);
     }
 
     .form-selector__cancel {
       padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 0.875rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-serif);
+      font-size: var(--font-size-small);
       cursor: pointer;
       background: transparent;
-      color: #5C4033;
+      color: var(--color-ink-soft);
       border: 1px solid rgba(44, 24, 16, 0.2);
-      transition: background-color 0.15s ease;
+      transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
     }
 
     .form-selector__cancel:hover {
       background: rgba(139, 69, 19, 0.08);
+      box-shadow: var(--elevation-1);
+    }
+
+    .form-selector__cancel:active {
+      transform: scale(0.96);
     }
 
     /* ── RESPONSIVE ───────────────────────────────────────────
@@ -1952,21 +2762,25 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         max-width: 780px;
         justify-self: center;
         overflow: visible;
-        padding: 1.5rem 1.25rem;
+        padding: var(--spacing-lg) var(--spacing-md);
       }
 
-      /* Buscador de rimas → drawer lateral superpuesto */
+      .editor-center::before {
+        display: none;
+      }
+
       .panel-left {
         position: fixed;
-        top: 48px;
-        bottom: 36px;
+        top: var(--toolbar-height);
+        bottom: var(--footer-height);
         left: 0;
         width: min(360px, 88vw);
         height: auto;
         z-index: 800;
-        box-shadow: 6px 0 24px rgba(44, 24, 16, 0.2);
+        box-shadow: var(--elevation-4), 6px 0 24px rgba(44, 24, 16, 0.2);
         border-right: 1px solid rgba(44, 24, 16, 0.15);
-        transition: transform 0.28s ease, width 0.28s ease;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        transition: transform var(--duration-slow) var(--ease-out), width var(--duration-slow) var(--ease-out);
         transform: translateX(0);
       }
 
@@ -1976,22 +2790,22 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         border-right: none;
       }
 
-      /* Métricas y esquema debajo del editor */
       .panel-right {
         border-left: none;
         border-top: 1px solid rgba(44, 24, 16, 0.1);
         overflow: visible;
-        padding: 1.25rem;
+        padding: var(--spacing-lg);
         max-width: 780px;
         justify-self: center;
         width: 100%;
+        box-shadow: none;
       }
     }
 
     @media (max-width: 767px) {
       .toolbar {
         height: auto;
-        min-height: 48px;
+        min-height: var(--toolbar-height);
         flex-wrap: wrap;
         padding: 0.5rem 0.75rem;
         gap: 0.35rem;
@@ -2016,7 +2830,11 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         min-height: 40px;
         min-width: 40px;
         padding: 0.4rem 0.55rem;
-        font-size: 0.8125rem;
+        font-size: var(--font-size-small);
+      }
+
+      .toolbar-btn__kbd {
+        display: none;
       }
 
       .editor-center {
@@ -2032,6 +2850,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         bottom: 0;
         width: 100vw;
         height: 100vh;
+        border-radius: 0;
       }
 
       .layout-grid--rhyme-hidden .panel-left {
@@ -2044,7 +2863,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
         flex-wrap: wrap;
         gap: 0.25rem;
         padding: 0.4rem 0.75rem;
-        font-size: 0.625rem;
+        font-size: var(--font-size-micro);
       }
 
       .form-selector-backdrop {
@@ -2052,12 +2871,12 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       }
 
       .form-selector {
-        padding: 1rem;
+        padding: var(--spacing-md);
         max-height: 86vh;
       }
 
       .form-selector__sub {
-        font-size: 0.8125rem;
+        font-size: var(--font-size-small);
       }
 
       .form-option {
@@ -2065,30 +2884,47 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
       }
 
       .form-option__desc {
-        font-size: 0.75rem;
+        font-size: var(--font-size-metrica);
       }
     }
-  `;eventBus=new l0;storage=new t0;analysisService;autoSaveService;exportService=new d1;toastElement;constructor(){super();this.soneto=this.createEmptySoneto("soneto");this.forma=b("soneto");this.analysisMap=new Map;this.rhymePanelOpen=!1;this.selectedVerso=null;this.completados=0;this.conErrores=0;this.formSelectorOpen=!1;this.analysisService=new h1(this.eventBus),this.autoSaveService=new f1(this.eventBus,this.storage,()=>this.soneto)}connectedCallback(){super.connectedCallback();let h=this.storage.loadLastSoneto();if(h)this.soneto=this.migrarSonetoGuardado(h);if(this.aplicarForma(),this.soneto.versos.some((f)=>f.texto.trim()))this.analysisService.loadVersos(this.soneto.versos);this.eventBus.on("analysis:complete",({analysis:f,esquema:k})=>{this.analysisMap=f,this.esquema=k;let d=this.soneto.versos.map((z)=>({...z,analysis:f.get(z.numero)||z.analysis}));this.soneto={...this.soneto,versos:d},this.updateProgress()}),this.eventBus.on("ui:toast",({message:f,level:k})=>{this.showToast(f,k)}),this.eventBus.on("soneto:new",()=>{}),this.eventBus.on("export:txt",()=>{this.exportarTxt()}),this.eventBus.on("export:clipboard",()=>{this.copiarPortapapeles()}),document.addEventListener("keydown",this.onKeyDown.bind(this))}disconnectedCallback(){super.disconnectedCallback(),this.autoSaveService.destroy(),this.analysisService.destroy(),document.removeEventListener("keydown",this.onKeyDown.bind(this))}render(){let h=this.soneto.versos.length,f=D0(this.forma,h);return c`
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  `;eventBus=new Pr;storage=new Sr;analysisService;autoSaveService;exportService=new c0;toastElement;constructor(){super();this.soneto=this.createEmptySoneto("soneto");this.forma=C("soneto");this.analysisMap=new Map;this.rhymePanelOpen=!1;this.selectedVerso=null;this.completados=0;this.conErrores=0;this.formSelectorOpen=!1;this.analysisService=new r0(this.eventBus),this.autoSaveService=new o0(this.eventBus,this.storage,()=>this.soneto)}connectedCallback(){super.connectedCallback();let r=this.storage.loadLastSoneto();if(r)this.soneto=this.migrarSonetoGuardado(r);if(this.aplicarForma(),this.soneto.versos.some((o)=>o.texto.trim()))this.analysisService.loadVersos(this.soneto.versos);this.eventBus.on("analysis:complete",({analysis:o,esquema:d})=>{this.analysisMap=o,this.esquema=d;let c=this.soneto.versos.map((i)=>({...i,analysis:o.get(i.numero)||i.analysis}));this.soneto={...this.soneto,versos:c},this.updateProgress()}),this.eventBus.on("ui:toast",({message:o,level:d})=>{this.showToast(o,d)}),this.eventBus.on("soneto:new",()=>{}),this.eventBus.on("export:txt",()=>{this.exportarTxt()}),this.eventBus.on("export:clipboard",()=>{this.copiarPortapapeles()}),document.addEventListener("keydown",this.onKeyDown.bind(this))}disconnectedCallback(){super.disconnectedCallback(),this.autoSaveService.destroy(),this.analysisService.destroy(),document.removeEventListener("keydown",this.onKeyDown.bind(this))}render(){let r=this.soneto.versos.length,o=Jr(this.forma,r);return a`
       <div class="toolbar">
-        <div class="toolbar__title">✎ El Taller</div>
+        <div class="toolbar__title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3-3"/><path d="M5.5 18.5l9-9a2.83 2.83 0 0 1 4 4l-9 9"/><path d="M14.5 13.5l4-4"/><path d="M19 4a3 3 0 0 1 3 3"/></svg>
+          <span class="toolbar__title-text">El Taller</span>
+          <span class="toolbar__title-divider"></span>
+          <span style="font-size: var(--font-size-metrica); font-weight: 400; color: var(--color-ink-muted); font-family: var(--font-serif); font-style: italic;">Sonetos</span>
+        </div>
         <div class="toolbar__forms">
           <span class="toolbar-forma" title="${this.forma.descripcion}">${this.forma.nombre}</span>
         </div>
         <div class="toolbar__actions">
           <button class="toolbar-btn" @click=${this.abrirSelector} title="Nuevo poema (Cmd+N)">
-            ✏️ Nuevo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span class="toolbar-btn__label">Nuevo</span>
           </button>
           <button class="toolbar-btn" @click=${this.toggleRhymePanel} title="Buscar rimas (Cmd+R)">
-            🔤 Rimas
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="13" y2="11"/></svg>
+            <span class="toolbar-btn__label">Rimas</span>
           </button>
           <button class="toolbar-btn" @click=${this.exportarTxt} title="Exportar a .txt">
-            📥 Exportar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="toolbar-btn__label">Exportar</span>
           </button>
           <button class="toolbar-btn" @click=${this.exportarPdf} title="Exportar a PDF">
-            📄 PDF
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6"/><path d="M9 17h6"/><path d="M9 9h2"/></svg>
+            <span class="toolbar-btn__label">PDF</span>
           </button>
           <button class="toolbar-btn" @click=${this.copiarPortapapeles} title="Copiar al portapapeles">
-            📋 Copiar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+            <span class="toolbar-btn__label">Copiar</span>
           </button>
         </div>
       </div>
@@ -2124,7 +2960,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           ></soneto-editor>
 
           <progress-bar
-            .total=${h}
+            .total=${r}
             .completados=${this.completados}
             .conErrores=${this.conErrores}
           ></progress-bar>
@@ -2139,30 +2975,31 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           <rhyme-scheme-panel
             .esquema=${this.esquema}
             .versos=${this.soneto.versos}
-            .grupos=${f}
+            .grupos=${o}
           ></rhyme-scheme-panel>
         </aside>
       </div>
 
       <div class="app-footer">
         <span>${this.forma.medidaDescripcion}</span>
-        <span>${this.soneto.versos.filter((k)=>k.texto.trim()).length} / ${h} versos escritos</span>
+        <span>${this.soneto.versos.filter((d)=>d.texto.trim()).length} / ${r} versos escritos</span>
       </div>
 
       ${this.formSelectorOpen?this.renderFormSelector():""}
 
       <app-toast></app-toast>
-    `}renderFormSelector(){return c`
+    `}renderFormSelector(){return a`
       <div class="form-selector-backdrop" @click=${this.cerrarSelector}>
-        <div class="form-selector" @click=${(h)=>h.stopPropagation()} role="dialog" aria-label="Elegir forma poética">
+        <div class="form-selector" @click=${(r)=>r.stopPropagation()} role="dialog" aria-label="Elegir forma poética">
+          <div class="form-selector__ornament">❦</div>
           <div class="form-selector__title">Nueva composición</div>
           <div class="form-selector__sub">Elige una forma del Siglo de Oro español</div>
           <div class="form-selector__list">
-            ${J0.map((h)=>c`
-              <button class="form-option" @click=${()=>this.nuevoPoemaDeForma(h.id)}>
-                <span class="form-option__name">${h.nombre}</span>
-                <span class="form-option__desc">${h.descripcion}</span>
-                <span class="form-option__esquema">${h.esquemaReferencia||""}</span>
+            ${mr.map((r)=>a`
+              <button class="form-option" @click=${()=>this.nuevoPoemaDeForma(r.id)}>
+                <span class="form-option__name">${r.nombre}</span>
+                <span class="form-option__desc">${r.descripcion}</span>
+                ${r.esquemaReferencia?a`<span class="form-option__esquema">${r.esquemaReferencia}</span>`:""}
               </button>
             `)}
           </div>
@@ -2171,7 +3008,7 @@ ${"═".repeat(h.titulo.length)}`);let d=f0(f,h.versos);if(f.modo==="serie"){let
           </div>
         </div>
       </div>
-    `}createEmptySoneto(h){let f=b(h),k=crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`,d=e1(f,k);return{id:k,forma:h,versos:d,createdAt:Date.now(),updatedAt:Date.now()}}migrarSonetoGuardado(h){let f=h.forma&&J0.some((z)=>z.id===h.forma)?h.forma:"soneto",k=b(f),d=Array.isArray(h.versos)?h.versos.map((z)=>({...z})):[];if(f==="soneto"&&d.length!==14)d=Array.from({length:14},(z,$)=>d[$]??{id:`${h.id}-v${$+1}`,numero:$+1,texto:""});return d=d.map((z,$)=>({...z,numero:$+1})),{...h,forma:f,versos:d,updatedAt:Date.now()}}aplicarForma(){this.forma=b(this.soneto.forma),this.analysisService.setForma(this.forma)}updateProgress(){let h=0,f=0;for(let k of this.soneto.versos)if(k.texto.trim()){h++;let d=this.analysisMap.get(k.numero);if(d&&d.errores.length>0)f++}this.completados=h,this.conErrores=f}renumberVersos(h){return h.map((f,k)=>({...f,numero:k+1}))}nuevoPoemaDeForma(h){if(this.completados>0)this.storage.saveToHistory(this.soneto);let f=this.createEmptySoneto(h);this.soneto=f,this.forma=b(h),this.analysisMap=new Map,this.esquema=void 0,this.completados=0,this.conErrores=0,this.selectedVerso=null,this.formSelectorOpen=!1,this.eventBus.emit("soneto:new",{}),this.analysisService.reset(),this.analysisService.setForma(this.forma),this.showToast(`Nuevo ${this.forma.nombre} creado`,"info")}abrirSelector(){this.formSelectorOpen=!0}cerrarSelector(){this.formSelectorOpen=!1}onVersoInput(h){let{numero:f,texto:k}=h.detail,d=this.soneto.versos.find((z)=>z.numero===f);if(d)d.texto=k,this.soneto.updatedAt=Date.now(),this.eventBus.emit("verso:input",{numero:f,texto:k})}onVersoBlur(h){let{numero:f}=h.detail;this.eventBus.emit("verso:blur",{numero:f})}onVersoFocus(h){let{numero:f}=h.detail;this.selectedVerso=f,this.eventBus.emit("verso:focus",{numero:f})}onTituloChange(h){this.soneto.titulo=h.detail.titulo}onEstrategiaChange(h){this.soneto.estrategia=h.detail.estrategia}onHiatoToggle(h){let{numero:f,silabaIndex:k}=h.detail;this.eventBus.emit("hiato:toggle",{numero:f,silabaIndex:k})}onVersoAdd(){let h=this.soneto.versos;if(h.length>=this.forma.versosMax)return;let f=h[h.length-1],k={id:`${this.soneto.id}-v${h.length+1}`,numero:h.length+1,texto:""};this.setVersos([...h,k]),this.showToast(`Verso ${k.numero} añadido`,"info")}onVersoRemove(){if(this.soneto.versos.length<=this.forma.versosMin)return;let h=this.soneto.versos.slice(0,-1);this.setVersos(h),this.showToast("Último verso eliminado","info")}onEstrofaAdd(){let h=this.forma;if(h.modo!=="estrofa")return;let k=(h.estrofas.find(($)=>$.id==="copla")||h.estrofas[1])?.nVersos||4;if(this.soneto.versos.length+k>h.versosMax)return;let d=this.soneto.versos.length,z=[...this.soneto.versos];for(let $=0;$<k;$++)z.push({id:`${this.soneto.id}-v${d+$+1}`,numero:d+$+1,texto:""});this.setVersos(z),this.showToast("Estrofa (copla) añadida","info")}onEstrofaRemove(){let h=this.forma;if(h.modo!=="estrofa")return;let f=h.versosIniciales;if(this.soneto.versos.length<=f)return;let d=(h.estrofas.find(($)=>$.id==="copla")||h.estrofas[1])?.nVersos||4,z=this.soneto.versos.slice(0,Math.max(f,this.soneto.versos.length-d));this.setVersos(z),this.showToast("Última copla eliminada","info")}setVersos(h){let f=this.renumberVersos(h);this.soneto={...this.soneto,versos:f,updatedAt:Date.now()},this.analysisService.reset(),this.analysisService.loadVersos(f),this.updateProgress()}toggleRhymePanel(){this.rhymePanelOpen=!this.rhymePanelOpen,this.eventBus.emit("ui:panel-toggle",{panel:"rhyme-browser",open:this.rhymePanelOpen})}exportarTxt(){this.exportService.exportToTxt(this.soneto),this.showToast("Poema exportado como .txt","info")}exportarPdf(){this.exportService.exportToPdf(this.soneto),this.showToast("Poema exportado como PDF","info")}async copiarPortapapeles(){let h=await this.exportService.copyToClipboard(this.soneto);this.showToast(h?"Poema copiado al portapapeles":"Error al copiar al portapapeles",h?"info":"error")}getPalabraActual(){if(!this.selectedVerso)return"";let h=this.soneto.versos.find((k)=>k.numero===this.selectedVerso);if(!h||!h.texto.trim())return"";let f=h.texto.trim().split(/\s+/);return f[f.length-1].replace(/[¿?!¡;:.,()\-"'«»]/g,"")}onRhymeInsert(h){let{palabra:f,verso:k}=h.detail;if(!k)return;let d=this.soneto.versos.find(($)=>$.numero===k);if(!d)return;let z=d.texto.trim().split(/\s+/);if(z.length>0&&d.texto.trim().length>0)z[z.length-1]=f,d.texto=z.join(" ")+" ";else d.texto=f+" ";this.soneto.updatedAt=Date.now(),this.requestUpdate(),this.eventBus.emit("verso:input",{numero:k,texto:d.texto}),this.showToast(`"${f}" insertada en verso ${k}`,"info")}onRhymePanelClose(){this.rhymePanelOpen=!1,this.eventBus.emit("ui:panel-toggle",{panel:"rhyme-browser",open:!1})}showToast(h,f="info"){let k=this.shadowRoot?.querySelector("app-toast");if(k?.show)k.show(h,f)}onKeyDown(h){if((h.metaKey||h.ctrlKey)&&h.key==="r")h.preventDefault(),this.toggleRhymePanel();if((h.metaKey||h.ctrlKey)&&h.key==="s")h.preventDefault(),this.autoSaveService.saveNow(),this.showToast("Poema guardado","info");if((h.metaKey||h.ctrlKey)&&h.key==="n")h.preventDefault(),this.abrirSelector();if(h.key==="Escape"&&this.formSelectorOpen)this.cerrarSelector()}}X([N()],F1.prototype,"soneto",void 0),X([N()],F1.prototype,"forma",void 0),X([N()],F1.prototype,"analysisMap",void 0),X([N()],F1.prototype,"esquema",void 0),X([N()],F1.prototype,"rhymePanelOpen",void 0),X([N()],F1.prototype,"selectedVerso",void 0),X([N()],F1.prototype,"completados",void 0),X([N()],F1.prototype,"conErrores",void 0),X([N()],F1.prototype,"formSelectorOpen",void 0),F1=X([y("el-taller-app")],F1);if("serviceWorker"in navigator)window.addEventListener("load",()=>{});console.log(`
+    `}createEmptySoneto(r){let o=C(r),d=crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`,c=ro(o,d);return{id:d,forma:r,versos:c,createdAt:Date.now(),updatedAt:Date.now()}}migrarSonetoGuardado(r){let o=r.forma&&mr.some((i)=>i.id===r.forma)?r.forma:"soneto",d=C(o),c=Array.isArray(r.versos)?r.versos.map((i)=>({...i})):[];if(o==="soneto"&&c.length!==14)c=Array.from({length:14},(i,g)=>c[g]??{id:`${r.id}-v${g+1}`,numero:g+1,texto:""});return c=c.map((i,g)=>({...i,numero:g+1})),{...r,forma:o,versos:c,updatedAt:Date.now()}}aplicarForma(){this.forma=C(this.soneto.forma),this.analysisService.setForma(this.forma)}updateProgress(){let r=0,o=0;for(let d of this.soneto.versos)if(d.texto.trim()){r++;let c=this.analysisMap.get(d.numero);if(c&&c.errores.length>0)o++}this.completados=r,this.conErrores=o}renumberVersos(r){return r.map((o,d)=>({...o,numero:d+1}))}nuevoPoemaDeForma(r){if(this.completados>0)this.storage.saveToHistory(this.soneto);let o=this.createEmptySoneto(r);this.soneto=o,this.forma=C(r),this.analysisMap=new Map,this.esquema=void 0,this.completados=0,this.conErrores=0,this.selectedVerso=null,this.formSelectorOpen=!1,this.eventBus.emit("soneto:new",{}),this.analysisService.reset(),this.analysisService.setForma(this.forma),this.showToast(`Nuevo ${this.forma.nombre} creado`,"info")}abrirSelector(){this.formSelectorOpen=!0}cerrarSelector(){this.formSelectorOpen=!1}onVersoInput(r){let{numero:o,texto:d}=r.detail,c=this.soneto.versos.find((i)=>i.numero===o);if(c)c.texto=d,this.soneto.updatedAt=Date.now(),this.eventBus.emit("verso:input",{numero:o,texto:d})}onVersoBlur(r){let{numero:o}=r.detail;this.eventBus.emit("verso:blur",{numero:o})}onVersoFocus(r){let{numero:o}=r.detail;this.selectedVerso=o,this.eventBus.emit("verso:focus",{numero:o})}onTituloChange(r){this.soneto.titulo=r.detail.titulo}onEstrategiaChange(r){this.soneto.estrategia=r.detail.estrategia}onHiatoToggle(r){let{numero:o,silabaIndex:d}=r.detail;this.eventBus.emit("hiato:toggle",{numero:o,silabaIndex:d})}onVersoAdd(){let r=this.soneto.versos;if(r.length>=this.forma.versosMax)return;let o=r[r.length-1],d={id:`${this.soneto.id}-v${r.length+1}`,numero:r.length+1,texto:""};this.setVersos([...r,d]),this.showToast(`Verso ${d.numero} añadido`,"info")}onVersoRemove(){if(this.soneto.versos.length<=this.forma.versosMin)return;let r=this.soneto.versos.slice(0,-1);this.setVersos(r),this.showToast("Último verso eliminado","info")}onEstrofaAdd(){let r=this.forma;if(r.modo!=="estrofa")return;let o=r.estrofas[r.estrofas.length-1],d=o?.nVersos||8;if(this.soneto.versos.length+d>r.versosMax)return;let c=this.soneto.versos.length,i=[...this.soneto.versos];for(let g=0;g<d;g++)i.push({id:`${this.soneto.id}-v${c+g+1}`,numero:c+g+1,texto:""});this.setVersos(i),this.showToast(`Estrofa añadida (${o?.nombre??"estrofa"})`,"info")}onEstrofaRemove(){let r=this.forma;if(r.modo!=="estrofa")return;let o=r.versosIniciales;if(this.soneto.versos.length<=o)return;let d=r.estrofas[r.estrofas.length-1],c=d?.nVersos||8,i=this.soneto.versos.slice(0,Math.max(o,this.soneto.versos.length-c));this.setVersos(i),this.showToast(`Estrofa eliminada (${d?.nombre??"estrofa"})`,"info")}setVersos(r){let o=this.renumberVersos(r);this.soneto={...this.soneto,versos:o,updatedAt:Date.now()},this.analysisService.reset(),this.analysisService.loadVersos(o),this.updateProgress()}toggleRhymePanel(){this.rhymePanelOpen=!this.rhymePanelOpen,this.eventBus.emit("ui:panel-toggle",{panel:"rhyme-browser",open:this.rhymePanelOpen})}exportarTxt(){this.exportService.exportToTxt(this.soneto),this.showToast("Poema exportado como .txt","info")}exportarPdf(){this.exportService.exportToPdf(this.soneto),this.showToast("Poema exportado como PDF","info")}async copiarPortapapeles(){let r=await this.exportService.copyToClipboard(this.soneto);this.showToast(r?"Poema copiado al portapapeles":"Error al copiar al portapapeles",r?"info":"error")}getPalabraActual(){if(!this.selectedVerso)return"";let r=this.soneto.versos.find((d)=>d.numero===this.selectedVerso);if(!r||!r.texto.trim())return"";let o=r.texto.trim().split(/\s+/);return o[o.length-1].replace(/[¿?!¡;:.,()\-"'«»]/g,"")}onRhymeInsert(r){let{palabra:o,verso:d}=r.detail;if(!d)return;let c=this.soneto.versos.find((g)=>g.numero===d);if(!c)return;let i=c.texto.trim().split(/\s+/);if(i.length>0&&c.texto.trim().length>0)i[i.length-1]=o,c.texto=i.join(" ")+" ";else c.texto=o+" ";this.soneto.updatedAt=Date.now(),this.requestUpdate(),this.eventBus.emit("verso:input",{numero:d,texto:c.texto}),this.showToast(`"${o}" insertada en verso ${d}`,"info")}onRhymePanelClose(){this.rhymePanelOpen=!1,this.eventBus.emit("ui:panel-toggle",{panel:"rhyme-browser",open:!1})}showToast(r,o="info"){let d=this.shadowRoot?.querySelector("app-toast");if(d?.show)d.show(r,o)}onKeyDown(r){if((r.metaKey||r.ctrlKey)&&r.key==="r")r.preventDefault(),this.toggleRhymePanel();if((r.metaKey||r.ctrlKey)&&r.key==="s")r.preventDefault(),this.autoSaveService.saveNow(),this.showToast("Poema guardado","info");if((r.metaKey||r.ctrlKey)&&r.key==="n")r.preventDefault(),this.abrirSelector();if(r.key==="Escape"&&this.formSelectorOpen)this.cerrarSelector()}}x([Z()],z0.prototype,"soneto",void 0),x([Z()],z0.prototype,"forma",void 0),x([Z()],z0.prototype,"analysisMap",void 0),x([Z()],z0.prototype,"esquema",void 0),x([Z()],z0.prototype,"rhymePanelOpen",void 0),x([Z()],z0.prototype,"selectedVerso",void 0),x([Z()],z0.prototype,"completados",void 0),x([Z()],z0.prototype,"conErrores",void 0),x([Z()],z0.prototype,"formSelectorOpen",void 0),z0=x([Y("el-taller-app")],z0);if("serviceWorker"in navigator)window.addEventListener("load",()=>{});console.log(`
   ╔══════════════════════════════╗
   ║    ✎ El Taller v0.1.0       ║
   ║  Asistente de sonetos        ║
